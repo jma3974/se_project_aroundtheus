@@ -1,0 +1,15 @@
+.header {
+  max-width: 880px;
+  margin: 45px auto 36px auto;
+}
+
+.header__logo {
+  padding-top: 45px;
+}
+
+.header__divider {
+  border-bottom: white solid 1px;
+  margin: 41px auto 36px auto;
+  width: 100%;
+  flex-grow: 1;
+}

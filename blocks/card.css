@@ -1,0 +1,33 @@
+.card {
+  background-color: white;
+  border-radius: 10px;
+  border: 0;
+  width: 282px;
+  height: 361px;
+  overflow: hidden;
+}
+
+.card__image {
+  width: 282px;
+  margin: 0;
+}
+
+.card__details {
+  display: flex;
+  align-items: center;
+  margin: auto 20px 25px 20px;
+}
+
+.card__title {
+  color: black;
+  font-family: Inter, Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 29px;
+  margin-right: auto;
+}
+
+.card__button {
+  width: 20px;
+  height: 18px;
+}
