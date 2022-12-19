@@ -33,27 +33,44 @@
         <div class="header__divider"></div>
       </header>
 
-      <main class="main">
+      <section class="main">
         <div class="profile">
-          <div class="profile__image">
-            <img src="/images/jacques-cousteau.svg" />
-          </div>
-          <div class="profile__name">
-            <p>Jacques Cousteau</p>
-            <img src="/images/edit_button.png" class="profile__button_edit" />
-          </div>
-          <div>
+          <figure class="profile__image_frame">
+            <img src="/images/jacques-cousteau.jpg" class="profile__image" />
+          </figure>
+
+          <div class="profile__about">
+            <p class="profile__name">
+              Jacques Cousteau<button type="button" class="button__edit"><img src="/images/edit_button.png" /></button>
+            </p>
             <p class="profile__profession">Explorer</p>
+            
           </div>
-          <div></div>
+        
+
+        <div>
+        <fieldset class="profile__button_add">
+          <button type="button" class="button__add"><img src="/images/plus_sign.png"  /></button>
+        </fieldset>
+      </div>
+    </div>
+        <!--
+          <div class="profile__button_add">
+            <img src="/images/plus_sign.png" class="button__add" />
+          </div>
         </div>
+        -->
 
         <!-- DESTINATION CARDS-->
 
         <div class="destinations">
           <!-- CARD 1 TEMPLATE -->
           <div class="card">
-            <img src="/images/yosemite-valley.svg" class="card__image" />
+            <img
+              src="/images/yosemite-valley.jpg"
+              class="card__image"
+              alt="A view up a river through a forest to mountain cliffsides."
+            />
 
             <div class="card__details">
               <p class="card__title">Yosemite Valley</p>
@@ -63,37 +80,79 @@
 
           <!-- CARD 2 TEMPLATE -->
           <div class="card">
-            <img src="/images/yosemite-valley.svg" class="card__image" />
+            <img
+              src="/images/lake-louise.png"
+              class="card__image"
+              alt="A view across an aqua colored lake to a pass between two jagged mountains."
+            />
 
             <div class="card__details">
-              <p class="card__title">Yosemite Valley</p>
+              <p class="card__title">Lake Louise</p>
               <img src="/images/love_button.svg" class="card__button" />
             </div>
           </div>
 
           <!-- CARD 3 TEMPLATE -->
           <div class="card">
-            <img src="/images/yosemite-valley.svg" class="card__image" />
+            <img
+              src="/images/bald-mountains.png"
+              class="card__image"
+              alt="A view over a low mountain range facing the setting sun."
+            />
 
             <div class="card__details">
-              <p class="card__title">Yosemite Valley</p>
+              <p class="card__title">Bald Mountains</p>
               <img src="/images/love_button.svg" class="card__button" />
             </div>
           </div>
 
           <!-- CARD 4 TEMPLATE -->
           <div class="card">
-            <img src="/images/yosemite-valley.svg" class="card__image" />
+            <img
+              src="/images/latemar.png"
+              class="card__image"
+              alt="A starry night view of three stone mountain peaks."
+            />
 
             <div class="card__details">
-              <p class="card__title">Yosemite Valley</p>
+              <p class="card__title">Latemar</p>
+              <img src="/images/love_button.svg" class="card__button" />
+            </div>
+          </div>
+
+          <!-- CARD 5 TEMPLATE -->
+          <div class="card">
+            <img
+              src="/images/vanoise-national-park.png"
+              class="card__image"
+              alt="a view of a rock beach near a calm lake, reflecting the stony mountains in the distance."
+            />
+
+            <div class="card__details">
+              <p class="card__title">Vanoise National Park</p>
+              <img src="/images/love_button.svg" class="card__button" />
+            </div>
+          </div>
+
+          <!-- CARD 6 TEMPLATE -->
+          <div class="card">
+            <img
+              src="/images/lago-di-braies.png"
+              class="card__image"
+              alt="A view of a series of row boats tied to a wharf on a lake surrounded by mountains."
+            />
+
+            <div class="card__details">
+              <p class="card__title">Lago di Braies</p>
               <img src="/images/love_button.svg" class="card__button" />
             </div>
           </div>
         </div>
       </main>
 
-      <footer></footer>
+      <footer class="footer">
+        <div class="footer__copy">Around the U.S.</div>
+      </footer>
     </div>
   </body>
 </html>

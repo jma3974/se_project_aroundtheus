@@ -1,0 +1,42 @@
+.button__edit {
+  margin-left: 18px;
+  height: 24px;
+  width: 24px;
+  align-self: center;
+  background-color: black;
+  border: 0;
+}
+
+.button__frame_add {
+  border: white solid 2px;
+  height: 50px;
+  width: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: auto;
+}
+
+.button__add {
+  height: 22px;
+  width: 22px;
+  align-items: center;
+  justify-items: center;
+  background-color: black;
+  border: 0;
+}
+
+@media screen and (max-width: 544px) {
+  .button__edit {
+    height: 18px;
+    width: 18px;
+    margin-left: 10px;
+    align-self: center;
+    background-color: black;
+  }
+
+  .button__frame_add {
+    height: 50px;
+    width: 282px;
+  }
+}
