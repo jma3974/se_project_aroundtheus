@@ -16,142 +16,174 @@
     <title>Around the US</title>
     <link rel="stylesheet" href="./pages/index.css" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;900&family=Noto+Serif:ital@0;1&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preconnect" href="https://rsms.me/" />
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
   </head>
   <body>
     <div class="page">
       <header class="header">
         <div class="header__logo">
-          <img src="/images/around_logo.svg" />
+          <img src="./images/around_logo.svg" alt="Around the U.S." />
         </div>
 
         <div class="header__divider"></div>
       </header>
 
-      <section class="main">
+      <!-- PROFILE -->
+
+      <main class="main">
         <div class="profile">
           <figure class="profile__image_frame">
-            <img src="/images/jacques-cousteau.jpg" class="profile__image" />
+            <img
+              src="./images/jacques-cousteau.jpg"
+              class="profile__image"
+              alt="picture of Jacques Cousteau"
+            />
           </figure>
 
           <div class="profile__about">
-            <p class="profile__name">
-              Jacques Cousteau<button type="button" class="button__edit"><img src="/images/edit_button.png" /></button>
-            </p>
-            <p class="profile__profession">Explorer</p>
-            
-          </div>
-        
+            <div class="profile__details">
+              <p class="profile__name">Jacques Cousteau</p>
+              <fieldset class="button__frame_edit">
+                <button type="button" class="button__edit">
+                  <img
+                    src="./images/edit_button.png"
+                    alt="edit button, pencil in a square"
+                  />
+                </button>
+              </fieldset>
+            </div>
 
-        <div>
-        <fieldset class="profile__button_add">
-          <button type="button" class="button__add"><img src="/images/plus_sign.png"  /></button>
-        </fieldset>
-      </div>
-    </div>
-        <!--
-          <div class="profile__button_add">
-            <img src="/images/plus_sign.png" class="button__add" />
+            <p class="profile__profession">Explorer</p>
+          </div>
+
+          <div>
+            <fieldset class="button__frame-add">
+              <button type="button" class="button__add">
+                <img
+                  src="./images/plus_sign.png"
+                  alt="an add button, plus sign"
+                />
+              </button>
+            </fieldset>
           </div>
         </div>
-        -->
 
         <!-- DESTINATION CARDS-->
 
         <div class="destinations">
-          <!-- CARD 1 TEMPLATE -->
+          <!-- CARD 1  -->
           <div class="card">
             <img
-              src="/images/yosemite-valley.jpg"
+              src="./images/yosemite-valley.jpg"
               class="card__image"
               alt="A view up a river through a forest to mountain cliffsides."
             />
 
             <div class="card__details">
               <p class="card__title">Yosemite Valley</p>
-              <img src="/images/love_button.svg" class="card__button" />
+              <img
+                src="./images/love_button.svg"
+                class="card__button"
+                alt="a like button, an image of a heart"
+              />
             </div>
           </div>
 
-          <!-- CARD 2 TEMPLATE -->
+          <!-- CARD 2  -->
           <div class="card">
             <img
-              src="/images/lake-louise.png"
+              src="./images/lake-louise.png"
               class="card__image"
               alt="A view across an aqua colored lake to a pass between two jagged mountains."
             />
 
             <div class="card__details">
               <p class="card__title">Lake Louise</p>
-              <img src="/images/love_button.svg" class="card__button" />
+              <img
+                src="./images/love_button.svg"
+                class="card__button"
+                alt="a like button, an image of a heart"
+              />
             </div>
           </div>
 
-          <!-- CARD 3 TEMPLATE -->
+          <!-- CARD 3  -->
           <div class="card">
             <img
-              src="/images/bald-mountains.png"
+              src="./images/bald-mountains.png"
               class="card__image"
               alt="A view over a low mountain range facing the setting sun."
             />
 
             <div class="card__details">
               <p class="card__title">Bald Mountains</p>
-              <img src="/images/love_button.svg" class="card__button" />
+              <img
+                src="./images/love_button.svg"
+                class="card__button"
+                alt="a like button, an image of a heart"
+              />
             </div>
           </div>
 
-          <!-- CARD 4 TEMPLATE -->
+          <!-- CARD 4  -->
           <div class="card">
             <img
-              src="/images/latemar.png"
+              src="./images/latemar.png"
               class="card__image"
               alt="A starry night view of three stone mountain peaks."
             />
 
             <div class="card__details">
               <p class="card__title">Latemar</p>
-              <img src="/images/love_button.svg" class="card__button" />
+              <img
+                src="./images/love_button.svg"
+                class="card__button"
+                alt="a like button, an image of a heart"
+              />
             </div>
           </div>
 
-          <!-- CARD 5 TEMPLATE -->
+          <!-- CARD 5  -->
           <div class="card">
             <img
-              src="/images/vanoise-national-park.png"
+              src="./images/vanoise-national-park.png"
               class="card__image"
               alt="a view of a rock beach near a calm lake, reflecting the stony mountains in the distance."
             />
 
             <div class="card__details">
               <p class="card__title">Vanoise National Park</p>
-              <img src="/images/love_button.svg" class="card__button" />
+              <img
+                src="./images/love_button.svg"
+                class="card__button"
+                alt="a like button, an image of a heart"
+              />
             </div>
           </div>
 
-          <!-- CARD 6 TEMPLATE -->
+          <!-- CARD 6  -->
           <div class="card">
             <img
-              src="/images/lago-di-braies.png"
+              src="./images/lago-di-braies.png"
               class="card__image"
               alt="A view of a series of row boats tied to a wharf on a lake surrounded by mountains."
             />
 
             <div class="card__details">
               <p class="card__title">Lago di Braies</p>
-              <img src="/images/love_button.svg" class="card__button" />
+              <img
+                src="./images/love_button.svg"
+                class="card__button"
+                alt="a like button, an image of a heart"
+              />
             </div>
           </div>
         </div>
       </main>
 
       <footer class="footer">
-        <div class="footer__copy">Around the U.S.</div>
+        <div class="footer__copy">&copy; Around the U.S.</div>
       </footer>
     </div>
   </body>
