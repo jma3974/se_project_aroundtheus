@@ -40,6 +40,7 @@
   width: 373px;
   display: flex;
   flex-direction: row;
+  margin: 0;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -88,7 +89,6 @@
     display: flex;
     margin: 0;
     max-width: 320px;
-    justify-items: center;
   }
 
   .profile__name {
@@ -96,14 +96,14 @@
     line-height: 1.2;
     max-width: 320px;
 
-    margin: 0 auto 14px auto;
+    margin: 0;
   }
 
   .profile__profession {
     font-size: 14px;
     line-height: 1.2;
     width: 282px;
-    margin: 0 auto 36px 19px;
+    margin: 0 auto 36px auto;
     text-align: center;
   }
 }
