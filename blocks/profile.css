@@ -68,7 +68,6 @@
 
   .profile__image_frame {
     grid-area: image;
-    margin: 0;
     width: 120px;
     margin: 122px auto 26px auto;
   }
