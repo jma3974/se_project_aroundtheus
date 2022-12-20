@@ -39,7 +39,12 @@
   .card {
     max-width: 320px;
     margin: 0 auto 0 auto;
-    grid-template-columns: 1fr;
-    grid-gap: 20px;
+  }
+}
+
+@media screen and (min-width: 544px) and (max-width: 880px) {
+  .card {
+    max-width: 544px;
+    margin: 0 auto 0 auto;
   }
 }

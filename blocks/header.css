@@ -14,7 +14,7 @@
   flex-grow: 1;
 }
 
-@media (max-width: 544px) {
+@media screen and (max-width: 544px) {
   .header {
     max-width: 320px;
     height: 56px;
@@ -23,5 +23,12 @@
 
   .header__logo {
     margin: 28px auto 0 27px;
+  }
+}
+
+@media screen and (min-width: 544px) and (max-width: 880px) {
+  .header__logo {
+    margin: 28px auto 0 auto;
+    max-width: 554px;
   }
 }
