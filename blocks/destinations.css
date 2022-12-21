@@ -3,23 +3,29 @@
   margin: 47px auto 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 20px 17px;
+  gap: 20px 17px;
 }
 
 @media screen and (max-width: 544px) {
   .destinations {
     max-width: 320px;
-    margin: 0 auto 0 auto;
+    margin: 36px auto 0 auto;
     grid-template-columns: 1fr;
-    grid-gap: 20px;
   }
 }
 
-@media screen and (min-width: 544px) and (max-width: 880px) {
+@media screen and (min-width: 545px) and (max-width: 799px) {
   .destinations {
-    max-width: 544px;
-    margin: 0 auto 0 auto;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 20px 17px;
+  }
+}
+
+@media screen and (min-width: 800px) and (max-width: 1100px) {
+  .destinations {
+    max-width: 800px;
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
 }

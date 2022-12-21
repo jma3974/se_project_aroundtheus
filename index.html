@@ -16,23 +16,19 @@
     <title>Around the US</title>
     <link rel="stylesheet" href="./pages/index.css" />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <link rel="preconnect" href="https://rsms.me/" />
-    <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
   </head>
   <body>
     <div class="page">
       <header class="header">
-        <div class="header__logo">
-          <img src="./images/around_logo.svg" alt="Around the U.S." />
-        </div>
-
-        <div class="header__divider"></div>
+        <img
+          src="./images/around_logo.svg"
+          alt="Around the U.S."
+          class="header__logo"
+        />
       </header>
 
-      <!-- PROFILE -->
-
       <main class="main">
-        <div class="profile">
+        <section class="profile">
           <figure class="profile__image">
             <img
               src="./images/jacques-cousteau.jpg"
@@ -43,37 +39,39 @@
 
           <div class="profile__about">
             <div class="profile__details">
-              <p class="profile__name">Jacques Cousteau</p>
-              <fieldset class="button">
-                <button type="button" class="button__edit">
-                  <img
-                    src="./images/edit_button.png"
-                    alt="edit button, pencil in a square"
-                  />
-                </button>
-              </fieldset>
+              <h1 class="profile__name">Jacques Cousteau</h1>
+
+              <button
+                type="button"
+                class="button__edit button__edit_frame"
+                aria-label="Edit profile"
+              >
+                <img
+                  src="./images/edit_button.svg"
+                  alt="edit button, pencil in a square"
+                />
+              </button>
             </div>
 
             <p class="profile__profession">Explorer</p>
           </div>
 
-          <div class="button">
-            <fieldset class="button__frame">
-              <button type="button" class="button__frame button__frame_add">
-                <img
-                  src="./images/plus_sign.png"
-                  alt="an add button, plus sign"
-                />
-              </button>
-            </fieldset>
-          </div>
-        </div>
+          <fieldset class="button__frame">
+            <button
+              type="button"
+              class="button__frame_add"
+              aria-label="add new destination"
+            >
+              <img
+                src="./images/plus_sign.svg"
+                alt="an add button, plus sign"
+              />
+            </button>
+          </fieldset>
+        </section>
 
-        <!-- DESTINATION CARDS-->
-
-        <div class="destinations">
-          <!-- CARD 1  -->
-          <div class="card">
+        <section class="destinations">
+          <article class="card">
             <img
               src="./images/yosemite-valley.jpg"
               class="card__image"
@@ -81,17 +79,17 @@
             />
 
             <div class="card__details">
-              <p class="card__title">Yosemite Valley</p>
-              <img
-                src="./images/love_button.svg"
-                class="card__button"
-                alt="a like button, an image of a heart"
-              />
+              <h2 class="card__title">Yosemite Valley</h2>
+              <button type="radio" class="card__button">
+                <img
+                  src="./images/love_button.svg"
+                  aria-label="a like button, an image of a heart"
+                />
+              </button>
             </div>
-          </div>
+          </article>
 
-          <!-- CARD 2  -->
-          <div class="card">
+          <article class="card">
             <img
               src="./images/lake-louise.png"
               class="card__image"
@@ -99,17 +97,17 @@
             />
 
             <div class="card__details">
-              <p class="card__title">Lake Louise</p>
-              <img
-                src="./images/love_button.svg"
-                class="card__button"
-                alt="a like button, an image of a heart"
-              />
+              <h2 class="card__title">Lake Louise</h2>
+              <button type="radio" class="card__button">
+                <img
+                  src="./images/love_button.svg"
+                  aria-label="a like button, an image of a heart"
+                />
+              </button>
             </div>
-          </div>
+          </article>
 
-          <!-- CARD 3  -->
-          <div class="card">
+          <article class="card">
             <img
               src="./images/bald-mountains.png"
               class="card__image"
@@ -117,17 +115,17 @@
             />
 
             <div class="card__details">
-              <p class="card__title">Bald Mountains</p>
-              <img
-                src="./images/love_button.svg"
-                class="card__button"
-                alt="a like button, an image of a heart"
-              />
+              <h2 class="card__title">Bald Mountains</h2>
+              <button type="radio" class="card__button">
+                <img
+                  src="./images/love_button.svg"
+                  aria-label="a like button, an image of a heart"
+                />
+              </button>
             </div>
-          </div>
+          </article>
 
-          <!-- CARD 4  -->
-          <div class="card">
+          <article class="card">
             <img
               src="./images/latemar.png"
               class="card__image"
@@ -135,17 +133,17 @@
             />
 
             <div class="card__details">
-              <p class="card__title">Latemar</p>
-              <img
-                src="./images/love_button.svg"
-                class="card__button"
-                alt="a like button, an image of a heart"
-              />
+              <h2 class="card__title">Latemar</h2>
+              <button type="radio" class="card__button">
+                <img
+                  src="./images/love_button.svg"
+                  aria-label="a like button, an image of a heart"
+                />
+              </button>
             </div>
-          </div>
+          </article>
 
-          <!-- CARD 5  -->
-          <div class="card">
+          <article class="card">
             <img
               src="./images/vanoise-national-park.png"
               class="card__image"
@@ -153,17 +151,17 @@
             />
 
             <div class="card__details">
-              <p class="card__title">Vanoise National Park</p>
-              <img
-                src="./images/love_button.svg"
-                class="card__button"
-                alt="a like button, an image of a heart"
-              />
+              <h2 class="card__title">Vanoise National Park</h2>
+              <button type="radio" class="card__button">
+                <img
+                  src="./images/love_button.svg"
+                  aria-label="a like button, an image of a heart"
+                />
+              </button>
             </div>
-          </div>
+          </article>
 
-          <!-- CARD 6  -->
-          <div class="card">
+          <article class="card">
             <img
               src="./images/lago-di-braies.png"
               class="card__image"
@@ -171,19 +169,20 @@
             />
 
             <div class="card__details">
-              <p class="card__title">Lago di Braies</p>
-              <img
-                src="./images/love_button.svg"
-                class="card__button"
-                alt="a like button, an image of a heart"
-              />
+              <h2 class="card__title">Lago di Braies</h2>
+              <button type="radio" class="card__button">
+                <img
+                  src="./images/love_button.svg"
+                  aria-label="a like button, an image of a heart"
+                />
+              </button>
             </div>
-          </div>
-        </div>
+          </article>
+        </section>
       </main>
 
       <footer class="footer">
-        <div class="footer__copy">&copy; Around the U.S.</div>
+        <p class="footer__copy">&copy; Around the U.S.</p>
       </footer>
     </div>
   </body>

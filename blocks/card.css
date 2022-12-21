@@ -3,7 +3,6 @@
   border-radius: 10px;
   border: 0;
   width: 282px;
-  height: 361px;
   overflow: hidden;
 }
 
@@ -24,7 +23,7 @@
   font-size: 24px;
   font-weight: 900;
   line-height: 1.2;
-  margin-right: auto;
+  margin: 25px auto;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -33,18 +32,32 @@
 .card__button {
   width: 20px;
   height: 18px;
+  border: 0;
+}
+
+.card__button:hover {
+  opacity: 50%;
+  cursor: pointer;
+}
+
+.card__button:pointer {
+  background-color: green;
 }
 
 @media screen and (max-width: 544px) {
   .card {
     max-width: 320px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 544px) and (max-width: 799px) {
+  .card {
     margin: 0 auto 0 auto;
   }
 }
 
-@media screen and (min-width: 544px) and (max-width: 880px) {
+@media screen and (min-width: 800px) and (max-width: 1100px) {
   .card {
-    max-width: 544px;
-    margin: 0 auto 0 auto;
   }
 }

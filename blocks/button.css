@@ -10,16 +10,22 @@
   height: 24px;
   width: 24px;
   align-self: center;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0);
   border: 0;
   padding: 0;
 }
 
 .button__edit:hover {
   opacity: 60%;
+  cursor: pointer;
+}
+
+.button__edit_frame {
+  border: white solid 1px;
 }
 
 .button__frame {
+  border-radius: 2%;
   grid-area: plus;
   border: white solid 2px;
   height: 50px;
@@ -33,6 +39,7 @@
 
 .button__frame:hover {
   opacity: 60%;
+  cursor: pointer;
 }
 
 .button__frame_add {
@@ -40,7 +47,7 @@
   width: 22px;
   align-items: center;
   justify-items: center;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0);
   border: 0;
 }
 
@@ -48,12 +55,9 @@
   .button__edit {
     height: 18px;
     width: 18px;
-
-    align-self: center;
-    background-color: black;
   }
 
-  .button__frame-add {
+  .button__frame_add {
     height: 50px;
     width: 282px;
 
@@ -61,20 +65,27 @@
     margin-bottom: 36px;
   }
 
-  .button__frame-edit {
+  .button__edit_frame {
     margin-right: 36px;
   }
 }
 
-@media screen and (min-width: 544px) and (max-width: 880px) {
-  .button__frame-add {
-    border: white solid 2px;
-    height: 50px;
-    width: 228px;
+@media screen and (min-width: 545px) and (max-width: 799px) {
+  .button__frame {
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
-    margin: 36px auto 36px auto;
+  }
+  .button__frame_add {
+    width: 228px;
+
     padding: 0;
+  }
+}
+
+@media screen and (min-width: 800px) and (max-width: 1100px) {
+  .button__frame {
+    max-width: 20%;
+    margin-left: auto;
   }
 }

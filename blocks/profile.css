@@ -49,10 +49,6 @@
   overflow: hidden;
 }
 
-.profile__name p {
-  margin: 0;
-}
-
 .profile__profession {
   color: white;
   font-family: Inter, Arial, sans-serif;
@@ -71,15 +67,13 @@
 
   .profile__image_frame {
     grid-area: image;
-    width: 120px;
-    margin: 122px auto 26px auto;
+    max-width: 120px;
   }
 
   .profile__image {
     border-radius: 100px;
-    height: 120px;
-    margin: 0 auto;
 
+    margin: 0 auto 26px auto;
     overflow: hidden;
   }
 
@@ -90,38 +84,68 @@
   .profile__details {
     display: flex;
     margin: 0;
-    max-width: 320px;
+    max-width: 100%;
   }
 
   .profile__name {
     font-size: 22px;
     line-height: 1.2;
-    max-width: 320px;
+    max-width: 100%;
     justify-self: center;
-    margin: 0 0 0 62px;
+
+    margin-left: 62px;
   }
 
   .profile__profession {
     font-size: 14px;
     line-height: 1.2;
     max-width: 282px;
-    margin: 0 auto 36px auto;
+    margin: 14px auto 36px auto;
     text-align: center;
   }
 }
 
-@media screen and (min-width: 544px) and (max-width: 880px) {
+@media screen and (min-width: 544px) and (max-width: 799px) {
   .profile {
-    max-width: 100%;
-    margin: 0 auto 0 auto;
+    max-width: 545px;
+    margin: 38px auto 26px auto;
     display: flex;
     flex-direction: column;
 
     align-items: center;
   }
 
+  .profile__name {
+    margin-top: 26px;
+    margin-bottom: 14px;
+  }
+
   .profile__profession {
-    max-width: 100%;
+    max-width: 545px;
     text-align: center;
+    margin-bottom: 36px;
+  }
+}
+
+@media screen and (min-width: 800px) and (max-width: 1100px) {
+  .profile {
+    max-width: 90%;
+    display: flex;
+    padding: 0;
+    margin-top: 38px;
+  }
+  .profile__details {
+    display: flex;
+    margin-left: 30px;
+    max-width: 100%;
+  }
+
+  .profile__name {
+    font-size: 36px;
+  }
+
+  .profile__profession {
+    margin-left: 30px;
+    margin-top: 16px;
   }
 }
