@@ -1,6 +1,5 @@
 .button {
   align-self: center;
-  border: 0;
   margin: 0;
   padding: 0;
 }
@@ -11,7 +10,7 @@
   width: 24px;
   align-self: center;
   background-color: rgba(0, 0, 0, 0);
-  border: 0;
+  border: white solid 1px;
   padding: 0;
 }
 
@@ -20,14 +19,11 @@
   cursor: pointer;
 }
 
-.button__edit_frame {
-  border: white solid 1px;
-}
-
 .button__frame {
   border-radius: 2%;
   grid-area: plus;
   border: white solid 2px;
+  background-color: rgba(0, 0, 0, 0);
   height: 50px;
   width: 150px;
   display: flex;
@@ -42,7 +38,7 @@
   cursor: pointer;
 }
 
-.button__frame_add {
+.button__frame-add {
   height: 22px;
   width: 22px;
   align-items: center;
