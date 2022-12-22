@@ -53,7 +53,7 @@
     width: 18px;
   }
 
-  .button__frame_add {
+  .button__frame-add {
     height: 50px;
     width: 282px;
 
@@ -72,7 +72,7 @@
     align-items: flex-end;
     justify-content: center;
   }
-  .button__frame_add {
+  .button__frame-add {
     width: 228px;
     height: 50px;
     padding: 0;
