@@ -33,6 +33,7 @@
   width: 20px;
   height: 18px;
   border: 0;
+  background-color: rgba(0, 0, 0, 0);
 }
 
 .card__button:hover {

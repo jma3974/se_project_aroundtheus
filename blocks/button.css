@@ -39,6 +39,8 @@
 }
 
 .button__frame-add {
+  border-radius: 2%;
+  border: white solid 2px;
   height: 22px;
   width: 22px;
   align-items: center;
@@ -58,7 +60,6 @@
     width: 282px;
 
     padding: 0;
-    margin-bottom: 36px;
   }
 
   .button__edit_frame {
@@ -68,14 +69,10 @@
 
 @media screen and (min-width: 545px) and (max-width: 799px) {
   .button__frame {
-    display: flex;
     align-items: flex-end;
-    justify-content: center;
   }
   .button__frame-add {
     width: 228px;
-    height: 50px;
-    padding: 0;
   }
 }
 

@@ -67,7 +67,7 @@
     flex-direction: column;
   }
 
-  .profile__image_frame {
+  .profile__image-frame {
     grid-area: image;
     max-width: 120px;
   }
@@ -84,7 +84,6 @@
   }
 
   .profile__details {
-    display: flex;
     margin: 0;
     max-width: 100%;
   }
@@ -100,7 +99,7 @@
 
   .profile__profession {
     font-size: 14px;
-    line-height: 1.2;
+
     max-width: 282px;
     margin: 14px auto 36px auto;
     text-align: center;
@@ -111,10 +110,6 @@
   .profile {
     max-width: 545px;
     margin: 38px auto 26px auto;
-    display: flex;
-    flex-direction: column;
-
-    align-items: center;
   }
 
   .profile__name {
