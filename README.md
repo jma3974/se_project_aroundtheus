@@ -18,4 +18,4 @@ This is primarily an exercise in responsive design, using media queries. Design 
 
 The way you'll do this at work is by exporting images directly from Figma — we recommend doing that to practice more. Don't forget to optimize them [here](https://tinypng.com/), so your project loads faster.
 
-https://github.com/jma3974/se_project_aroundtheus
+https://jma3974.github.io/se_project_aroundtheus/
