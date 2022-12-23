@@ -1,6 +1,6 @@
 .profile {
   max-width: 880px;
-  margin: 0 auto 0 auto;
+  margin: 36px auto 0 auto;
   display: grid;
 
   grid-template-columns: 170px 560px 150px;
@@ -65,6 +65,7 @@
   .profile {
     display: flex;
     flex-direction: column;
+    
   }
 
   .profile__image-frame {
@@ -84,6 +85,7 @@
   }
 
   .profile__details {
+    justify-items: center;
     margin: 0;
     max-width: 100%;
   }
@@ -94,7 +96,7 @@
     max-width: 100%;
     justify-self: center;
 
-    margin-left: 62px;
+    
   }
 
   .profile__profession {
@@ -106,10 +108,22 @@
   }
 }
 
-@media screen and (min-width: 544px) and (max-width: 799px) {
+@media screen and (min-width: 545px) and (max-width: 799px) {
   .profile {
     max-width: 545px;
     margin: 38px auto 26px auto;
+
+/*
+  I had to retain the display and flex direction.
+  They are not being inherited by the >=544 media
+  query and break the experience. I confirmed this
+  behavior with Meaghan and Kevin
+*/
+
+    display: flex;
+    flex-direction: column;
+   
+    
   }
 
   .profile__name {
@@ -124,16 +138,20 @@
   }
 }
 
+
+
 @media screen and (min-width: 800px) and (max-width: 1100px) {
   .profile {
-    max-width: 90%;
-    display: flex;
+    max-width: 720px;
+    grid-template-columns: 130px 440px 150px;
     padding: 0;
     margin-top: 38px;
+    
   }
   .profile__details {
-    display: flex;
+
     margin-left: 30px;
+    
     max-width: 100%;
   }
 

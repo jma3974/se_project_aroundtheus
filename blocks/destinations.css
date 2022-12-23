@@ -10,13 +10,22 @@
   .destinations {
     max-width: 320px;
     margin: 36px auto 0 auto;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    
+
   }
 }
 
 @media screen and (min-width: 545px) and (max-width: 799px) {
   .destinations {
-    grid-template-columns: repeat(2, 1fr);
+    max-width: 545px;
+    margin: 36px auto 0 auto;
+    grid-template-columns: 1fr 1fr;
+    
+    gap: 20px 5px;
+    
   }
 }
 

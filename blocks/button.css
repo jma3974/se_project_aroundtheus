@@ -2,9 +2,10 @@
   align-self: center;
   margin: 0;
   padding: 0;
+  border: 0;
 }
 
-.button__edit {
+.button__frame_edit {
   margin-left: 18px;
   height: 24px;
   width: 24px;
@@ -12,45 +13,37 @@
   background-color: rgba(0, 0, 0, 0);
   border: white solid 1px;
   padding: 0;
+  transition: ease-in-out 1s;
 }
 
-.button__edit:hover {
+.button__frame_edit:hover {
   opacity: 60%;
   cursor: pointer;
 }
 
-.button__frame {
+.button__frame_add {
+  
   border-radius: 2%;
   grid-area: plus;
   border: white solid 2px;
   background-color: rgba(0, 0, 0, 0);
   height: 50px;
   width: 150px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  transition: ease-in-out 1s;
   margin: 0;
   padding: 0;
 }
 
-.button__frame:hover {
+.button__frame_add:hover {
   opacity: 60%;
   cursor: pointer;
+  
 }
 
-.button__frame-add {
-  border-radius: 2%;
-  border: white solid 2px;
-  height: 22px;
-  width: 22px;
-  align-items: center;
-  justify-items: center;
-  background-color: rgba(0, 0, 0, 0);
-  border: 0;
-}
+
 
 @media screen and (max-width: 544px) {
-  .button__edit {
+  .button__frame_edit {
     height: 18px;
     width: 18px;
   }
@@ -68,17 +61,15 @@
 }
 
 @media screen and (min-width: 545px) and (max-width: 799px) {
-  .button__frame {
-    align-items: flex-end;
-  }
-  .button__frame-add {
+  
+  .button__frame_add {
     width: 228px;
   }
 }
 
-@media screen and (min-width: 800px) and (max-width: 1100px) {
-  .button__frame {
-    max-width: 20%;
-    margin-left: auto;
-  }
+@media screen and (min-width: 800px) and (max-width: 1100px){
+
+.button__frame_add {
+  grid-area: plus;
+}
 }
