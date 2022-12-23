@@ -115,9 +115,10 @@
 
 /*
   I had to retain the display and flex direction.
-  They are not being inherited by the >=544 media
-  query and break the experience. I confirmed this
-  behavior with Meaghan and Kevin
+  They are not being inherited by the media
+  queries (this one and below) and break the
+  experience. Desktop level is display: grid.
+  I confirmed this behavior with Meaghan and Kevin.
 */
 
     display: flex;

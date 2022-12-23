@@ -5,7 +5,7 @@
   border: 0;
 }
 
-.button__frame_edit {
+.button__frame-edit {
   margin-left: 18px;
   height: 24px;
   width: 24px;
@@ -16,12 +16,12 @@
   transition: opacity ease-in-out 1s;
 }
 
-.button__frame_edit:hover {
+.button__frame-edit:hover {
   opacity: 60%;
   cursor: pointer;
 }
 
-.button__frame_add {
+.button__frame-add {
   
   border-radius: 2%;
   grid-area: plus;
@@ -34,7 +34,7 @@
   padding: 0;
 }
 
-.button__frame_add:hover {
+.button__frame-add:hover {
   opacity: 60%;
   cursor: pointer;
   
@@ -43,27 +43,26 @@
 
 
 @media screen and (max-width: 544px) {
-  .button__frame_edit {
+  .button__frame-edit {
     height: 18px;
     width: 18px;
   }
 
-  .button__frame_add {
+  .button__frame-add {
      width: 282px;
 
     
   }
 
-  .button__edit_frame {
+  .button__edit-frame {
     margin-right: 36px;
   }
 }
 
 @media screen and (min-width: 545px) and (max-width: 799px) {
   
-  .button__frame_add {
+  .button__frame-add {
     width: 228px;
   }
 }
 
-}
