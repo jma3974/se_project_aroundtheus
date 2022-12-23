@@ -13,7 +13,7 @@
   background-color: rgba(0, 0, 0, 0);
   border: white solid 1px;
   padding: 0;
-  transition: ease-in-out 1s;
+  transition: opacity ease-in-out 1s;
 }
 
 .button__frame_edit:hover {
@@ -29,7 +29,7 @@
   background-color: rgba(0, 0, 0, 0);
   height: 50px;
   width: 150px;
-  transition: ease-in-out 1s;
+  transition: opacity ease-in-out 1s;
   margin: 0;
   padding: 0;
 }
@@ -48,11 +48,10 @@
     width: 18px;
   }
 
-  .button__frame-add {
-    height: 50px;
-    width: 282px;
+  .button__frame_add {
+     width: 282px;
 
-    padding: 0;
+    
   }
 
   .button__edit_frame {
@@ -67,9 +66,4 @@
   }
 }
 
-@media screen and (min-width: 800px) and (max-width: 1100px){
-
-.button__frame_add {
-  grid-area: plus;
-}
 }
