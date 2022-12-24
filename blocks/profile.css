@@ -61,86 +61,6 @@
   margin: 0;
 }
 
-@media screen and (max-width: 544px) {
-  .profile {
-    display: flex;
-    flex-direction: column;
-    
-  }
-
-  .profile__image-frame {
-    grid-area: image;
-    max-width: 120px;
-  }
-
-  .profile__image {
-    border-radius: 100px;
-
-    margin: 0 auto 26px auto;
-    overflow: hidden;
-  }
-
-  .profile__about {
-    display: block;
-  }
-
-  .profile__details {
-    justify-items: center;
-    margin: 0;
-    max-width: 100%;
-  }
-
-  .profile__name {
-    font-size: 22px;
-    line-height: 1.2;
-    max-width: 100%;
-    justify-self: center;
-
-    
-  }
-
-  .profile__profession {
-    font-size: 14px;
-
-    max-width: 282px;
-    margin: 14px auto 36px auto;
-    text-align: center;
-  }
-}
-
-@media screen and (min-width: 545px) and (max-width: 799px) {
-  .profile {
-    max-width: 545px;
-    margin: 38px auto 26px auto;
-
-/*
-  I had to retain the display and flex direction.
-  They are not being inherited by the media
-  queries (this one and below) and break the
-  experience. Desktop level is display: grid.
-  I confirmed this behavior with Meaghan and Kevin.
-*/
-
-    display: flex;
-    flex-direction: column;
-   
-    
-  }
-
-  .profile__name {
-    margin-top: 26px;
-    margin-bottom: 14px;
-  }
-
-  .profile__profession {
-    max-width: 545px;
-    text-align: center;
-    margin-bottom: 36px;
-  }
-}
-
-
-
 @media screen and (min-width: 800px) and (max-width: 1100px) {
   .profile {
     max-width: 720px;
@@ -163,5 +83,57 @@
   .profile__profession {
     margin-left: 30px;
     margin-top: 16px;
+  }
+}
+
+@media screen and (max-width: 799px) {
+  .profile {
+    display: flex;
+    flex-direction: column;
+    max-width: 545px;
+    margin: 38px auto 26px auto;
+
+   
+  }
+
+  .profile__image-frame {
+    grid-area: image;
+    max-width: 120px;
+  }
+
+  .profile__image {
+    border-radius: 100px;
+
+    margin: 0 auto 26px auto;
+    overflow: hidden;
+  }
+
+  .profile__about {
+    display: block;
+  }
+
+  .profile__details {
+    
+    justify-items: center;
+    margin: 0;
+    margin-top: 26px;
+    margin-bottom: 14px;
+    max-width: 100%;
+  }
+
+  .profile__name {
+   
+    font-size: 22px;
+    line-height: 1.2;
+    
+    max-width: 100%;
+    justify-self: center;
+    
+  }
+
+  .profile__profession {
+    max-width: 545px;
+    text-align: center;
+    margin-bottom: 36px;
   }
 }
