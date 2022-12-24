@@ -41,12 +41,13 @@
   font-weight: 500;
   line-height: 1.1;
   max-width: 373px;
-  display: flex;
+  display: block;
   flex-direction: row;
   margin: 0;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
+  
 }
 
 .profile__profession {
@@ -58,7 +59,9 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  margin: 0;
+  display: block;
+  margin: 16px 0 0 0;
+  max-width: 373px;
 }
 
 .profile__button-edit {
@@ -114,11 +117,14 @@
 
   .profile__name {
     font-size: 36px;
+    max-width: 350px;
+
   }
 
   .profile__profession {
     margin-left: 30px;
     margin-top: 16px;
+    max-width: 350px
   }
 
 .profile__button-edit {
@@ -153,6 +159,8 @@
 
   .profile__about {
     display: block;
+    max-width: 320px;
+    margin: auto 19px auto 19px;
   }
 
   .profile__details {
@@ -161,27 +169,34 @@
     margin: 0;
     margin-top: 26px;
     margin-bottom: 14px;
-    max-width: 100%;
+    
   }
 
   .profile__name {
    
     font-size: 22px;
     line-height: 1.2;
-    
-    max-width: 100%;
+    max-width: 300px;
     justify-self: center;
     
   }
 
   .profile__profession {
-    max-width: 545px;
+    max-width: 300px;
     text-align: center;
     margin-bottom: 36px;
+
   }
 
 .profile__button-add {
   width: 228px;
+}
+
+
+.profile__button-edit {
+  height: 18px;
+  width: 18px;
+
 }
 
 }
