@@ -1,3 +1,5 @@
+/*
+
 .button {
   align-self: center;
   margin: 0;
@@ -5,7 +7,9 @@
   border: 0;
 }
 
-.button__frame-edit {
+*/
+
+.button__edit {
   margin-left: 18px;
   height: 24px;
   width: 24px;
@@ -16,12 +20,12 @@
   transition: opacity ease-in-out 1s;
 }
 
-.button__frame-edit:hover {
+.button__edit:hover {
   opacity: 60%;
   cursor: pointer;
 }
 
-.button__frame-add {
+.button__add {
   
   border-radius: 2%;
   grid-area: plus;
@@ -34,7 +38,7 @@
   padding: 0;
 }
 
-.button__frame-add:hover {
+.button__add:hover {
   opacity: 60%;
   cursor: pointer;
   
@@ -43,25 +47,22 @@
 
 
 @media screen and (max-width: 544px) {
-  .button__frame-edit {
+  .button__edit {
     height: 18px;
     width: 18px;
   }
 
-  .button__frame-add {
-     width: 282px;
-
+  
     
-  }
-
-  .button__edit-frame {
+  
+  .button__edit {
     margin-right: 36px;
   }
 }
 
 @media screen and (min-width: 545px) and (max-width: 799px) {
   
-  .button__frame-add {
+  .button__add {
     width: 228px;
   }
 }
