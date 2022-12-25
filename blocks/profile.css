@@ -115,7 +115,7 @@
   }
 
   .profile__profession {
-    max-width: 392px;
+    max-width: 384px;
     margin-left: 30px;
     margin-top: 16px;
     
@@ -168,9 +168,9 @@
   }
 
   .profile__profession {
-    
+    max-width: 264px;
     text-align: center;
-    margin: 0 auto 36px auto ;
+    margin: 0 auto 36px auto;
   }
 
   .profile__button-add {
