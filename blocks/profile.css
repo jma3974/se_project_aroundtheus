@@ -60,7 +60,7 @@
   overflow: hidden;
   display: block;
   margin: 16px 0 0 0;
-  max-width: 373px;
+  max-width: 415px;
 }
 
 .profile__button-edit {
@@ -115,9 +115,10 @@
   }
 
   .profile__profession {
+    max-width: 392px;
     margin-left: 30px;
     margin-top: 16px;
-    max-width: 350px;
+    
   }
 
   .profile__button-edit {
@@ -167,9 +168,9 @@
   }
 
   .profile__profession {
-    max-width: 228px;
+    
     text-align: center;
-    margin-bottom: 36px;
+    margin: 0 auto 36px auto ;
   }
 
   .profile__button-add {
