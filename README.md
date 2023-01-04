@@ -8,7 +8,7 @@ The user will be able to update the profile name, profession, and image. Additio
 
 **Technologies used**
 
-This is primarily an exercise in responsive design, using media queries. Design is provided via Figma (see below)
+This is primarily an exercise in responsive design, using media queries. Introducing Javascrip arrays and objects. Design is provided via Figma (see below)
 
 **Figma**
 
