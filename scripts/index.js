@@ -36,3 +36,21 @@ const initialCards = [
   destinationCard_05,
   destinationCard_06,
 ];
+
+const openEditButton = document.querySelector(".profile__button-edit");
+console.log(openEditButton);
+const closeEditButton = document.querySelector(".modal__close");
+console.log(closeEditButton);
+const editModal = document.querySelector(".modal");
+console.log(editModal);
+
+function openEdit() {
+  editModal.classList.add("modal_opened");
+}
+
+function closeEdit() {
+  editModal.classList.remove("modal_opened");
+}
+
+openEditButton.addEventListener("click", openEdit);
+closeEditButton.addEventListener("click", closeEdit);
