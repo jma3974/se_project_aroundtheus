@@ -32,14 +32,14 @@
         <p class="modal__title">Edit profile</p>
 
         <input
-          class="modal__input"
+          class="modal__input modal__input-name"
           type="text"
           placeholder="Jacques Cousteau"
           required
         />
 
         <input
-          class="modal__input"
+          class="modal__input modal__input-profession"
           type="text"
           placeholder="Explorer"
           required
@@ -99,6 +99,7 @@
         </section>
 
         <section class="destinations">
+          <!--
           <article class="card">
             <img
               src="./images/yosemite-valley.jpg"
@@ -230,6 +231,7 @@
               </button>
             </div>
           </article>
+          -->
         </section>
       </main>
 
@@ -237,7 +239,23 @@
         <p class="footer__copy">&copy; Around the U.S.</p>
       </footer>
     </div>
+    <!-- Card Template Start-->
 
+    <template id="card-template" class="card">
+      <img src="" class="card__image" alt="" />
+
+      <div class="card__details">
+        <h2 class="card__title"></h2>
+        <button type="button" class="card__button" aria-label="like button">
+          <img
+            src="./images/love_button.svg"
+            alt="a like button, an image of a heart"
+          />
+        </button>
+      </div>
+    </template>
+
+    <!-- Card Template End-->
     <script src="./scripts/index.js"></script>
   </body>
 </html>

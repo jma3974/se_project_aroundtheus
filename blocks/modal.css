@@ -43,6 +43,12 @@
   font-weight: 400;
 }
 
+.modal__input-name {
+}
+
+.modal__input-profession {
+}
+
 .modal__button {
   width: 358px;
   height: 50px;
@@ -53,6 +59,7 @@
   font-size: 18px;
   font-weight: 400;
   line-height: 1.2;
+  cursor: pointer;
 }
 
 .modal__close {
@@ -64,6 +71,7 @@
   width: 40px;
   border: none;
   background-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
 }
 
 @media screen and (min-width: 320px) and (max-width: 799px) {
