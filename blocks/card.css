@@ -8,14 +8,15 @@
 
 .card__image {
   width: 282px;
+  height: 282px;
   margin: 0;
+  object-fit: fill;
 }
 
 .card__details {
   width: 282px;
   display: flex;
   align-items: center;
-  
 }
 
 .card__title {
@@ -44,7 +45,7 @@
   cursor: pointer;
 }
 
-@media screen and (max-width: 544px){
+@media screen and (max-width: 544px) {
   .card {
     margin: 0 auto 0 auto;
   }
@@ -60,13 +61,8 @@
     width: 100%;
     margin: 0;
   }
-  
-  
+
   .card__details {
     width: 100%;
-    
   }
-
-  
-
 }
