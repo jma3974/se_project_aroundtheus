@@ -60,6 +60,7 @@
   font-weight: 400;
   line-height: 1.2;
   cursor: pointer;
+  transition: opacity ease-in-out 1s;
 }
 
 .modal__button:hover {
@@ -78,6 +79,7 @@
   border: none;
   background-color: rgba(0, 0, 0, 0);
   cursor: pointer;
+  transition: opacity ease-in-out 1s;
 }
 
 .modal__close:hover {
