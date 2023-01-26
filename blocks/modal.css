@@ -26,7 +26,7 @@
   z-index: 10;
 }
 
-.modal__title {
+.modal__header {
   font-size: 24px;
   font-weight: 900;
   line-height: 1.2;
@@ -47,6 +47,12 @@
 }
 
 .modal__input-profession {
+}
+
+.modal__input-title {
+}
+
+.modal__input-image {
 }
 
 .modal__button {
@@ -97,7 +103,7 @@
     background-color: white;
   }
 
-  .modal__title {
+  .modal__header {
     font-size: 18px;
     font-weight: 900;
     margin: 0 22px 75px 22px;

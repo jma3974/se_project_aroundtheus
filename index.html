@@ -18,7 +18,7 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
   </head>
   <body>
-    <!-- Start Edit Modal -->
+    <!-- START PROFILE MODAL -->
 
     <div class="modal">
       <div class="modal__container">
@@ -27,7 +27,7 @@
           class="modal__close"
           aria-label="Close edit profile"
         ></button>
-        <p class="modal__title">Edit profile</p>
+        <p class="modal__header">Edit profile</p>
         <form id="profile-edit-form">
           <input
             class="modal__input modal__input-name"
@@ -47,6 +47,40 @@
         </form>
       </div>
     </div>
+
+    <!-- END PROFILE MODAL -->
+
+    <!-- START DESTINATION MODAL-->
+
+    <div class="modal">
+      <div class="modal__container">
+        <button
+          type="button"
+          class="modal__close"
+          aria-label="Close edit profile"
+        ></button>
+        <p class="odal__header">New place</p>
+        <form id="profile-edit-form">
+          <input
+            class="modal__input modal__input-title"
+            type="text"
+            placeholder="Title"
+            required
+          />
+
+          <input
+            class="modal__input modal__input-image"
+            type="text"
+            placeholder="Image link"
+            required
+          />
+
+          <button type="submit" class="modal__button">Create</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- END DESTINATION MODAL-->
 
     <div class="page">
       <header class="header">
@@ -106,16 +140,25 @@
 
     <template id="card-template">
       <article class="card">
+        <button
+          type="button"
+          class="card__button-del"
+          aria-label="delete button"
+        >
+          <img
+            src="./images/del_button.svg"
+            alt="a delete button, an image of a trashcan"
+          />
+        </button>
         <img src="" class="card__image" alt="" />
-
         <div class="card__details">
           <h2 class="card__title"></h2>
-          <button type="button" class="card__button" aria-label="like button">
-            <img
-              src="./images/love_button.svg"
-              alt="a like button, an image of a heart"
-            />
-          </button>
+
+          <button
+            type="button"
+            class="card__button-like"
+            aria-label="like button"
+          ></button>
         </div>
       </article>
     </template>

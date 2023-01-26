@@ -41,6 +41,13 @@ const initialCards = [
 
 // ELEMENTS
 
+/*
+const openAddButton = document.querySelector(".profile__button-add");
+const closeAddButton = document.querySelector(".modal__close");
+const addEditModal = document.querySelector(".modal1");
+
+*/
+
 const openEditButton = document.querySelector(".profile__button-edit");
 const closeEditButton = document.querySelector(".modal__close");
 const profileEditModal = document.querySelector(".modal");
@@ -84,9 +91,20 @@ function handleProfileFormSubmit(evt) {
 
 function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
-
   const cardTitleEl = cardElement.querySelector(".card__title");
   const cardImageEl = cardElement.querySelector(".card__image");
+  const likeButton = cardElement.querySelector(".card__button-like");
+  // find delete button
+
+  // event listener for when it is clicked
+  //cardElement.remove();
+
+  // add click listener to the cardImage element
+  //openModal with preview ImageModal
+
+  likeButton.addEventListener("click", () => {
+    likeButton.classList.toggle("card__button-like_active");
+  });
 
   cardImageEl.alt = cardData.altText;
   cardImageEl.src = cardData.link;
