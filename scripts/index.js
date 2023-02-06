@@ -64,7 +64,7 @@ const profileAddModal = document.querySelector("#modal-add");
 const titleInput = profileFormElement.querySelector(".modal__input-title");
 const imageInput = profileFormElement.querySelector(".modal__input-image");
 
-const closeAddButton = document.querySelector(".modal__close");
+const closeAddButton = document.querySelector("#modal__card");
 const addFormElement = profileAddModal.querySelector(".modal__container");
 
 // populate cards
@@ -94,19 +94,19 @@ function handleProfileFormSubmit(evt) {
 }
 
 // Add modal
-function openAddLocationModal() {
-  profileAddModal.classList.add("modal__add_opened");
-}
+
 function openAddModal() {
-  nameInput.value = profileName.textContent;
-  professionInput.value = profileProfession.textContent;
-  profileAddModal.classList.add("modal__add_opened");
+  /* nameInput.value = profileName.textContent;
+  professionInput.value = profileProfession.textContent;*/
+
+  profileAddModal.classList.add("modal__edit_opened");
 }
 function closeAddModal() {
-  profileAddModal.classList.remove("modal__add_opened");
+  console.log("testing");
+  profileAddModal.classList.remove("modal__edit_opened");
 }
 
-function handleProfileFormSubmit(evt) {
+function handleDestinationFormSubmit(evt) {
   evt.preventDefault();
 
   profileName.textContent = titleInput.value;
@@ -152,7 +152,7 @@ modalSave.addEventListener("submit", handleProfileFormSubmit);
 // DUP EDIT LISTENERS FOR ADD
 openAddButton.addEventListener("click", openAddModal);
 closeAddButton.addEventListener("click", closeAddModal);
-openAddButton.addEventListener("click", openAddLocationModal);
+
 modalSave.addEventListener("submit", handleProfileFormSubmit);
 
 initialCards.forEach((cardData) => {
