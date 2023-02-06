@@ -1,4 +1,5 @@
-// initial destination cards
+// CARDS
+// Initial cards
 const initialCards = [
   {
     title: "Yosemite Valley",
@@ -39,6 +40,30 @@ const initialCards = [
   },
 ];
 
+// FUNCTIONS
+function getCardElement(cardData) {
+  const cardElement = cardTemplate.cloneNode(true);
+  const cardTitleEl = cardElement.querySelector(".card__title");
+  const cardImageEl = cardElement.querySelector(".card__image");
+  const likeButton = cardElement.querySelector(".card__button-like");
+  const deleteButton = cardElement.querySelector(".card__button-del");
+
+  likeButton.addEventListener("click", () => {
+    likeButton.classList.toggle("card__button-like_active");
+  });
+
+  deleteButton.addEventListener("click", () => {
+    const cardElement.querySelector(card);
+    cardElement.remove();
+  });
+
+  cardImageEl.alt = cardData.altText;
+  cardImageEl.src = cardData.link;
+  cardTitleEl.textContent = cardData.title;
+
+  return cardElement;
+}
+
 // ELEMENTS
 // Edit form
 const openEditButton = document.querySelector(".profile__button-edit");
@@ -54,7 +79,10 @@ const nameInput = profileFormElement.querySelector(".modal__input-name");
 const professionInput = profileFormElement.querySelector(
   ".modal__input-profession"
 );
+
 const modalSave = document.querySelector("#profile-edit-form");
+const cardListEl = document.querySelector(".destinations");
+const cardTemplate = document.querySelector("#card-template").content;
 
 // Add form
 
@@ -66,10 +94,6 @@ const imageInput = profileFormElement.querySelector(".modal__input-image");
 
 const closeAddButton = document.querySelector(".modal__close");
 const addFormElement = profileAddModal.querySelector(".modal__container");
-
-// populate cards
-const cardListEl = document.querySelector(".destinations");
-const cardTemplate = document.querySelector("#card-template").content;
 
 // FUNCTIONS
 //Edit modal
@@ -112,32 +136,6 @@ function handleProfileFormSubmit(evt) {
   profileName.textContent = titleInput.value;
   profileProfession.textContent = imageInput.value;
   closeAddModal();
-}
-
-function getCardElement(cardData) {
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardTitleEl = cardElement.querySelector(".card__title");
-  const cardImageEl = cardElement.querySelector(".card__image");
-  const likeButton = cardElement.querySelector(".card__button-like");
-  const deleteButton = cardElement.querySelector(".card__button-del");
-
-  // add click listener to the cardImage element
-  //openModal with preview ImageModal
-
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("card__button-like_active");
-  });
-
-  deleteButton.addEventListener("click", function () {
-    const cardRemove = document.querySelector(".card");
-    cardRemove.remove();
-  });
-
-  cardImageEl.alt = cardData.altText;
-  cardImageEl.src = cardData.link;
-  cardTitleEl.textContent = cardData.title;
-
-  return cardElement;
 }
 
 // DUP EDIT FUNCTIONS FOR ADD

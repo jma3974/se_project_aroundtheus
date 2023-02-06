@@ -20,7 +20,7 @@
   <body>
     <!-- START PROFILE MODAL -->
 
-    <div class="modal">
+    <div class="modal" id="modal-edit">
       <div class="modal__container">
         <button
           type="button"
@@ -52,15 +52,15 @@
 
     <!-- START DESTINATION MODAL-->
 
-    <div class="modal">
+    <div class="modal" id="modal-add">
       <div class="modal__container">
         <button
           type="button"
           class="modal__close"
-          aria-label="Close edit profile"
+          aria-label="Close add form"
         ></button>
         <p class="odal__header">New place</p>
-        <form id="profile-edit-form">
+        <form id="profile-add-form">
           <input
             class="modal__input modal__input-title"
             type="text"
@@ -145,12 +145,11 @@
           class="card__button-del"
           aria-label="delete button"
         >
-          <img
-            src="./images/del_button.svg"
-            alt="a delete button, an image of a trashcan"
-          />
+          <img src="./images/del_button.svg" alt="a trash can" />
         </button>
+
         <img src="" class="card__image" alt="" />
+
         <div class="card__details">
           <h2 class="card__title"></h2>
 
