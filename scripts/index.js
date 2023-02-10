@@ -3,39 +3,39 @@ const initialCards = [
   {
     title: "Yosemite Valley",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-    altText: "A view up a river through a forest to mountain cliffsides.",
+    //altText: "A view up a river through a forest to mountain cliffsides.",
   },
   {
     title: "Lake Louise",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
-    altText:
-      "A view across an aqua colored lake to a pass between two jagged mountains.",
+    //altText:
+    //"A view across an aqua colored lake to a pass between two jagged mountains.",
   },
 
   {
     title: "Bald Mountains",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
-    altText: "A view over a low mountain range facing the setting sun.",
+    //altText: "A view over a low mountain range facing the setting sun.",
   },
 
   {
     title: "Latemar",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
-    altText: "A starry night view of three stone mountain peaks.",
+    //altText: "A starry night view of three stone mountain peaks.",
   },
 
   {
     title: "Vanoise National Park",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
-    altText:
-      "A view of a rock beach near a calm lake, reflecting the stony mountains in the distance.",
+    //altText:
+    // "A view of a rock beach near a calm lake, reflecting the stony mountains in the distance.",
   },
 
   {
     title: "Lago di Braies",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
-    altText:
-      "A view of a series of row boats tied to a wharf on a lake surrounded by mountains.",
+    //altText:
+    // "A view of a series of row boats tied to a wharf on a lake surrounded by mountains.",
   },
 ];
 
@@ -59,15 +59,14 @@ const modalSave = document.querySelector("#profile-edit-form");
 // Add form
 
 const openAddButton = document.querySelector(".profile__button-add");
-const profileAddModal = document.querySelector("#modal-add");
+const cardAddModal = document.querySelector("#modal-add");
 
-const titleInput = profileFormElement.querySelector(".modal__input-title");
-const imageInput = profileFormElement.querySelector(".modal__input-image");
+const titleInput = cardAddModal.querySelector(".modal__input-title");
+const imageInput = cardAddModal.querySelector(".modal__input-image");
 
 const closeAddButton = document.querySelector("#modal__card");
 
-// Display image
-const openDisplayImage = document.querySelector("#modal-image-display");
+const modalAddSave = document.querySelector("#profile-add-form");
 
 // populate cards
 const cardListEl = document.querySelector(".destinations");
@@ -102,13 +101,15 @@ function handleProfileFormSubmit(evt) {
 // Add modal
 
 function openAddModal() {
-  profileAddModal.classList.add("modal__edit_opened");
+  cardAddModal.classList.add("modal__edit_opened");
   console.log("open add modal");
 }
 function closeAddModal() {
-  profileAddModal.classList.remove("modal__edit_opened");
+  cardAddModal.classList.remove("modal__edit_opened");
   console.log("close add modal");
 }
+
+// NEW CARD SUBMISSION FUNCTION
 
 function handleDestinationFormSubmit(evt) {
   evt.preventDefault();
@@ -118,7 +119,15 @@ function handleDestinationFormSubmit(evt) {
   closeAddModal();
 }
 
-// Display image
+/* -------------------------------------------------------------------------- */
+/*                              Display image                                 */
+/* -------------------------------------------------------------------------- */
+
+const openDisplayImage = document.querySelector("#modal-image-display");
+const closeDisplayImage = document.querySelector("#modal__display-close");
+const modalImage = document.querySelector("#modal-image");
+const modalTitle = document.querySelector(".modal__image-title");
+
 function openDisplayModal() {
   console.log("open Display modal");
 
@@ -130,6 +139,10 @@ function closeDisplayModal() {
   console.log("close display modal");
 }
 
+/* -------------------------------------------------------------------------- */
+/*                              Get Card Element                              */
+/* -------------------------------------------------------------------------- */
+
 function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardTitleEl = cardElement.querySelector(".card__title");
@@ -138,7 +151,12 @@ function getCardElement(cardData) {
   const likeButton = cardElement.querySelector(".card__button-like");
   const deleteButton = cardElement.querySelector(".card__button-del");
 
-  cardImageDisplay.addEventListener("click", openDisplayModal);
+  cardImageDisplay.addEventListener("click", () => {
+    modalImage.src = cardData.link;
+    modalTitle.textContent = cardData.title;
+    openDisplayModal();
+  });
+  closeDisplayImage.addEventListener("click", closeDisplayModal);
 
   likeButton.addEventListener("click", () => {
     likeButton.classList.toggle("card__button-like_active");
@@ -156,21 +174,29 @@ function getCardElement(cardData) {
   return cardElement;
 }
 
-// DUP EDIT FUNCTIONS FOR ADD
-
-// LISTENERS
+/* -------------------------------------------------------------------------- */
+/*                                  LISTENERS                                 */
+/* -------------------------------------------------------------------------- */
 
 openEditButton.addEventListener("click", openEditModal);
 closeEditButton.addEventListener("click", closeEditModal);
 modalSave.addEventListener("submit", handleProfileFormSubmit);
 
-// DUP EDIT LISTENERS FOR ADD
 openAddButton.addEventListener("click", openAddModal);
 closeAddButton.addEventListener("click", closeAddModal);
 
-modalSave.addEventListener("submit", handleProfileFormSubmit);
-
-// XXXX.addEventListener("click", closeDisplayModal);
+modalAddSave.addEventListener("submit", (evt) => {
+  evt.preventDefault();
+  const title = evt.target.title.value;
+  const link = evt.target.link.value;
+  getCardElement({
+    titleInput: title,
+    imageInput: link,
+  });
+  console.log("add modal submit");
+  closeAddModal();
+  modalAddSave.reset();
+});
 
 initialCards.forEach((cardData) => {
   const cardElement = getCardElement(cardData);
