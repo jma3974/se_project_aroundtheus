@@ -40,7 +40,11 @@ const initialCards = [
 ];
 
 // ELEMENTS
-// Edit form
+
+/* -------------------------------------------------------------------------- */
+/*                                   MODALS                                   */
+/* -------------------------------------------------------------------------- */
+
 const openEditButton = document.querySelector(".profile__button-edit");
 const closeEditButton = document.querySelector(".modal__close");
 const profileEditModal = document.querySelector("#modal-edit");
@@ -72,22 +76,24 @@ const modalAddSave = document.querySelector("#profile-add-form");
 const cardListEl = document.querySelector(".destinations");
 const cardTemplate = document.querySelector("#card-template").content;
 
-// FUNCTIONS
-//Edit modal
+
+/* -------------------------------------------------------------------------- */
+/*                                EDIT PROFILE                                */
+/* -------------------------------------------------------------------------- */
 
 function openEditProfileModal() {
   profileEditModal.classList.add("modal__edit_opened");
-  console.log("open edit profile modal");
+  
 }
 function openEditModal() {
   nameInput.value = profileName.textContent;
   professionInput.value = profileProfession.textContent;
   profileEditModal.classList.add("modal__edit_opened");
-  console.log("open edit modal");
+  
 }
 function closeEditModal() {
   profileEditModal.classList.remove("modal__edit_opened");
-  console.log("close edit modal");
+  
 }
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
@@ -95,21 +101,23 @@ function handleProfileFormSubmit(evt) {
   profileName.textContent = nameInput.value;
   profileProfession.textContent = professionInput.value;
   closeEditModal();
-  console.log("handle profile form submit");
+  
 }
 
-// Add modal
+/* -------------------------------------------------------------------------- */
+/*                                  NEW CARD                                  */
+/* -------------------------------------------------------------------------- */
 
 function openAddModal() {
   cardAddModal.classList.add("modal__edit_opened");
-  console.log("open add modal");
+  
 }
 function closeAddModal() {
   cardAddModal.classList.remove("modal__edit_opened");
-  console.log("close add modal");
+  
 }
 
-// NEW CARD SUBMISSION FUNCTION
+
 
 function handleDestinationFormSubmit(evt) {
   evt.preventDefault();
@@ -129,14 +137,14 @@ const modalImage = document.querySelector("#modal-image");
 const modalTitle = document.querySelector(".modal__image-title");
 
 function openDisplayModal() {
-  console.log("open Display modal");
+  
 
   openDisplayImage.classList.add("modal__edit_opened");
 }
 
 function closeDisplayModal() {
   openDisplayImage.classList.remove("modal__edit_opened");
-  console.log("close display modal");
+  
 }
 
 /* -------------------------------------------------------------------------- */
@@ -162,10 +170,7 @@ function getCardElement(cardData) {
     likeButton.classList.toggle("card__button-like_active");
   });
 
-  deleteButton.addEventListener("click", function () {
-    const cardRemove = document.querySelector(".card");
-    cardRemove.remove();
-  });
+ 
 
   cardImageEl.alt = cardData.altText;
   cardImageEl.src = cardData.link;
@@ -178,6 +183,7 @@ function getCardElement(cardData) {
 /*                                  LISTENERS                                 */
 /* -------------------------------------------------------------------------- */
 
+
 openEditButton.addEventListener("click", openEditModal);
 closeEditButton.addEventListener("click", closeEditModal);
 modalSave.addEventListener("submit", handleProfileFormSubmit);
@@ -189,11 +195,12 @@ modalAddSave.addEventListener("submit", (evt) => {
   evt.preventDefault();
   const title = evt.target.title.value;
   const link = evt.target.link.value;
-  getCardElement({
-    titleInput: title,
-    imageInput: link,
+  const addCard = getCardElement({
+    title: title,
+    link: link,
   });
-  console.log("add modal submit");
+  cardListEl.prepend(addCard);
+  
   closeAddModal();
   modalAddSave.reset();
 });
