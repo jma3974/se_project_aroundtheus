@@ -38,10 +38,6 @@
   margin: 34px auto 24px 36px;
 }
 
-.modal__form {
-
-}
-
 .modal__error {
   position: absolute;
   display: block;
@@ -53,9 +49,7 @@
   margin-top: 5px;
 }
 
-.modal__error_visible {
 
-}
 
 
 
@@ -69,22 +63,13 @@
   font-weight: 400;
 }
 
-.modal__input-name {
 
-}
+
 
 .modal__input-name_error {
   border-bottom: red solid 1px;
 }
 
-.modal__input-profession {
-}
-
-.modal__input-title {
-}
-
-.modal__input-image {
-}
 
 .modal__button {
 
@@ -101,12 +86,12 @@
   transition: opacity ease-in-out 1s;
 }
 
-.modal__button:hover {
+.modal__button:hover:not(:disabled) {
   opacity: 80%;
 }
 
 .modal__button_disabled {
-  opacity: 80%;
+  opacity: 20%;
   cursor: not-allowed;
 }
 
@@ -145,8 +130,7 @@
   max-height: 75vh;
 }
 
-.modal__image-details {
-}
+
 
 .modal__image-title {
   font-family: Inter, Arial, sans-serif;
@@ -179,7 +163,7 @@
     width: 238px;
     height: 27px;
     padding: 0;
-    margin: 0 22px 30px 22px;
+    margin: 30px auto auto 36px;
   }
 
   .modal__button {
