@@ -68,8 +68,6 @@ const profileForm = document.querySelector("#profile-edit-form");
 
 const openAddButton = document.querySelector(".profile__button-add");
 
-//const cardAddModal = document.querySelector("#newCard-modal");
-
 const titleInput = cardAddModal.querySelector(".modal__input-title");
 const imageInput = cardAddModal.querySelector(".modal__input-image");
 
@@ -112,9 +110,10 @@ function handleProfileFormSubmit(evt) {
 /*                                  NEW CARD                                  */
 /* -------------------------------------------------------------------------- */
 
+
 function openAddModal() {
   const submitButton = cardAddModal.querySelector(".modal__button");
-  submitButton.classList.add(validationClasses.inactiveButtonClass);
+  submitButton.classList.toggle(validationClasses.inactiveButtonClass);
   openModal(cardAddModal);
 }
 function closeAddModal() {
@@ -223,7 +222,7 @@ cardForm.addEventListener("submit", (evt) => {
 
   closeAddModal();
   cardForm.reset();
-  toggleButtonState();
+  
 });
 
 initialCards.forEach((cardData) => {
