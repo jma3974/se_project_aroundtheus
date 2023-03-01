@@ -97,7 +97,6 @@ function openEditModal() {
 function closeEditModal() {
   closeModal(profileEditModal);
 }
-
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
 
@@ -110,10 +109,13 @@ function handleProfileFormSubmit(evt) {
 /*                                  NEW CARD                                  */
 /* -------------------------------------------------------------------------- */
 
-
 function openAddModal() {
-  const submitButton = cardAddModal.querySelector(".modal__button");
-  submitButton.classList.toggle(validationClasses.inactiveButtonClass);
+  const submitButton = cardAddModal.querySelector(validationClasses.submitButtonSelector);
+
+  const inputElements = [
+    ...cardAddModal.querySelectorAll(validationClasses.inputSelector),
+  ];
+  toggleButtonState(inputElements, submitButton, validationClasses);
   openModal(cardAddModal);
 }
 function closeAddModal() {
@@ -222,7 +224,6 @@ cardForm.addEventListener("submit", (evt) => {
 
   closeAddModal();
   cardForm.reset();
-  
 });
 
 initialCards.forEach((cardData) => {
