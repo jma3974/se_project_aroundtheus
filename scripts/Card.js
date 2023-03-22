@@ -1,6 +1,4 @@
-import * as utils from "./utils.js";
-// I need the title of the image
-// I need the url of the image
+import { openModal, closeModal } from "./utils.js";
 
 class Card {
   constructor({ title, link }, cardSelector) {
@@ -8,9 +6,6 @@ class Card {
     this._link = link;
     this._cardSelector = cardSelector;
   }
-
-  // I need the template of the card
-
   getCardElement() {
     this._cardElement = document
       .querySelector(this._cardSelector)
@@ -29,17 +24,20 @@ class Card {
     return this._cardElement;
   }
 
-  // I need a function to open a view
-  // I need locate the like button
-
   // I need a function to toggle the like button
+  // ** toggles the class, but element doesn't change **
+
   // I need a function that closes the view with an X
+  // ** DOES NOT WORK **
   // I need a function that closes the view with ESC
+  // Works as expected
   // I need a function that closes the view by clicking out of the view
-  // I need locate the  delete button
+  // Works as expected
   // I need a function that deletes the card
+  // works expected
 
   // I need to export this as a unit
+  // Works as expected
 
   _setEventListeners() {
     // ".card__button-like"
@@ -49,23 +47,42 @@ class Card {
         this._handleLikeIcon();
       });
 
-    //".card__button-del"
+     
+    // //".card__button-del"
     this._cardElement
       .querySelector(".card__button-del")
       .addEventListener("click", () => {
         this._handleDeleteCard();
       });
+    // // previews image
 
     this._cardElement
-      .querySelector("#image-display")
+      .querySelector(".card__image-card")
       .addEventListener("click", () => {
         this._handlePreviewImage();
       });
+
+    // closes preview on X click
+
+
+    //this._cardImageDisplay
+      document.querySelector("#viewImage-modal-close")
+      .addEventListener("click", () => {
+        this._handleCloseModal();
+      });
+
+      
   }
+
+  _handleCloseModal() {
+    this._cardElement.querySelector("#viewImage-modal-close");
+    closeModal(document.querySelector("#viewImage-modal"));
+  }
+
   _handleLikeIcon() {
     this._cardElement
       .querySelector(".card__button-like")
-      .classList.toggle(".card__button-like_active");
+      .classList.toggle("card__button-like_active");
   }
 
   _handleDeleteCard() {
@@ -77,7 +94,9 @@ class Card {
     this._cardImageDisplay = this._cardElement.querySelector("#image-display");
     document.querySelector("#modal-image").src = this._link;
     document.querySelector(".modal__image-title").textContent = this._title;
+    
     openModal(document.querySelector("#viewImage-modal"));
+   
   }
 }
 
