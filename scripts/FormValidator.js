@@ -9,6 +9,24 @@ class FormValidator {
     this._formElement = formElement;
   }
 
+  _setEventListeners() {
+    this._inputElements = [
+      ...this._formElement.querySelectorAll(this._inputSelector),
+    ];
+    this._submitButton = this._formElement.querySelector(
+      this._submitButtonSelector
+    );
+
+  
+
+    this._inputElements.forEach((inputElement) => {
+      inputElement.addEventListener("input", (evt) => {
+        _toggleInputValidity(inputElement);
+        this._toggleButtonState(inputElements, submitButton);
+      });
+    });
+  }
+
   _showInputError(inputElement) {
     const errorElement = this._element.querySelector(
       `#${inputElement.id}-error`
@@ -28,7 +46,7 @@ class FormValidator {
   }
 
   _toggleButtonState(inputElements, submitButton) {
-    if (!inputElements.every(isElementValid)) {
+    if (!inputElements.every(_hasInvalidInput)) {
       submitButton.classList.add(this._inactiveButtonClass);
       submitButton.disabled = true;
     } else {
@@ -37,7 +55,6 @@ class FormValidator {
     }
   }
 
-  
   _toggleInputValidity(inputElement) {
     if (!inputElement.validity.valid) {
       _showInputError(inputElement);
@@ -46,23 +63,8 @@ class FormValidator {
     }
   }
 
-  _hasInvalidInput(inputList) {
+  _hasInvalidInput(inputElement) {
     return inputElement.validity.valid;
-  }
-
-  _setEventListeners() {
-    const inputElements = [
-      ...this._formElement.querySelectorAll(this._inputSelector),
-    ];
-    const submitButton = this._formElement.querySelector(
-      this._submitButtonSelector
-    );
-    inputElements.forEach((inputElement) => {
-      inputElement.addEventListener("input", (evt) => {
-        _toggleInputValidity(inputElement);
-        _toggleButtonState(inputElements, submitButton);
-      });
-    });
   }
 
   enableValidation() {
@@ -72,16 +74,6 @@ class FormValidator {
 
     this._setEventListeners();
   }
-
-  // I need to validate the profile form fields are accurate
-
-  //I need to validate the destination card form fields are accurate
-
-  _checkInputValidity(inputElement) {
-    return inputElement.validity.valid;
-  }
-
- 
 
   _isElementValid() {
     return this._inputElement.validity.valid;

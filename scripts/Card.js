@@ -65,17 +65,17 @@ class Card {
     // closes preview on X click
 
 
-    //this._cardImageDisplay
-      document.querySelector("#viewImage-modal-close")
-      .addEventListener("click", () => {
-        this._handleCloseModal();
-      });
+    // this._cardImageDisplay
+    //   document.querySelector(".modal__close")
+    //   .addEventListener("click", () => {
+    //     this._handleCloseModal();
+    //   });
 
       
   }
 
   _handleCloseModal() {
-    this._cardElement.querySelector("#viewImage-modal-close");
+    this._cardElement.querySelector(".modal__close");
     closeModal(document.querySelector("#viewImage-modal"));
   }
 
