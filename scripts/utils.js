@@ -36,13 +36,3 @@ function handleMouseDown(evt) {
   }
 }
 
-
-
-
-// function openDisplayModal(openDisplayImage) {
-//   openModal(openDisplayImage);
-// }
-
-// function closeDisplayModal(openDisplayImage) {
-//   closeModal(openDisplayImage);
-// }

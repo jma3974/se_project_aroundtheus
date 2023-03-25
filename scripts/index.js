@@ -51,8 +51,8 @@ const initialCards = [
 const cardListEl = document.querySelector(".destinations");
 const profileEditModal = document.querySelector("#editProfile-modal");
 const cardAddModal = document.querySelector("#newCard-modal");
-const addCardForm = document.querySelector("#profile-add-form");
-const editCardForm =document.querySelector("#profile-edit-form");
+const addCardForm = document.querySelector("#profile-add-form"); //  NEW
+const editCardForm =document.querySelector("#profile-edit-form"); //NEW
 const profileFormElement = profileEditModal.querySelector(".modal__container");
 const profileElement = document.querySelector(".profile");
 const nameInput = profileFormElement.querySelector(".modal__input-name");
@@ -64,7 +64,9 @@ const professionInput = profileFormElement.querySelector(
 
 const openEditButton = document.querySelector(".profile__button-edit");
 const closeEditButton = profileEditModal.querySelector(".modal__close");
-const closeModalImage = document.querySelector("#viewImage-modal-close");
+const closeModalImage = document.querySelector("#viewImage-modal-close"); // NEW
+const viewImageModal = document.querySelector("#viewImage-modal"); // NEW
+
 
 const openAddButton = document.querySelector(".profile__button-add");
 const closeAddButton = document.querySelector("#newCard-modal-close");
@@ -78,26 +80,19 @@ const formValidationConfig = {
   errorClass: "modal__error_visible",
 };
 
-/* -------------------------------------------------------------------------- */
-/*                                  FUNCTIONS                                 */
-/* -------------------------------------------------------------------------- */
+
 
 function fillProfileForm() {
   nameInput.value = profileName.textContent;
   professionInput.value = profileProfession.textContent;
 }
 
-/* -------------------------------------------------------------------------- */
-/*                               EVENT LISTENERS                              */
-/* -------------------------------------------------------------------------- */
 
+//NEW
 addCardForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
 });
 
-/* -------------------------------------------------------------------------- */
-/*                             MODAL FUNCTIONALITY                            */
-/* -------------------------------------------------------------------------- */
 
 // OPEN MODALS
 function openEditModal() {
@@ -105,23 +100,12 @@ function openEditModal() {
 
   openModal(profileEditModal);
 }
-
+//NEW
 function openAddModal() {
   openModal(cardAddModal);
-
-  // function openAddModal() {
-  //   const submitButton = cardAddModal.querySelector(
-  //     formValidationConfig.submitButtonSelector
-  //   );
-
-  //   const inputElements = [
-  //     ...cardAddModal.querySelectorAll(formValidationConfig.inputSelector),
-  //   ];
-  //   toggleButtonState(inputElements, submitButton, formValidationConfig);
-  //   openModal(cardAddModal);
 }
 
-openEditButton.addEventListener("click", openEditModal);
+openEditButton.addEventListener("click", openEditModal); //NEW
 openAddButton.addEventListener("click", openAddModal);
 
 //CLOSE MODAL
@@ -129,12 +113,13 @@ function closeEditModal() {
   closeModal(profileEditModal);
 }
 
+// NEW
 function closeAddModal() {
   closeModal(cardAddModal);
 }
 
 function closeDisplayModal() {
-  closeModal();
+  closeModal(viewImageModal);
 }
 
 closeEditButton.addEventListener("click", closeEditModal);
@@ -146,9 +131,9 @@ const addCardValidator = new FormValidator(formValidationConfig, addCardForm);
 const editCardValidator = new FormValidator(formValidationConfig, editCardForm);
 
 addCardValidator.enableValidation();
-console.log(addCardValidator)
+
 editCardValidator.enableValidation();
-console.log(editCardValidator);
+
 
 initialCards.forEach((cardData) => {
   const card = new Card(cardData, "#card-template");
