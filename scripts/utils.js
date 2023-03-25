@@ -12,14 +12,14 @@ export function openModal(modal) {
   modal.classList.add("modal__opened");
   document.addEventListener("keyup", handleEscUp);
   modal.addEventListener("mousedown", handleMouseDown);
-  console.log("open modal from utils");
+  
 }
 
 export function closeModal(modal) {
   modal.classList.remove("modal__opened");
   document.removeEventListener("keyup", handleEscUp);
   modal.removeEventListener("mousedown", handleMouseDown);
-  console.log("close modal from utils")
+  
 }
 
 function handleEscUp(evt) {

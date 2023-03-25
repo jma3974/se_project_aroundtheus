@@ -104,14 +104,15 @@ addCardForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
   const title = evt.target.title.value;
   const link = evt.target.link.value;
-  const cardElement = getCardElement({
+  const card = new Card({title, link}, "#card-template");
+  const cardElement = card.getCardElement({
     title: title,
     link: link,
   });
   cardListEl.prepend(cardElement);
 
   closeAddModal();
-  cardForm.reset();
+  addCardForm.reset();
 });
 
 
