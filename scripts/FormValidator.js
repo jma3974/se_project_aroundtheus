@@ -9,7 +9,6 @@ class FormValidator {
     this._formElement = formElement;
   }
 
-  
   _setEventListeners() {
     this._inputElements = [
       ...this._formElement.querySelectorAll(this._inputSelector),
@@ -17,7 +16,9 @@ class FormValidator {
     this._submitButton = this._formElement.querySelector(
       this._submitButtonSelector
     );
-  
+
+    this._toggleButtonState(this._inputElements, this._submitButton);
+
     this._inputElements.forEach((inputElement) => {
       inputElement.addEventListener("input", (evt) => {
         this._toggleInputValidity(inputElement);
@@ -26,17 +27,11 @@ class FormValidator {
     });
   }
 
-
-
-
-
-
-
   _showInputError(inputElement) {
     const errorElement = this._formElement.querySelector(
       `#${inputElement.id}-error`
     );
- 
+
     inputElement.classList.add(this._inputErrorClass);
     errorElement.textContent = inputElement.validationMessage;
     errorElement.classList.add(this._errorClass);

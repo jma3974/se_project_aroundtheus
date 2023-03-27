@@ -1,38 +1,30 @@
 // REQUIREMENTS
 // will contain the event handlers and the function that opens/closes modal windows.
 
-const openDisplayImage = document.querySelector("#viewImage-modal");
-const closeDisplayImage = document.querySelector("#viewImage-modal-close");
-const modalImage = document.querySelector("#modal-image");
-const modalTitle = document.querySelector(".modal__image-title");
-
-
+const submitButton = document.querySelector(".modal__button");
 
 export function openModal(modal) {
-  modal.classList.add("modal__opened");
+  modal.classList.add("modal_opened");
   document.addEventListener("keyup", handleEscUp);
   modal.addEventListener("mousedown", handleMouseDown);
-  
 }
 
 export function closeModal(modal) {
-  modal.classList.remove("modal__opened");
+  modal.classList.remove("modal_opened");
   document.removeEventListener("keyup", handleEscUp);
   modal.removeEventListener("mousedown", handleMouseDown);
-  
 }
 
 function handleEscUp(evt) {
   if (evt.key === "Escape") {
-    const activeModal = document.querySelector(".modal__opened");
+    const activeModal = document.querySelector(".modal_opened");
 
     closeModal(activeModal);
   }
 }
 
 function handleMouseDown(evt) {
-  if (evt.target.classList.contains("modal__opened")) {
+  if (evt.target.classList.contains("modal_opened")) {
     closeModal(evt.target);
   }
 }
-

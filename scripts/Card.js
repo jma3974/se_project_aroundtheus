@@ -4,7 +4,6 @@
 // It has private methods for each event handler.
 // It has one public method that returns a fully functional card element populated with data.
 
-
 import { openModal, closeModal } from "./utils.js";
 
 class Card {
@@ -12,6 +11,9 @@ class Card {
     this._title = title;
     this._link = link;
     this._cardSelector = cardSelector;
+    this._modalimage = document.querySelector("#modal-image");
+    this._modalImageTitle = document.querySelector(".modal__image-title");
+    this._modalImageDisplay = document.querySelector(".modal__image-display");
   }
   getCardElement() {
     this._cardElement = document
@@ -31,37 +33,22 @@ class Card {
     return this._cardElement;
   }
 
-
-
   _setEventListeners() {
-    
     this._cardElement
       .querySelector(".card__button-like")
       .addEventListener("click", () => {
         this._handleLikeIcon();
       });
 
-     
-    
     this._cardElement
       .querySelector(".card__button-del")
       .addEventListener("click", () => {
         this._handleDeleteCard();
       });
-    
 
-    this._cardElement
-      .querySelector(".card__image-card")
-      .addEventListener("click", () => {
-        this._handlePreviewImage();
-      });
-
-    
-  }
-
-  _handleCloseModal() {
-    this._cardElement.querySelector(".modal__close");
-    closeModal(document.querySelector("#viewImage-modal"));
+    this._cardImageEl.addEventListener("click", () => {
+      this._handlePreviewImage();
+    });
   }
 
   _handleLikeIcon() {
@@ -76,14 +63,12 @@ class Card {
   }
 
   _handlePreviewImage() {
-    this._cardImageDisplay = this._cardElement.querySelector("#image-display");
-    document.querySelector("#modal-image").src = this._link;
-    document.querySelector(".modal__image-title").textContent = this._title;
-    
+    this._modalimage.src = this._link;
+    this._modalImageTitle.textContent = this._title;
+    this._modalImageDisplay.alt = this._title;
+
     openModal(document.querySelector("#viewImage-modal"));
-   
   }
 }
 
 export default Card;
-
