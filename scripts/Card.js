@@ -13,7 +13,6 @@ class Card {
     this._cardSelector = cardSelector;
     this._modalimage = document.querySelector("#modal-image");
     this._modalImageTitle = document.querySelector(".modal__image-title");
-    this._modalImageDisplay = document.querySelector(".modal__image-display");
   }
   getCardElement() {
     this._cardElement = document
@@ -65,7 +64,7 @@ class Card {
   _handlePreviewImage() {
     this._modalimage.src = this._link;
     this._modalImageTitle.textContent = this._title;
-    this._modalImageDisplay.alt = this._title;
+    this._modalimage.alt = this._title;
 
     openModal(document.querySelector("#viewImage-modal"));
   }

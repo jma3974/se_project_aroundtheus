@@ -96,6 +96,7 @@ profileFormElement.addEventListener("submit", handleProfileFormSubmit);
 
 addCardForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
+
   const title = evt.target.title.value;
   const link = evt.target.link.value;
   const card = new Card({ title, link }, "#card-template");
@@ -104,6 +105,7 @@ addCardForm.addEventListener("submit", (evt) => {
 
   closeAddModal();
   addCardForm.reset();
+  addFormValidator.toggleButtonState();
 });
 
 //NEW
