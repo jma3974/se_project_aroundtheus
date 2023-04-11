@@ -1,7 +1,4 @@
-// REQUIREMENTS
-// will contain the event handlers and the function that opens/closes modal windows.
 
-const submitButton = document.querySelector(".modal__button");
 
 export function openModal(modal) {
   modal.classList.add("modal_opened");

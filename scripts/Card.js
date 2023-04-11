@@ -1,9 +1,3 @@
-// REQUIREMENTS
-// It takes card data — text and a link to the image — and a template element selector as parameters into the constructor.
-// It has private methods for working with markup and adding event listeners.
-// It has private methods for each event handler.
-// It has one public method that returns a fully functional card element populated with data.
-
 import { openModal, closeModal } from "./utils.js";
 
 class Card {
