@@ -1,7 +1,13 @@
 // IMPORT CLASS/MODULE
+import Section from "./Section.js";
 import Card from "./Card.js";
 import { openModal, closeModal } from "./utils.js";
 import FormValidator from "./FormValidator.js";
+import UserInfo from "./UserInfo.js";
+
+/* -------------------------------------------------------------------------- */
+/*                                  CONSTANTS                                 */
+/* -------------------------------------------------------------------------- */
 
 // initial destination cards
 const initialCards = [
@@ -44,19 +50,6 @@ const initialCards = [
   },
 ];
 
-class UserInfo {
-  constructor (name, profession) => {
-
-
-  }
-}
-
-
-
-/* -------------------------------------------------------------------------- */
-/*                                  VARIABLES                                 */
-/* -------------------------------------------------------------------------- */
-
 const cardListEl = document.querySelector(".destinations");
 const profileEditModal = document.querySelector("#editProfile-modal");
 const cardAddModal = document.querySelector("#newCard-modal");
@@ -88,6 +81,7 @@ const formValidationConfig = {
   errorClass: "modal__error_visible",
 };
 
+/*
 function fillProfileForm() {
   nameInput.value = profileName.textContent;
   professionInput.value = profileProfession.textContent;
@@ -102,6 +96,7 @@ function handleProfileFormSubmit(evt) {
 }
 
 profileFormElement.addEventListener("submit", handleProfileFormSubmit);
+*/
 
 addCardForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
@@ -156,13 +151,32 @@ closeModalImage.addEventListener("click", closeDisplayModal);
 
 const addFormValidator = new FormValidator(formValidationConfig, addCardForm);
 const editFormValidator = new FormValidator(formValidationConfig, editCardForm);
+const getUserInfo = new UserInfo(profileName, profileProfession);
 
 addFormValidator.enableValidation();
 editFormValidator.enableValidation();
 
-initialCards.forEach((cardData) => {
-  const card = new Card(cardData, "#card-template");
-  const cardElement = card.getCardElement();
-  cardListEl.prepend(cardElement);
-  //cardListEl.prepend(card.getCardElement()); // - alt code
-});
+// initialCards.forEach((cardData) => {
+//   const card = new Card(cardData, "#card-template");
+//   const cardElement = card.getCardElement();
+//   cardListEl.prepend(cardElement);
+//   //cardListEl.prepend(card.getCardElement()); // - alt code
+// });
+
+/* -------------------------------------------------------------------------- */
+/*                              INITIALIZE CARDS                              */
+/* -------------------------------------------------------------------------- */
+
+const destinationSection = new Section(
+  {
+    items: initialCards,
+    renderer: (item) => {
+      const card = new Card(item, "#card-template");
+      const cardElement = card.getCardElement();
+      return cardElement;
+    },
+  },
+  ".destinations"
+);
+
+destinationSection.renderItems();

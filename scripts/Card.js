@@ -1,4 +1,5 @@
 import { openModal, closeModal } from "./utils.js";
+import Popup from "./Popup.js";
 
 class Card {
   constructor({ title, link }, cardSelector) {
