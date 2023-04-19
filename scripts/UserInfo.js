@@ -3,9 +3,16 @@ export default class UserInfo {
     this._name = profileName;
     this._profession = profileProfession;
   }
-  getUserInfo() {}
-
-  setUserInfo() {}
+  getUserInfo() {
+    return {
+      name: this._name.textContent,
+      profession: this._profession.textContent,
+    };
+  }
+  setUserInfo({ name, profession }) {
+    (this._name.textContent = name),
+      (this._profession.textContent = profession);
+  }
 }
 
 /*

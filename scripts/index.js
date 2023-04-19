@@ -3,7 +3,7 @@ import Section from "./Section.js";
 import Card from "./Card.js";
 import { openModal, closeModal } from "./utils.js";
 import FormValidator from "./FormValidator.js";
-import UserInfo from "./UserInfo.js";
+import UserInfo from "./USerInfo.js";
 
 /* -------------------------------------------------------------------------- */
 /*                                  CONSTANTS                                 */

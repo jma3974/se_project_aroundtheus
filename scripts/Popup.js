@@ -1,40 +1,27 @@
 export default class Popup {
-    constructor ({popupSelector}) {
+  constructor({ modalSelector }) {
+    this._popupElement = document.querySelector(modalSelector);
+  }
 
-this._popupElement = document.querySelector(popupSelector);
+  openModal() {
+    this._popupElement.classList.add("modal_opened");
+    document.addEventListener("keyup", handleEscUp);
+    modal.addEventListener("mousedown", handleMouseDown);
+  }
 
+  close() {
+    document.removeEventListener("keyup", handleEscUp);
+    document.removeEventListener("keyup", handleEscUp);
+    modal.removeEventListener("mousedown", handleMouseDown);
+  }
 
+  _handleEscUp(evt) {
+    if (evt.key === "Escape") {
+      const activeModal = document.querySelector(".modal_opened");
+
+      closeModal(activeModal);
     }
+  }
 
-
-    openModal (){
-
-    };
-    
-    close(){
-
-
-
-    };
-    
-    
-    _handleEscClose() {
-
-
-    };
-
-    setEventListeners() {
-
-
-    };
-
-
-
+  setEventListeners() {}
 }
-
-
-
-
-
-
-
