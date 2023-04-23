@@ -1,5 +1,5 @@
 export default class Popup {
-  constructor({ modalSelector }) {
+  constructor(modalSelector) {
     this._popupElement = document.querySelector(modalSelector);
   }
 
@@ -23,5 +23,7 @@ export default class Popup {
     }
   }
 
-  setEventListeners() {}
+  setEventListeners() {
+    this._popupElement.addEventListener("click", openModal);
+  }
 }
