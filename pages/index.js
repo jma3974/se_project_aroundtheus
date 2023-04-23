@@ -4,48 +4,45 @@ import Card from "../components/Card.js";
 import { openModal, closeModal } from "../utils/utils.js";
 import FormValidator from "../components/FormValidator.js";
 import UserInfo from "../utils/UserInfo.js";
-import PopupWithForm from "../utils/PopupWithForm.js"
+import PopupWithForm from "../utils/PopupWithForm.js";
 import PopupWithImage from "../utils/PopupWithImage.js";
-
 
 /* -------------------------------------------------------------------------- */
 /*                                   PROFILE                                  */
 /* -------------------------------------------------------------------------- */
 
-const editProfileForm = new PopupWithForm("#profile-edit-form", ()=>{});
+const editProfileForm = new PopupWithForm("#profile-edit-form", () => {});
 
-editProfileForm.setEventListeners("click", ()=>{});
+editProfileForm.setEventListeners("click", () => {});
 
-
-const userInfo = new UserInfo ({name:".profile__name", profession: ".profile__profession"})
+const userInfo = new UserInfo({
+  name: ".profile__name",
+  profession: ".profile__profession",
+});
 
 const VARIABLE = userInfo.getUserInfo();
 
 //userInfo.setUserInfo()
 
-
 /* -------------------------------------------------------------------------- */
 /*                                  NEW CARD                                  */
 /* -------------------------------------------------------------------------- */
 
-const newDestinationCardForm =  new PopupWithForm("#newCard-modal");
+const newDestinationCardForm = new PopupWithForm("#newCard-modal");
 newDestinationCardForm.addEventListener("click", openAddModal);
 
 newDestinationCardForm.setEventListeners();
 
-
+// existing functionality
 openAddButton.addEventListener("click", openAddModal);
-
 
 /* -------------------------------------------------------------------------- */
 /*                              CARD IMAGE POP UP                             */
 /* -------------------------------------------------------------------------- */
 
-const cardImageModal = new PopupWithImage( {popupSelector : "#modal-image"});
+const cardImageModal = new PopupWithImage({ popupSelector: "#modal-image" });
 
-cardImageModal.setEventListeners()
-
-
+cardImageModal.setEventListeners();
 
 /* -------------------------------------------------------------------------- */
 /*                                  CONSTANTS                                 */
@@ -160,13 +157,9 @@ addCardForm.addEventListener("submit", (evt) => {
 
 // OPEN MODALS
 
-
-
-
 function openEditModal() {
-
   fillProfileForm();
-  console.log("old modal open")
+  console.log("old modal open");
 
   openModal(profileEditModal);
 }
@@ -177,7 +170,6 @@ function openAddModal() {
 }
 
 openEditButton.addEventListener("click", openEditModal); //NEW
-
 
 //CLOSE MODAL
 function closeEditModal() {
