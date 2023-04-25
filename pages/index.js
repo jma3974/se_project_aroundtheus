@@ -8,43 +8,6 @@ import PopupWithForm from "../utils/PopupWithForm.js";
 import PopupWithImage from "../utils/PopupWithImage.js";
 
 /* -------------------------------------------------------------------------- */
-/*                                   PROFILE                                  */
-/* -------------------------------------------------------------------------- */
-
-const editProfileForm = new PopupWithForm("#profile-edit-form", () => {});
-
-editProfileForm.setEventListeners("click", () => {});
-
-const userInfo = new UserInfo({
-  name: ".profile__name",
-  profession: ".profile__profession",
-});
-
-const VARIABLE = userInfo.getUserInfo();
-
-//userInfo.setUserInfo()
-
-/* -------------------------------------------------------------------------- */
-/*                                  NEW CARD                                  */
-/* -------------------------------------------------------------------------- */
-
-const newDestinationCardForm = new PopupWithForm("#newCard-modal");
-newDestinationCardForm.addEventListener("click", openAddModal);
-
-newDestinationCardForm.setEventListeners();
-
-// existing functionality
-openAddButton.addEventListener("click", openAddModal);
-
-/* -------------------------------------------------------------------------- */
-/*                              CARD IMAGE POP UP                             */
-/* -------------------------------------------------------------------------- */
-
-const cardImageModal = new PopupWithImage({ popupSelector: "#modal-image" });
-
-cardImageModal.setEventListeners();
-
-/* -------------------------------------------------------------------------- */
 /*                                  CONSTANTS                                 */
 /* -------------------------------------------------------------------------- */
 
@@ -120,6 +83,48 @@ const formValidationConfig = {
   errorClass: "modal__error_visible",
 };
 
+/* -------------------------------------------------------------------------- */
+/*                                   PROFILE                                  */
+/* -------------------------------------------------------------------------- */
+
+const editProfileForm = new PopupWithForm("#editProfile-modal", () => {});
+
+editProfileForm.setEventListeners();
+
+openEditButton.addEventListener("click", editProfileForm.openModal);
+
+const userInfo = new UserInfo({
+  name: profileName,
+  profession: profileProfession,
+});
+
+const VARIABLE = userInfo.getUserInfo();
+
+//userInfo.setUserInfo()
+
+/* -------------------------------------------------------------------------- */
+/*                                  NEW CARD                                  */
+/* -------------------------------------------------------------------------- */
+
+//NEW
+// function openAddModal() {
+//   openModal(cardAddModal);
+// }
+
+const newDestinationCardForm = new PopupWithForm("#newCard-modal", () => {});
+
+newDestinationCardForm.setEventListeners();
+
+openAddButton.addEventListener("click", newDestinationCardForm.openModal);
+
+/* -------------------------------------------------------------------------- */
+/*                              CARD IMAGE POP UP                             */
+/* -------------------------------------------------------------------------- */
+
+const cardImageModal = new PopupWithImage("#viewImage-modal");
+
+cardImageModal.setEventListeners();
+
 function fillProfileForm() {
   nameInput.value = profileName.textContent;
   professionInput.value = profileProfession.textContent;
@@ -157,19 +162,14 @@ addCardForm.addEventListener("submit", (evt) => {
 
 // OPEN MODALS
 
-function openEditModal() {
-  fillProfileForm();
-  console.log("old modal open");
+// function openEditModal() {
+//   fillProfileForm();
+//   console.log("old modal open");
 
-  openModal(profileEditModal);
-}
+//   openModal(profileEditModal);
+// }
 
-//NEW
-function openAddModal() {
-  openModal(cardAddModal);
-}
-
-openEditButton.addEventListener("click", openEditModal); //NEW
+//openEditButton.addEventListener("click", openEditModal); //NEW
 
 //CLOSE MODAL
 function closeEditModal() {
