@@ -73,6 +73,7 @@ const viewImageModal = document.querySelector("#viewImage-modal");
 
 const openAddButton = document.querySelector(".profile__button-add");
 const closeAddButton = document.querySelector("#newCard-modal-close");
+const closeModalButton = document.querySelector(".modal__close");
 
 const formValidationConfig = {
   formSelector: ".modal__form",
@@ -91,7 +92,9 @@ const editProfileForm = new PopupWithForm("#editProfile-modal", () => {});
 
 editProfileForm.setEventListeners();
 
-openEditButton.addEventListener("click", editProfileForm.openModal);
+openEditButton.addEventListener("click", () => {
+  editProfileForm.openModal();
+});
 
 const userInfo = new UserInfo({
   name: profileName,
@@ -115,7 +118,9 @@ const newDestinationCardForm = new PopupWithForm("#newCard-modal", () => {});
 
 newDestinationCardForm.setEventListeners();
 
-openAddButton.addEventListener("click", newDestinationCardForm.openModal);
+openAddButton.addEventListener("click", () => {
+  newDestinationCardForm.openModal();
+});
 
 /* -------------------------------------------------------------------------- */
 /*                              CARD IMAGE POP UP                             */

@@ -1,6 +1,11 @@
+/* -------------------------------------------------------------------------- */
+/*                              BEING DEPRECATED                              */
+/* -------------------------------------------------------------------------- */
+
 export function openModal(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener("keyup", handleEscUp);
+  console.log("open modal utils");
   modal.addEventListener("mousedown", handleMouseDown);
 }
 

@@ -19,7 +19,7 @@ export default class PopupWithForm extends Popup {
       evt.preventDefault();
 
       //add submit event handler
-      // add click event listener to close icon
+      // add click event listener to close icon - is this a duplicate of effort?
     });
   }
 
