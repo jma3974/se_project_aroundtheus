@@ -4,12 +4,18 @@ export default class PopupWithForm extends Popup {
   constructor(modalSelector, handleFormSubmit) {
     super(modalSelector);
     this._popupForm = this._modalElement.querySelector(".modal__form");
-    this._modalinputs = this._popupForm.querySelectorAll(".modal__input");
+    this._modalInputs = this._popupForm.querySelectorAll(".modal__input");
     this._handleFormSubmit = handleFormSubmit;
   }
 
   _getInputValues() {
-    // is this where UserInfo.js comes into play?
+    const inputValues = {};
+
+    this._modalInputs.forEach((input) => {
+      inputValues[input.name] = input.value;
+    });
+    console.log("_get input");
+    return inputValues;
   }
 
   setEventListeners() {
@@ -17,14 +23,16 @@ export default class PopupWithForm extends Popup {
 
     this._popupForm.addEventListener("submit", (evt) => {
       evt.preventDefault();
-
-      //add submit event handler
-      // add click event listener to close icon - is this a duplicate of effort?
+      console.log("submit from pop up with form");
+      const inputValues = this._getInputValues();
+      this._handleFormSubmit(inputValues);
+      this.closeModal();
     });
   }
 
   closeModal() {
+    console.log("close by PopupWithForm");
     this._popupForm.reset();
-    super.close();
+    super.closeModal();
   }
 }

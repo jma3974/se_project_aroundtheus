@@ -67,13 +67,13 @@ const professionInput = profileFormElement.querySelector(
 );
 
 const openEditButton = document.querySelector(".profile__button-edit");
-const closeEditButton = profileEditModal.querySelector(".modal__close");
-const closeModalImage = document.querySelector("#viewImage-modal-close");
-const viewImageModal = document.querySelector("#viewImage-modal");
+//const closeEditButton = profileEditModal.querySelector(".modal__close");
+//const closeModalImage = document.querySelector("#viewImage-modal-close");
+//const viewImageModal = document.querySelector("#viewImage-modal");
 
 const openAddButton = document.querySelector(".profile__button-add");
 const closeAddButton = document.querySelector("#newCard-modal-close");
-const closeModalButton = document.querySelector(".modal__close");
+//const closeModalButton = document.querySelector(".modal__close");
 
 const formValidationConfig = {
   formSelector: ".modal__form",
@@ -88,7 +88,9 @@ const formValidationConfig = {
 /*                                   PROFILE                                  */
 /* -------------------------------------------------------------------------- */
 
-const editProfileForm = new PopupWithForm("#editProfile-modal", () => {});
+const editProfileForm = new PopupWithForm("#editProfile-modal", (inputs) => {
+  userInfo.getUserInfo(inputs);
+});
 
 editProfileForm.setEventListeners();
 
@@ -100,8 +102,6 @@ const userInfo = new UserInfo({
   name: profileName,
   profession: profileProfession,
 });
-
-const VARIABLE = userInfo.getUserInfo();
 
 //userInfo.setUserInfo()
 
@@ -127,23 +127,26 @@ openAddButton.addEventListener("click", () => {
 /* -------------------------------------------------------------------------- */
 
 const cardImageModal = new PopupWithImage("#viewImage-modal");
-
 cardImageModal.setEventListeners();
 
-function fillProfileForm() {
-  nameInput.value = profileName.textContent;
-  professionInput.value = profileProfession.textContent;
-}
+// SELECTOR.addEventListener("click", () => {
+// funtion to open modal with target src
+//})
 
-function handleProfileFormSubmit(evt) {
-  evt.preventDefault();
+// function fillProfileForm() {
+//   nameInput.value = profileName.textContent;
+//   professionInput.value = profileProfession.textContent;
+// }
 
-  profileName.textContent = nameInput.value;
-  profileProfession.textContent = professionInput.value;
-  closeEditModal();
-}
+// function handleProfileFormSubmit(evt) {
+//   evt.preventDefault();
+// console.log("old profile submit")
+//   profileName.textContent = nameInput.value;
+//   profileProfession.textContent = professionInput.value;
+//   closeEditModal();
+// }
 
-profileFormElement.addEventListener("submit", handleProfileFormSubmit);
+// profileFormElement.addEventListener("submit", handleProfileFormSubmit);
 
 // This is the listener to add a new card to the list
 addCardForm.addEventListener("submit", (evt) => {
@@ -177,22 +180,22 @@ addCardForm.addEventListener("submit", (evt) => {
 //openEditButton.addEventListener("click", openEditModal); //NEW
 
 //CLOSE MODAL
-function closeEditModal() {
-  closeModal(profileEditModal);
-}
+// function closeEditModal() {
+//   closeModal(profileEditModal);
+// }
 
-// NEW
-function closeAddModal() {
-  closeModal(cardAddModal);
-}
+// // NEW
+// function closeAddModal() {
+//   closeModal(cardAddModal);
+// }
 
-function closeDisplayModal() {
-  closeModal(viewImageModal);
-}
+// function closeDisplayModal() {
+//   closeModal(viewImageModal);
+// }
 
-closeEditButton.addEventListener("click", closeEditModal);
-closeAddButton.addEventListener("click", closeAddModal);
-closeModalImage.addEventListener("click", closeDisplayModal);
+//closeEditButton.addEventListener("click", closeEditModal);
+//closeAddButton.addEventListener("click", closeAddModal);
+//closeModalImage.addEventListener("click", closeDisplayModal);
 
 const addFormValidator = new FormValidator(formValidationConfig, addCardForm);
 const editFormValidator = new FormValidator(formValidationConfig, editCardForm);
@@ -217,7 +220,7 @@ const destinationSection = new Section(
     renderer: (item) => {
       const card = new Card(item, "#card-template");
       const cardElement = card.getCardElement();
-      console.log("new section");
+
       return cardElement;
     },
   },
