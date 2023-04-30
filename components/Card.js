@@ -1,4 +1,4 @@
-import { openModal, closeModal } from "../utils/utils.js";
+//import { openModal, closeModal } from "../utils/utils.js";
 import Popup from "../utils/Popup.js";
 
 class Card {
@@ -40,9 +40,9 @@ class Card {
         this._handleDeleteCard();
       });
 
-    this._cardImageEl.addEventListener("click", () => {
-      this._handlePreviewImage();
-    });
+    // this._cardImageEl.addEventListener("click", () => {
+    //   this._handlePreviewImage();
+    // });
   }
 
   _handleLikeIcon() {
@@ -56,13 +56,13 @@ class Card {
     this._cardElement = null;
   }
 
-  _handlePreviewImage() {
-    this._modalimage.src = this._link;
-    this._modalImageTitle.textContent = this._title;
-    this._modalimage.alt = this._title;
+  // _handlePreviewImage() {
+  //   this._modalimage.src = this._link;
+  //   this._modalImageTitle.textContent = this._title;
+  //   this._modalimage.alt = this._title;
 
-    openModal(document.querySelector("#viewImage-modal"));
-  }
+  //   openModal(document.querySelector("#viewImage-modal"));
+  // }
 }
 
 export default Card;

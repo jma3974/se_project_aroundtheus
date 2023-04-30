@@ -7,9 +7,11 @@ export default class PopupWithImage extends Popup {
   }
 
   openModal() {
-    this._modalElement.classList.add("modal_opened");
-
-    document.addEventListener("keyup", handleEscUp);
-    modal.addEventListener("mousedown", handleMouseDown);
+    console.log("open with popup image");
+    super.openModal();
+    this._modalimage.src = this._link;
+    this._modalImageTitle.textContent = this._title;
+    this._modalimage.alt = this._title;
+    openModal(document.querySelector("#viewImage-modal"));
   }
 }

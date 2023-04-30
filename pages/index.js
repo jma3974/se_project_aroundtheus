@@ -1,7 +1,7 @@
 // IMPORT CLASS/MODULE
 import Section from "../utils/Section.js";
 import Card from "../components/Card.js";
-import { openModal, closeModal } from "../utils/utils.js";
+//import { openModal, closeModal } from "../utils/utils.js";
 import FormValidator from "../components/FormValidator.js";
 import UserInfo from "../utils/UserInfo.js";
 import PopupWithForm from "../utils/PopupWithForm.js";
@@ -59,12 +59,13 @@ const addCardForm = document.querySelector("#profile-add-form");
 const editCardForm = document.querySelector("#profile-edit-form");
 const profileFormElement = profileEditModal.querySelector(".modal__container");
 const profileElement = document.querySelector(".profile");
-const nameInput = profileFormElement.querySelector(".modal__input-name");
+const cardImage = document.querySelector("card__image-card");
+//const nameInput = profileFormElement.querySelector(".modal__input-name");
 const profileName = profileElement.querySelector(".profile__name");
 const profileProfession = profileElement.querySelector(".profile__profession");
-const professionInput = profileFormElement.querySelector(
-  ".modal__input-profession"
-);
+// const professionInput = profileFormElement.querySelector(
+//   ".modal__input-profession"
+// );
 
 const openEditButton = document.querySelector(".profile__button-edit");
 //const closeEditButton = profileEditModal.querySelector(".modal__close");
@@ -128,6 +129,7 @@ openAddButton.addEventListener("click", () => {
 
 const cardImageModal = new PopupWithImage("#viewImage-modal");
 cardImageModal.setEventListeners();
+cardImage.addEventListener("click", cardImageModal.openModal());
 
 // SELECTOR.addEventListener("click", () => {
 // funtion to open modal with target src
