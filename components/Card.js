@@ -2,10 +2,11 @@
 import Popup from "../utils/Popup.js";
 
 class Card {
-  constructor({ title, link }, cardSelector) {
+  constructor({ title, link }, cardSelector, handleImageClick) {
     this._title = title;
     this._link = link;
     this._cardSelector = cardSelector;
+    this._handleImageClick - handleImageClick;
     this._modalimage = document.querySelector("#modal-image");
     this._modalImageTitle = document.querySelector(".modal__image-title");
   }
@@ -33,12 +34,18 @@ class Card {
       .addEventListener("click", () => {
         this._handleLikeIcon();
       });
+      console.log("like button")
 
     this._cardElement
       .querySelector(".card__button-del")
       .addEventListener("click", () => {
         this._handleDeleteCard();
       });
+      console.log("delete button")
+    this._cardElement
+      .querySelector(".card__image-card")
+      .addEventListener("click", this._handleImageClick);
+      console.log("preview image click")
 
     // this._cardImageEl.addEventListener("click", () => {
     //   this._handlePreviewImage();

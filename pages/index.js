@@ -52,14 +52,16 @@ const initialCards = [
   },
 ];
 
+const modalImage = document.querySelector("#modal-image")
+const cardTemplate = document.querySelector("#card-template");
 const cardListEl = document.querySelector(".destinations");
-const profileEditModal = document.querySelector("#editProfile-modal");
-const cardAddModal = document.querySelector("#newCard-modal");
+//const profileEditModal = document.querySelector("#editProfile-modal");
+//const cardAddModal = document.querySelector("#newCard-modal");
 const addCardForm = document.querySelector("#profile-add-form");
 const editCardForm = document.querySelector("#profile-edit-form");
-const profileFormElement = profileEditModal.querySelector(".modal__container");
+//const profileFormElement = profileEditModal.querySelector(".modal__container");
 const profileElement = document.querySelector(".profile");
-const cardImage = document.querySelector("card__image-card");
+//const cardImage = document.querySelector("card__image-card");
 //const nameInput = profileFormElement.querySelector(".modal__input-name");
 const profileName = profileElement.querySelector(".profile__name");
 const profileProfession = profileElement.querySelector(".profile__profession");
@@ -70,7 +72,7 @@ const profileProfession = profileElement.querySelector(".profile__profession");
 const openEditButton = document.querySelector(".profile__button-edit");
 //const closeEditButton = profileEditModal.querySelector(".modal__close");
 //const closeModalImage = document.querySelector("#viewImage-modal-close");
-//const viewImageModal = document.querySelector("#viewImage-modal");
+const viewImageModal = document.querySelector("#viewImage-modal");
 
 const openAddButton = document.querySelector(".profile__button-add");
 const closeAddButton = document.querySelector("#newCard-modal-close");
@@ -129,7 +131,7 @@ openAddButton.addEventListener("click", () => {
 
 const cardImageModal = new PopupWithImage("#viewImage-modal");
 cardImageModal.setEventListeners();
-cardImage.addEventListener("click", cardImageModal.openModal());
+//cardImage.addEventListener("click", cardImageModal.openModal());
 
 // SELECTOR.addEventListener("click", () => {
 // funtion to open modal with target src
@@ -156,7 +158,7 @@ addCardForm.addEventListener("submit", (evt) => {
 
   const title = evt.target.title.value;
   const link = evt.target.link.value;
-  const card = new Card({ title, link }, "#card-template");
+  const card = new Card({ title, link }, cardTemplate);
   const cardElement = card.getCardElement();
   cardListEl.prepend(cardElement);
 
@@ -220,7 +222,12 @@ const destinationSection = new Section(
   {
     items: initialCards,
     renderer: (item) => {
-      const card = new Card(item, "#card-template");
+      const card = new Card(item, "#card-template", () => {
+        cardImageModal.openModal();
+        modalImage.src = item.link;
+        modalImage.textContent = item.name;
+        modalImage.alt = cardData.name;
+      });
       const cardElement = card.getCardElement();
 
       return cardElement;

@@ -16,7 +16,7 @@
 // }
 
 // function handleEscUp(evt) {
-//   if (evt.key === "Escape") {
+//   if (evt.key === "Escape") {console.log("")card__image-card
 //     const activeModal = document.querySelector(".modal_opened");
 
 //     closeModal(activeModal);
