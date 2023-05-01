@@ -69,7 +69,7 @@ const openEditButton = document.querySelector(".profile__button-edit");
 const viewImageModal = document.querySelector("#viewImage-modal");
 
 const openAddButton = document.querySelector(".profile__button-add");
-const closeAddButton = document.querySelector("#newCard-modal-close");
+
 
 
 const formValidationConfig = {
@@ -167,7 +167,7 @@ const destinationSection = new Section(
         modalImage.src = item.link;
         modalImage.textContent = item.name;
         modalImage.alt = item.name;
-        viewImageModal.openModal(modalImage.src, modalImage.textContent);
+        cardImageModal.openModal(modalImage.src, modalImage.textContent);
         console.log("a card")
       });
       const cardElement = card.getCardElement();
