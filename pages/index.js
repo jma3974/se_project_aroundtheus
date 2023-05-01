@@ -223,10 +223,11 @@ const destinationSection = new Section(
     items: initialCards,
     renderer: (item) => {
       const card = new Card(item, "#card-template", () => {
-        cardImageModal.openModal();
+        
         modalImage.src = item.link;
         modalImage.textContent = item.name;
-        modalImage.alt = cardData.name;
+        modalImage.alt = item.name;
+        viewImageModal.openModal(modalImage.src, modalImage.textContent);
       });
       const cardElement = card.getCardElement();
 

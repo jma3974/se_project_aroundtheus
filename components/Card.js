@@ -34,18 +34,18 @@ class Card {
       .addEventListener("click", () => {
         this._handleLikeIcon();
       });
-      console.log("like button")
+      console.log("like button listener")
 
     this._cardElement
       .querySelector(".card__button-del")
       .addEventListener("click", () => {
         this._handleDeleteCard();
       });
-      console.log("delete button")
+      console.log("delete button listener")
     this._cardElement
-      .querySelector(".card__image-card")
+      .querySelector(".card__image-display")
       .addEventListener("click", this._handleImageClick);
-      console.log("preview image click")
+      console.log("preview image listener")
 
     // this._cardImageEl.addEventListener("click", () => {
     //   this._handlePreviewImage();
