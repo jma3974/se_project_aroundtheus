@@ -52,7 +52,7 @@ const initialCards = [
   },
 ];
 
-const modalImage = document.querySelector("#modal-image")
+const modalImage = document.querySelector("#modal-image");
 const cardTemplate = document.querySelector("#card-template");
 const cardListEl = document.querySelector(".destinations");
 
@@ -69,8 +69,6 @@ const openEditButton = document.querySelector(".profile__button-edit");
 const viewImageModal = document.querySelector("#viewImage-modal");
 
 const openAddButton = document.querySelector(".profile__button-add");
-
-
 
 const formValidationConfig = {
   formSelector: ".modal__form",
@@ -100,13 +98,9 @@ const userInfo = new UserInfo({
   profession: profileProfession,
 });
 
-
-
 /* -------------------------------------------------------------------------- */
 /*                                  NEW CARD                                  */
 /* -------------------------------------------------------------------------- */
-
-
 
 const newDestinationCardForm = new PopupWithForm("#newCard-modal", () => {});
 
@@ -123,36 +117,30 @@ openAddButton.addEventListener("click", () => {
 const cardImageModal = new PopupWithImage("#viewImage-modal");
 cardImageModal.setEventListeners();
 
-
 // This is the listener to add a new card to the list
-addCardForm.addEventListener("submit", (evt) => {
-  evt.preventDefault();
+// addCardForm.addEventListener("submit", (evt) => {
+//   evt.preventDefault();
 
-  const title = evt.target.title.value;
-  const link = evt.target.link.value;
-  const card = new Card({ title, link }, cardTemplate);
-  const cardElement = card.getCardElement();
-  cardListEl.prepend(cardElement);
+//   const title = evt.target.title.value;
+//   const link = evt.target.link.value;
+//   const card = new Card({ title, link }, cardTemplate);
+//   const cardElement = card.getCardElement();
+//   cardListEl.prepend(cardElement);
 
-  closeAddModal();
-  addCardForm.reset();
-  addFormValidator.toggleButtonState();
-});
+//   closeAddModal();
+//   addCardForm.reset();
+//   addFormValidator.toggleButtonState();
+// });
 
-
-addCardForm.addEventListener("submit", (evt) => {
-  evt.preventDefault();
-});
-
-
+// addCardForm.addEventListener("submit", (evt) => {
+//   evt.preventDefault();
+// });
 
 const addFormValidator = new FormValidator(formValidationConfig, addCardForm);
 const editFormValidator = new FormValidator(formValidationConfig, editCardForm);
 
 addFormValidator.enableValidation();
 editFormValidator.enableValidation();
-
-
 
 /* -------------------------------------------------------------------------- */
 /*                              INITIALIZE CARDS                              */
@@ -162,13 +150,16 @@ const destinationSection = new Section(
   {
     items: initialCards,
     renderer: (item) => {
-      const card = new Card(item, "#card-template", () => {
-        
-        modalImage.src = item.link;
-        modalImage.textContent = item.name;
-        modalImage.alt = item.name;
-        cardImageModal.openModal(modalImage.src, modalImage.textContent);
-        console.log("a card")
+      const card = new Card(item, "#card-template", (card) => {
+        console.log("from destination section index.js");
+        console.log(card);
+        console.log(card._title);
+        console.log(card._link);
+        //card._link = _link;
+        // modalImage.textContent = card._name;
+        // modalImage.alt = card._name;
+
+        cardImageModal.openModal(card._title, card._link);
       });
       const cardElement = card.getCardElement();
 
