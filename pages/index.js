@@ -151,14 +151,6 @@ const destinationSection = new Section(
     items: initialCards,
     renderer: (item) => {
       const card = new Card(item, "#card-template", (card) => {
-        console.log("from destination section index.js");
-        console.log(card);
-        console.log(card._title);
-        console.log(card._link);
-        //card._link = _link;
-        // modalImage.textContent = card._name;
-        // modalImage.alt = card._name;
-
         cardImageModal.openModal(card._title, card._link);
       });
       const cardElement = card.getCardElement();
