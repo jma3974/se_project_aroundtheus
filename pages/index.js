@@ -91,8 +91,7 @@ const userInfo = new UserInfo({
 const editProfileForm = new PopupWithForm("#editProfile-modal", () => {
   console.log("Get User Info");
   userInfo.getUserInfo();
-  // gets existing values for name and profession fields
-  // populates form with those values
+  // listens for the submit
   // validates new inputs
   // adds new inputs to name and profession fields
 });
@@ -100,6 +99,8 @@ const editProfileForm = new PopupWithForm("#editProfile-modal", () => {
 editProfileForm.setEventListeners();
 
 openEditButton.addEventListener("click", () => {
+  // gets existing values for name and profession fields
+  // populates form with those values
   editProfileForm.openModal();
 });
 
