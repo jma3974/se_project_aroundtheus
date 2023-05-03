@@ -78,11 +78,15 @@ const formValidationConfig = {
   inputErrorClass: "modal__input-name_error",
   errorClass: "modal__error_visible",
 };
-
+/* ------------------------------------------------- */
 function fillProfileForm() {
   nameInput.value = profileName.textContent;
   professionInput.value = profileProfession.textContent;
 }
+
+/* ------------------------------------------------- */
+
+
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();

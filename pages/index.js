@@ -83,21 +83,24 @@ const formValidationConfig = {
 /*                                   PROFILE                                  */
 /* -------------------------------------------------------------------------- */
 
+const userInfo = new UserInfo({
+  name: profileName,
+  profession: profileProfession,
+});
+
 const editProfileForm = new PopupWithForm("#editProfile-modal", () => {
   console.log("Get User Info");
-  //userInfo.getUserInfo(inputs);
+  userInfo.getUserInfo();
+  // gets existing values for name and profession fields
+  // populates form with those values
+  // validates new inputs
+  // adds new inputs to name and profession fields
 });
 
 editProfileForm.setEventListeners();
 
 openEditButton.addEventListener("click", () => {
   editProfileForm.openModal();
-  
-});
-
-const userInfo = new UserInfo({
-  name: profileName,
-  profession: profileProfession,
 });
 
 /* -------------------------------------------------------------------------- */
@@ -105,9 +108,13 @@ const userInfo = new UserInfo({
 /* -------------------------------------------------------------------------- */
 
 const newDestinationCardForm = new PopupWithForm("#newCard-modal", () => {
-// the function passed PopupWithForms
-console.log("a new destination card is created")
-
+  // the function that handles the submit event
+  // grab the inputs from the form
+  // creates a new instance of the card
+  // validates inputs
+  // populates instance with inputs
+  // prepends card to the section
+  console.log("a new destination card is created");
 });
 
 newDestinationCardForm.setEventListeners();
