@@ -8,7 +8,7 @@ export default class UserInfo {
       name: this._name,
       profession: this._profession,
     };
-    console.log("Get User Info");
+    
   }
   setUserInfo(name, profession) {
     this._name.textContent = name.value;

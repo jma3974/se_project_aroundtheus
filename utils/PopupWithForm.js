@@ -14,13 +14,13 @@ export default class PopupWithForm extends Popup {
     this._modalInputs.forEach((input) => {
       inputValues[input.name] = input.value;
     });
-    console.log("_get input");
+    console.log(inputValues);
     return inputValues;
   }
 
   setEventListeners() {
     super.setEventListeners();
-
+// set submit events
     this._popupForm.addEventListener("submit", (evt) => {
       evt.preventDefault();
       console.log("submit from pop up with form");
@@ -31,7 +31,6 @@ export default class PopupWithForm extends Popup {
   }
 
   closeModal() {
-    console.log("close by PopupWithForm");
     this._popupForm.reset();
     super.closeModal();
   }

@@ -52,9 +52,9 @@ const initialCards = [
   },
 ];
 
-const modalImage = document.querySelector("#modal-image");
-const cardTemplate = document.querySelector("#card-template");
-const cardListEl = document.querySelector(".destinations");
+// const modalImage = document.querySelector("#modal-image");
+// const cardTemplate = document.querySelector("#card-template");
+// const cardListEl = document.querySelector(".destinations");
 
 const addCardForm = document.querySelector("#profile-add-form");
 const editCardForm = document.querySelector("#profile-edit-form");
@@ -66,7 +66,7 @@ const profileProfession = profileElement.querySelector(".profile__profession");
 
 const openEditButton = document.querySelector(".profile__button-edit");
 
-const viewImageModal = document.querySelector("#viewImage-modal");
+//const viewImageModal = document.querySelector("#viewImage-modal");
 
 const openAddButton = document.querySelector(".profile__button-add");
 
@@ -83,14 +83,16 @@ const formValidationConfig = {
 /*                                   PROFILE                                  */
 /* -------------------------------------------------------------------------- */
 
-const editProfileForm = new PopupWithForm("#editProfile-modal", (inputs) => {
-  userInfo.getUserInfo(inputs);
+const editProfileForm = new PopupWithForm("#editProfile-modal", () => {
+  console.log("Get User Info");
+  //userInfo.getUserInfo(inputs);
 });
 
 editProfileForm.setEventListeners();
 
 openEditButton.addEventListener("click", () => {
   editProfileForm.openModal();
+  
 });
 
 const userInfo = new UserInfo({
@@ -102,7 +104,11 @@ const userInfo = new UserInfo({
 /*                                  NEW CARD                                  */
 /* -------------------------------------------------------------------------- */
 
-const newDestinationCardForm = new PopupWithForm("#newCard-modal", () => {});
+const newDestinationCardForm = new PopupWithForm("#newCard-modal", () => {
+// the function passed PopupWithForms
+console.log("a new destination card is created")
+
+});
 
 newDestinationCardForm.setEventListeners();
 

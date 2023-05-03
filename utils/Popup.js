@@ -22,7 +22,7 @@ export default class Popup {
     }
   }
 
-  // good
+  
   _handleEscUp(evt) {
     if (evt.key === "Escape") {
       this.closeModal();
@@ -30,7 +30,7 @@ export default class Popup {
   }
 
   setEventListeners() {
-    
+    //set closing modal events
     document.addEventListener("keyup", (evt) => {
       this._handleEscUp(evt);
     });
