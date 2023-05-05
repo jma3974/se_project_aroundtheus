@@ -65,6 +65,10 @@ const profileName = profileElement.querySelector(".profile__name");
 const profileProfession = profileElement.querySelector(".profile__profession");
 
 const openEditButton = document.querySelector(".profile__button-edit");
+const professionInput = document.querySelector(".modal__input-profession");
+const nameInput = document.querySelector(".modal__input-name");
+const titleInput = document.querySelector(".modal__input-title");
+const imageInput = document.querySelector(".modal__input-image");
 
 //const viewImageModal = document.querySelector("#viewImage-modal");
 
@@ -89,7 +93,9 @@ const userInfo = new UserInfo({
 });
 
 const editProfileForm = new PopupWithForm("#editProfile-modal", () => {
-  console.log("Get User Info");
+  profileName.textContent = nameInput.value;
+
+  profileProfession.textContent = professionInput.value;
   // listens for the submit
   // validates new inputs
   // adds new inputs to name and profession fields
@@ -98,13 +104,6 @@ const editProfileForm = new PopupWithForm("#editProfile-modal", () => {
 editProfileForm.setEventListeners();
 
 openEditButton.addEventListener("click", () => {
-  // gets existing values for name and profession fields
-    // from old version of code:
-    /* function fillProfileForm() {
-      nameInput.value = profileName.textContent;
-      professionInput.value = profileProfession.textContent;
-    } */
-  // populates form with those values
   editProfileForm.openModal();
 });
 
@@ -113,6 +112,12 @@ openEditButton.addEventListener("click", () => {
 /* -------------------------------------------------------------------------- */
 
 const newDestinationCardForm = new PopupWithForm("#newCard-modal", () => {
+
+const destinationTitle = titleInput.value;
+const destinationImage = imageInput.value;
+
+console.log(destinationTitle);
+console.log(destinationImage);
   // the function that handles the submit event
   // grab the inputs from the form
   // creates a new instance of the card
