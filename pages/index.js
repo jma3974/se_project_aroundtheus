@@ -62,7 +62,9 @@ const editCardForm = document.querySelector("#profile-edit-form");
 const profileElement = document.querySelector(".profile");
 
 const profileName = profileElement.querySelector(".profile__name");
+const profileNameSelector = ".profile__name";
 const profileProfession = profileElement.querySelector(".profile__profession");
+const profileProfessionSelector = ".profile__profession";
 
 const openEditButton = document.querySelector(".profile__button-edit");
 const professionInput = document.querySelector(".modal__input-profession");
@@ -89,23 +91,22 @@ const formValidationConfig = {
 /*                                   PROFILE                                  */
 /* -------------------------------------------------------------------------- */
 
-const userInfo = new UserInfo({
-  name: profileName,
-  profession: profileProfession,
-});
+const userInfo = new UserInfo(profileNameSelector, profileProfessionSelector);
+const profileData = userInfo.getUserInfo();
 
 const editProfileForm = new PopupWithForm("#editProfile-modal", () => {
   profileName.textContent = nameInput.value;
-
   profileProfession.textContent = professionInput.value;
-  // listens for the submit
-  // validates new inputs
-  // adds new inputs to name and profession fields
 });
 
 editProfileForm.setEventListeners();
 
 openEditButton.addEventListener("click", () => {
+  console.log(profileData);
+  console.log(profileName.textContent);
+  nameInput.value = profileData.name;
+  professionInput.value = profileData.profession;
+  userInfo.setUserInfo(profileData);
   editProfileForm.openModal();
 });
 
