@@ -69,6 +69,7 @@ const professionInput = document.querySelector(".modal__input-profession");
 const nameInput = document.querySelector(".modal__input-name");
 const titleInput = document.querySelector(".modal__input-title");
 const imageInput = document.querySelector(".modal__input-image");
+const cardListEl = document.querySelector(".destinations");
 const destinations = ".destinations";
 
 //const viewImageModal = document.querySelector("#viewImage-modal");
@@ -113,22 +114,11 @@ openEditButton.addEventListener("click", () => {
 /* -------------------------------------------------------------------------- */
 
 const newDestinationCardForm = new PopupWithForm("#newCard-modal", () => {
-
-
-const destinationTitle = titleInput.value;
-const destinationImage = imageInput.value;
-
-destinationSection.renderItems();
-
-console.log(destinationTitle);
-console.log(destinationImage);
-  // the function that handles the submit event
-  // grab the inputs from the form
-  // creates a new instance of the card
-  // validates inputs
-  // populates instance with inputs
-  // prepends card to the section
-  console.log("a new destination card is created");
+  const title = titleInput.value;
+  const link = imageInput.value;
+  const card = new Card({ title, link }, "#card-template");
+  const cardElement = card.getCardElement();
+  cardListEl.prepend(cardElement);
 });
 
 newDestinationCardForm.setEventListeners();
@@ -143,8 +133,6 @@ openAddButton.addEventListener("click", () => {
 
 const cardImageModal = new PopupWithImage("#viewImage-modal");
 cardImageModal.setEventListeners();
-
-
 
 const addFormValidator = new FormValidator(formValidationConfig, addCardForm);
 const editFormValidator = new FormValidator(formValidationConfig, editCardForm);
@@ -167,7 +155,8 @@ const defaultDestinationSection = new Section(
 
       return cardElement;
     },
-  },destinations
+  },
+  destinations
 );
 
 defaultDestinationSection.renderItems();
