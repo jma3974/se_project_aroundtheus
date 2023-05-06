@@ -69,6 +69,7 @@ const professionInput = document.querySelector(".modal__input-profession");
 const nameInput = document.querySelector(".modal__input-name");
 const titleInput = document.querySelector(".modal__input-title");
 const imageInput = document.querySelector(".modal__input-image");
+const destinations = ".destinations";
 
 //const viewImageModal = document.querySelector("#viewImage-modal");
 
@@ -113,8 +114,11 @@ openEditButton.addEventListener("click", () => {
 
 const newDestinationCardForm = new PopupWithForm("#newCard-modal", () => {
 
+
 const destinationTitle = titleInput.value;
 const destinationImage = imageInput.value;
+
+destinationSection.renderItems();
 
 console.log(destinationTitle);
 console.log(destinationImage);
@@ -140,24 +144,7 @@ openAddButton.addEventListener("click", () => {
 const cardImageModal = new PopupWithImage("#viewImage-modal");
 cardImageModal.setEventListeners();
 
-// This is the listener to add a new card to the list
-// addCardForm.addEventListener("submit", (evt) => {
-//   evt.preventDefault();
 
-//   const title = evt.target.title.value;
-//   const link = evt.target.link.value;
-//   const card = new Card({ title, link }, cardTemplate);
-//   const cardElement = card.getCardElement();
-//   cardListEl.prepend(cardElement);
-
-//   closeAddModal();
-//   addCardForm.reset();
-//   addFormValidator.toggleButtonState();
-// });
-
-// addCardForm.addEventListener("submit", (evt) => {
-//   evt.preventDefault();
-// });
 
 const addFormValidator = new FormValidator(formValidationConfig, addCardForm);
 const editFormValidator = new FormValidator(formValidationConfig, editCardForm);
@@ -169,7 +156,7 @@ editFormValidator.enableValidation();
 /*                              INITIALIZE CARDS                              */
 /* -------------------------------------------------------------------------- */
 
-const destinationSection = new Section(
+const defaultDestinationSection = new Section(
   {
     items: initialCards,
     renderer: (item) => {
@@ -180,8 +167,7 @@ const destinationSection = new Section(
 
       return cardElement;
     },
-  },
-  ".destinations"
+  },destinations
 );
 
-destinationSection.renderItems();
+defaultDestinationSection.renderItems();
