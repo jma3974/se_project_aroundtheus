@@ -9,7 +9,7 @@ export default class UserInfo {
       profession: this._profession.textContent,
     };
   }
-  setUserInfo({name, profession}) {
+  setUserInfo(name, profession) {
     this._name.textContent = name.value;
     this._profession.textContent = profession.value;
   }

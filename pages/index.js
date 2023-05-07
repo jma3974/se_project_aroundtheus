@@ -92,21 +92,20 @@ const formValidationConfig = {
 /* -------------------------------------------------------------------------- */
 
 const userInfo = new UserInfo(profileNameSelector, profileProfessionSelector);
-const profileData = userInfo.getUserInfo();
 
 const editProfileForm = new PopupWithForm("#editProfile-modal", () => {
   profileName.textContent = nameInput.value;
   profileProfession.textContent = professionInput.value;
+  userInfo.setUserInfo(nameInput, professionInput);
 });
 
 editProfileForm.setEventListeners();
 
 openEditButton.addEventListener("click", () => {
-  console.log(profileData);
-  console.log(profileName.textContent);
+  const profileData = userInfo.getUserInfo();
+
   nameInput.value = profileData.name;
   professionInput.value = profileData.profession;
-  userInfo.setUserInfo(profileData);
   editProfileForm.openModal();
 });
 
