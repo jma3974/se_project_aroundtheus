@@ -11,10 +11,10 @@ export default class PopupWithImage extends Popup {
     );
   }
 
-  openModal(_title, _link) {
+  openModal(title, link) {
     super.openModal();
-    this._modalImageLink.src = _link;
-    this._modalImageTitle.textContent = _title;
-    this._modalImageTitle.alt = _title;
+    this._modalImageLink.src = link;
+    this._modalImageTitle.textContent = title;
+    this._modalImageTitle.alt = title;
   }
 }

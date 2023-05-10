@@ -1,11 +1,11 @@
 // IMPORT CLASS/MODULE
-import Section from "../utils/Section.js";
+import Section from "../components/Section.js";
 import Card from "../components/Card.js";
 //import { openModal, closeModal } from "../utils/utils.js";
 import FormValidator from "../components/FormValidator.js";
-import UserInfo from "../utils/UserInfo.js";
-import PopupWithForm from "../utils/PopupWithForm.js";
-import PopupWithImage from "../utils/PopupWithImage.js";
+import UserInfo from "../components/UserInfo.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithImage from "../components/PopupWithImage.js";
 import "../pages/index.css";
 
 /* -------------------------------------------------------------------------- */
