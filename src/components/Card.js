@@ -4,8 +4,7 @@ class Card {
     this._link = link;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
-    this._modalImage = document.querySelector("#modal-image");
-    this._modalImageTitle = document.querySelector(".modal__image-title");
+   
   }
   getCardElement() {
     this._cardElement = document

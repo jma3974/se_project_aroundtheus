@@ -1,0 +1,32 @@
+Section done (2/2)
+	"could be improved" not working as expected
+PopupWithImages done (1/1)
+
+
+Popup (1/3)
+	Line 1 - done
+	
+	Line 34 - figure out error with reset
+
+	Line 37 - Done
+
+	** NEED help on these
+	
+	Questions regard setEventListeners - to Discord
+		Not exactly useful response
+
+
+
+index.js - Not done at all (0/6)
+	97 98 profile form userInfo - ??
+	117, 122, 128 ???
+151 - create a renderer function for new Section
+FormValidator.js (1/3)
+	line 20 not done
+	line 25 not done
+	line 79 done
+Card (1/2)
+	line 7 done
+	lne 43 not done
+
+    

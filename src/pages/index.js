@@ -100,8 +100,6 @@ const editProfileForm = new PopupWithForm("#editProfile-modal", () => {
   userInfo.setUserInfo(nameInput, professionInput);
 });
 
-editProfileForm.setEventListeners();
-
 openEditButton.addEventListener("click", () => {
   const profileData = userInfo.getUserInfo();
 
@@ -122,8 +120,6 @@ const newDestinationCardForm = new PopupWithForm("#newCard-modal", () => {
   cardListEl.prepend(cardElement);
 });
 
-newDestinationCardForm.setEventListeners();
-
 openAddButton.addEventListener("click", () => {
   newDestinationCardForm.openModal();
 });
@@ -133,7 +129,6 @@ openAddButton.addEventListener("click", () => {
 /* -------------------------------------------------------------------------- */
 
 const cardImageModal = new PopupWithImage("#viewImage-modal");
-cardImageModal.setEventListeners();
 
 const addFormValidator = new FormValidator(formValidationConfig, addCardForm);
 const editFormValidator = new FormValidator(formValidationConfig, editCardForm);
