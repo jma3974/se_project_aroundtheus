@@ -38,9 +38,10 @@ class Card {
 
     this._cardElement
       .querySelector(".card__image-display")
-      .addEventListener("click", () => this._handleImageClick(this)
+      .addEventListener("click", () =>
+        this._handleImageClick(this._title, this._link)
       );
-      
+
     console.log("listen for preview click");
   }
 

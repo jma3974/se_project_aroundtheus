@@ -32,5 +32,5 @@ export default class PopupWithForm extends Popup {
     console.log(this);
     this._popupForm.reset();
     super.closeModal();
-  }
+  };
 }

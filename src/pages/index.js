@@ -62,9 +62,9 @@ const editCardForm = document.querySelector("#profile-edit-form");
 
 const profileElement = document.querySelector(".profile");
 
-const profileName = profileElement.querySelector(".profile__name");
+//const profileName = profileElement.querySelector(".profile__name");
 const profileNameSelector = ".profile__name";
-const profileProfession = profileElement.querySelector(".profile__profession");
+//const profileProfession = profileElement.querySelector(".profile__profession");
 const profileProfessionSelector = ".profile__profession";
 
 const openEditButton = document.querySelector(".profile__button-edit");
@@ -72,7 +72,7 @@ const professionInput = document.querySelector(".modal__input-profession");
 const nameInput = document.querySelector(".modal__input-name");
 const titleInput = document.querySelector(".modal__input-title");
 const imageInput = document.querySelector(".modal__input-image");
-const cardListEl = document.querySelector(".destinations");
+//const cardListEl = document.querySelector(".destinations");
 const destinations = ".destinations";
 
 //const viewImageModal = document.querySelector("#viewImage-modal");
@@ -111,8 +111,8 @@ openEditButton.addEventListener("click", () => {
 /* -------------------------------------------------------------------------- */
 
 const renderCard = (item) => {
-  const card = new Card({ item }, "#card-template", (item) => {
-    cardImageModal.openModal(item._title, item._link);
+  const card = new Card({ item }, "#card-template", (title, link) => {
+    cardImageModal.openModal(title, link);
   });
   const cardElement = card.getCardElement();
 
