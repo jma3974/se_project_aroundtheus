@@ -1,10 +1,9 @@
 class Card {
-  constructor({ title, link }, cardSelector, handleImageClick) {
-    this._title = title;
-    this._link = link;
+  constructor({ item }, cardSelector, handleImageClick) {
+    this._title = item.title;
+    this._link = item.link;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
-   
   }
   getCardElement() {
     this._cardElement = document
@@ -39,7 +38,10 @@ class Card {
 
     this._cardElement
       .querySelector(".card__image-display")
-      .addEventListener("click", () => this._handleImageClick(this));
+      .addEventListener("click", () => this._handleImageClick(this)
+      );
+      
+    console.log("listen for preview click");
   }
 
   _handleLikeIcon() {

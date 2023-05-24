@@ -1,7 +1,7 @@
 // IMPORT CLASS/MODULE
 import Section from "../components/Section.js";
 import Card from "../components/Card.js";
-//import { openModal, closeModal } from "../utils/utils.js";
+
 import FormValidator from "../components/FormValidator.js";
 import UserInfo from "../components/UserInfo.js";
 import PopupWithForm from "../components/PopupWithForm.js";
@@ -54,7 +54,7 @@ const initialCards = [
 ];
 
 // const modalImage = document.querySelector("#modal-image");
-// const cardTemplate = document.querySelector("#card-template");
+const cardTemplate = document.querySelector("#card-template");
 // const cardListEl = document.querySelector(".destinations");
 
 const addCardForm = document.querySelector("#profile-add-form");
@@ -95,8 +95,6 @@ const formValidationConfig = {
 const userInfo = new UserInfo(profileNameSelector, profileProfessionSelector);
 
 const editProfileForm = new PopupWithForm("#editProfile-modal", () => {
-  profileName.textContent = nameInput.value;
-  profileProfession.textContent = professionInput.value;
   userInfo.setUserInfo(nameInput, professionInput);
 });
 
@@ -112,12 +110,22 @@ openEditButton.addEventListener("click", () => {
 /*                                  NEW CARD                                  */
 /* -------------------------------------------------------------------------- */
 
+const renderCard = (item) => {
+  const card = new Card({ item }, "#card-template", (item) => {
+    cardImageModal.openModal(item._title, item._link);
+  });
+  const cardElement = card.getCardElement();
+
+  return cardElement;
+};
+
 const newDestinationCardForm = new PopupWithForm("#newCard-modal", () => {
   const title = titleInput.value;
   const link = imageInput.value;
-  const card = new Card({ title, link }, "#card-template");
-  const cardElement = card.getCardElement();
-  cardListEl.prepend(cardElement);
+  renderCard({ title, link });
+  // const card = new Card({ title, link }, "#card-template");
+  // const cardElement = card.getCardElement();
+  // cardListEl.prepend(cardElement);
 });
 
 openAddButton.addEventListener("click", () => {
@@ -143,14 +151,7 @@ editFormValidator.enableValidation();
 const defaultDestinationSection = new Section(
   {
     items: initialCards,
-    renderer: (item) => {
-      const card = new Card(item, "#card-template", (card) => {
-        cardImageModal.openModal(card._title, card._link);
-      });
-      const cardElement = card.getCardElement();
-
-      return cardElement;
-    },
+    renderer: renderCard,
   },
   destinations
 );

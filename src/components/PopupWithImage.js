@@ -12,9 +12,15 @@ export default class PopupWithImage extends Popup {
   }
 
   openModal(title, link) {
-    super.openModal();
+    console.log("image preview open");
+    console.log()
     this._modalImageLink.src = link;
     this._modalImageTitle.textContent = title;
     this._modalImageTitle.alt = title;
+    super.openModal();
   }
+
+  closeModal = () => {
+    super.closeModal();
+  };
 }
