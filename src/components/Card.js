@@ -41,8 +41,6 @@ class Card {
       .addEventListener("click", () =>
         this._handleImageClick(this._title, this._link)
       );
-
-    console.log("listen for preview click");
   }
 
   _handleLikeIcon() {

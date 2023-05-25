@@ -119,14 +119,21 @@ const renderCard = (item) => {
   return cardElement;
 };
 
-const newDestinationCardForm = new PopupWithForm("#newCard-modal", () => {
-  const title = titleInput.value;
-  const link = imageInput.value;
-  renderCard({ title, link });
-  // const card = new Card({ title, link }, "#card-template");
-  // const cardElement = card.getCardElement();
-  // cardListEl.prepend(cardElement);
-});
+const newDestinationCardForm = new PopupWithForm(
+  "#newCard-modal",
+  (newCardInputs) => {
+    console.log(newCardInputs);
+    const card = renderCard(newCardInputs);
+    defaultDestinationSection.addItem(card);
+
+    //renderCard(newCardInputs);
+    //const title = titleInput.value;
+    //const link = imageInput.value;
+    // const card = new Card({ title, link }, "#card-template");
+    // const cardElement = card.getCardElement();
+    // cardListEl.prepend(cardElement);
+  }
+);
 
 openAddButton.addEventListener("click", () => {
   newDestinationCardForm.openModal();
