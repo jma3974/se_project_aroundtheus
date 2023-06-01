@@ -8,6 +8,12 @@ export default class PopupWithForm extends Popup {
     this._handleFormSubmit = handleFormSubmit;
   }
 
+  _handleSubmit = (evt) => {
+    evt.preventDefault();
+    this.handleFormSubmit(this._getInputValues());
+    this.closeModal;
+  };
+
   _getInputValues() {
     const inputValues = {};
 
@@ -26,6 +32,11 @@ export default class PopupWithForm extends Popup {
       this._handleFormSubmit(this._getInputValues());
       this.closeModal();
     });
+  }
+
+  _removeEventListeners() {
+    super._removeEventListeners();
+    this._closeButton.removeEventListener("submit", this._handleSubmit());
   }
 
   closeModal = () => {
