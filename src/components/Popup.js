@@ -1,11 +1,14 @@
 export default class Popup {
   constructor(modalSelector) {
     this._modalElement = document.querySelector(modalSelector);
+    this._submitButtonDisabled =
+      this._modalElement.querySelector(".modal__button");
     this._closeButton = this._modalElement.querySelector(".modal__close");
     this.closeModal = this.closeModal.bind(this);
   }
 
   openModal() {
+    this._submitButtonDisabled.classList.add("modal__button_disabled");
     this._modalElement.classList.add("modal_opened");
     this._setEventListeners();
   }
