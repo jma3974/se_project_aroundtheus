@@ -136,6 +136,7 @@ const newDestinationCardForm = new PopupWithForm(
 );
 
 openAddButton.addEventListener("click", () => {
+  addFormValidator.toggleButtonState();
   newDestinationCardForm.openModal();
 });
 

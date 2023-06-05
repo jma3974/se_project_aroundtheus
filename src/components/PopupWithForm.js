@@ -12,7 +12,7 @@ export default class PopupWithForm extends Popup {
     evt.preventDefault();
     console.log("submit happening");
     this._handleFormSubmit(this._getInputValues());
-    this.closeModal;
+    this.closeModal();
   };
 
   _getInputValues() {
@@ -38,7 +38,7 @@ export default class PopupWithForm extends Popup {
 
   _removeEventListeners() {
     super._removeEventListeners();
-    this._closeButton.removeEventListener("submit", this._handleSubmit());
+    this._closeButton.removeEventListener("submit", this._handleSubmit);
   }
 
   closeModal = () => {
