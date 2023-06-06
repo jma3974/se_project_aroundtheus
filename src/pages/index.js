@@ -123,7 +123,6 @@ const renderCard = (item) => {
 const newDestinationCardForm = new PopupWithForm(
   "#newCard-modal",
   (newCardInputs) => {
-    console.log(newCardInputs);
     const card = renderCard(newCardInputs);
     defaultDestinationSection.addItem(card);
 

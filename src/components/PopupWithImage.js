@@ -12,7 +12,6 @@ export default class PopupWithImage extends Popup {
   }
 
   openModal(title, link) {
-    console.log("image preview open");
     this._modalImageLink.src = link;
     this._modalImageTitle.textContent = title;
     this._modalImageTitle.alt = title;

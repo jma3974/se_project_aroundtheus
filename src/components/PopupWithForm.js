@@ -10,7 +10,6 @@ export default class PopupWithForm extends Popup {
 
   _handleSubmit = (evt) => {
     evt.preventDefault();
-    console.log("submit happening");
     this._handleFormSubmit(this._getInputValues());
     this.closeModal();
   };
@@ -27,7 +26,6 @@ export default class PopupWithForm extends Popup {
   _setEventListeners() {
     super._setEventListeners();
     // set submit events
-    console.log("set event listener submit");
     this._popupForm.addEventListener("submit", this._handleSubmit);
     // this._popupForm.addEventListener("submit", (evt) => {
     //   evt.preventDefault();
@@ -42,7 +40,6 @@ export default class PopupWithForm extends Popup {
   }
 
   closeModal = () => {
-    console.log(this);
     this._popupForm.reset();
     super.closeModal();
   };
