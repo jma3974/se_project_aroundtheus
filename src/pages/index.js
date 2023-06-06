@@ -70,8 +70,8 @@ const profileProfessionSelector = ".profile__profession";
 const openEditButton = document.querySelector(".profile__button-edit");
 const professionInput = document.querySelector(".modal__input-profession");
 const nameInput = document.querySelector(".modal__input-name");
-const titleInput = document.querySelector(".modal__input-title");
-const imageInput = document.querySelector(".modal__input-image");
+//const titleInput = document.querySelector(".modal__input-title");
+//const imageInput = document.querySelector(".modal__input-image");
 //const cardListEl = document.querySelector(".destinations");
 const destinations = ".destinations";
 
@@ -95,11 +95,11 @@ const formValidationConfig = {
 const userInfo = new UserInfo(profileNameSelector, profileProfessionSelector);
 
 const editProfileForm = new PopupWithForm("#editProfile-modal", () => {
-  userInfo.setUserInfo(nameInput, professionInput);
+  userInfo.setUserInfo(nameInput.value, professionInput.value);
 });
 
 openEditButton.addEventListener("click", () => {
-  addFormValidator.toggleButtonState();
+  editFormValidator.toggleButtonState();
   const profileData = userInfo.getUserInfo();
 
   nameInput.value = profileData.name;
