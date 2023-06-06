@@ -99,6 +99,7 @@ const editProfileForm = new PopupWithForm("#editProfile-modal", () => {
 });
 
 openEditButton.addEventListener("click", () => {
+  addFormValidator.toggleButtonState();
   const profileData = userInfo.getUserInfo();
 
   nameInput.value = profileData.name;
