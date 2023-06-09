@@ -94,8 +94,9 @@ const formValidationConfig = {
 
 const userInfo = new UserInfo(profileNameSelector, profileProfessionSelector);
 
-const editProfileForm = new PopupWithForm("#editProfile-modal", () => {
-  userInfo.setUserInfo(nameInput.value, professionInput.value);
+const editProfileForm = new PopupWithForm("#editProfile-modal", (values) => {
+  userInfo.setUserInfo(values.name, values.profession);
+  
 });
 
 openEditButton.addEventListener("click", () => {
