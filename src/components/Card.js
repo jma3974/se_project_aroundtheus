@@ -1,10 +1,15 @@
 class Card {
   constructor({ item }, cardSelector, handleImageClick) {
-    this._title = item.title;
+    this._title = item.name;
     this._link = item.link;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
+   // console.log(item);
+    this._likes = item.likes;
+    this._ownerId = item.owner._id;
   }
+
+  // compare personal ID to ID on card for delete
   getCardElement() {
     this._cardElement = document
       .querySelector(this._cardSelector)
@@ -17,6 +22,8 @@ class Card {
     this._cardImageEl = this._cardElement.querySelector(".card__image-card");
     this._cardImageEl.src = this._link;
     this._cardImageEl.alt = this._title;
+    this._cardLikesEl = this._cardElement.querySelector(".card__button-count");
+    this._cardLikesEl.textContent = this._getLikes();
 
     this._setEventListeners();
 
@@ -52,6 +59,10 @@ class Card {
   _handleDeleteCard() {
     this._cardElement.remove();
     this._cardElement = null;
+  }
+  _getLikes() {
+   // console.log(this._likes.length);
+    return this._likes.length;
   }
 }
 
