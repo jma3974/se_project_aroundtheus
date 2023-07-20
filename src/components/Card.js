@@ -10,6 +10,8 @@ class Card {
   }
 
   // compare personal ID to ID on card for delete
+// if this._ownerId =
+
   getCardElement() {
     this._cardElement = document
       .querySelector(this._cardSelector)

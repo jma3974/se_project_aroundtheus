@@ -69,10 +69,11 @@ const editAvatarForm = new PopupWithForm("#editAvatar-modal", (values) => {
   userInfo.setAvatar(values.src);
 });
 
-editAvatarForm.addEventListener("click", () => {
+openAvatarButton.addEventListener("click", () => {
   editAvatarValidator.toggleButtonState();
   const avatarData = userInfo.getAvatar();
   avatarInput.src = avatarData.src;
+  editAvatarForm.openModal
 });
 
 /* -------------------------------------------------------------------------- */
