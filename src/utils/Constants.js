@@ -46,12 +46,13 @@ export const profileElement = document.querySelector(".profile");
 export const profileNameSelector = ".profile__name";
 export const profileProfessionSelector = ".profile__profession";
 export const openEditButton = document.querySelector(".profile__button-edit");
-export const openAvatarButton = document.querySelector(".profile__image-edit")
+export const openAvatarButton = document.querySelector(".profile__image-edit");
+export const profileImageSelector = ".profile__image";
 export const professionInput = document.querySelector(
   ".modal__input-profession"
 );
 export const nameInput = document.querySelector(".modal__input-name");
-export const avatarInput = document.querySelector("#avatar-url");
+export const avatarInput = document.querySelector(".modal__input-imageUrl");
 export const destinations = ".destinations";
 export const openAddButton = document.querySelector(".profile__button-add");
 export const myId = "a525747a-1396-48dd-bc2a-662500b37c81"

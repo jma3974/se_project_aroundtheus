@@ -34,10 +34,20 @@ export default class Api {
     });
   }
 
-  // use PATCH method
-
-  // updateUserAvatar()
-  // use PATCH method
+  updateUserAvatar()
+  {
+    fetch(`${this._baseUrl}/users/me`, {
+      method: "PATCH",
+      headers: {
+        authorization: "c56e30dc-2883-4270-a59e-b2f7bae969c6",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        avatar: "Marie Skłodowska Curie",
+        
+      }),
+    });
+  }
 
   // addDestinationCard()
   // use POST method

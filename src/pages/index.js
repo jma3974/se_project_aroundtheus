@@ -16,12 +16,16 @@ import {
   openAddButton,
   avatarForm,
   openAvatarButton,
+  profileImage,
+  profileImageSelector,
 } from "../utils/Constants.js";
 import FormValidator from "../components/FormValidator.js";
 import UserInfo from "../components/UserInfo.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithDelete from "../components/PopupWithDelete.js";
 import "../pages/index.css";
+import PopupWithAvatar from "../components/PopupwithAvatar.js";
 
 // displaycards = new Api {}
 
@@ -45,9 +49,9 @@ const formValidationConfig = {
 /* -------------------------------------------------------------------------- */
 /*                                   PROFILE                                  */
 /* -------------------------------------------------------------------------- */
-const userInfo = new UserInfo(profileNameSelector, profileProfessionSelector);
+const userInfo = new UserInfo(profileNameSelector, profileProfessionSelector, profileImageSelector);
 api.getUserInfo().then((user) => {
-  console.log(user);
+  console.log(user.avatar);
   userInfo.setUserInfo(user.name, user.about);
   userInfo.setAvatar(user.avatar);
 });
@@ -62,18 +66,23 @@ openEditButton.addEventListener("click", () => {
 
   nameInput.value = profileData.name;
   professionInput.value = profileData.profession;
+  console.log(professionInput.value);
+  console.log(nameInput)
   editProfileForm.openModal();
 });
 
-const editAvatarForm = new PopupWithForm("#editAvatar-modal", (values) => {
+const editAvatarForm = new PopupWithAvatar("#editAvatar-modal", (values) => {
   userInfo.setAvatar(values.src);
 });
+
+
 
 openAvatarButton.addEventListener("click", () => {
   editAvatarValidator.toggleButtonState();
   const avatarData = userInfo.getAvatar();
-  avatarInput.src = avatarData.src;
-  editAvatarForm.openModal
+  avatarInput.value = avatarData.src;
+  console.log(avatarData);
+  editAvatarForm.openModal();
 });
 
 /* -------------------------------------------------------------------------- */
@@ -127,17 +136,3 @@ addFormValidator.enableValidation();
 editFormValidator.enableValidation();
 editAvatarValidator.enableValidation();
 
-/* -------------------------------------------------------------------------- */
-/*                              INITIALIZE CARDS                              */
-/* -------------------------------------------------------------------------- */
-
-// console.log(initialCards);
-// const defaultDestinationSection = new Section(
-//   {
-//     items: [],
-//     renderer: renderCard,
-//   },
-//   destinations
-// );
-
-// defaultDestinationSection.renderItems();

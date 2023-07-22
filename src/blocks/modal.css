@@ -31,6 +31,20 @@
     z-index: 10;
 }
 
+.modal__container-avatar {
+  position: absolute;
+  width: 430px;
+  height: 272px;
+  left: 50%;
+  top: 50%;
+  border-radius: 10px;
+  background-color: white;
+  margin-left: -215px;
+  margin-top: -165px;
+  font-family: Inter, Arial, sans-serif;
+  z-index: 10;
+}
+
 .modal__header {
     font-size: 24px;
     font-weight: 900;
@@ -152,6 +166,17 @@ line-height: 1.2;
     border: 0;
         background-color: white;
     }
+
+    .modal__container-avatar {
+      width: 282px;
+      height: 272px;
+  margin-left: -141px;
+  margin-top: -161px;
+  padding: 0;
+  border: 0;
+      background-color: white;
+  }
+
     
   .modal__header {
     font-size: 18px;
