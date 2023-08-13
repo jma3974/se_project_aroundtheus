@@ -40,6 +40,7 @@
   background-color: rgba(0, 0, 0, 0);
   padding: 0;
   transition: opacity ease-in-out 1s;
+  border: none;
 }
 
 .profile__image-overlay {
@@ -58,11 +59,13 @@
 .profile__image-edit:hover .profile__image {
   opacity: 0.4;
   cursor: pointer;
+  
 }
 
 .profile__image-edit:hover .profile__image-overlay {
   opacity: 1;
   cursor: pointer;
+  
 }
 
 

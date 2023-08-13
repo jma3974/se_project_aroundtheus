@@ -18,7 +18,7 @@ export default class UserInfo {
 
 getAvatar() {
   return {
-    src: this._avatarEl
+    src: this._avatarEl.src
     
   }
 }

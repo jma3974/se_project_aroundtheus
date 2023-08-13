@@ -23,11 +23,10 @@ import FormValidator from "../components/FormValidator.js";
 import UserInfo from "../components/UserInfo.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
-import PopupWithDelete from "../components/PopupWithDelete.js";
 import "../pages/index.css";
 import PopupWithAvatar from "../components/PopupwithAvatar.js";
+import PopupWithDelete from "../components/PopupwithDelete.js";
 
-// displaycards = new Api {}
 
 const api = new Api({
   baseUrl: "https://around.nomoreparties.co/v1/cohort-3-en",
@@ -51,9 +50,10 @@ const formValidationConfig = {
 /* -------------------------------------------------------------------------- */
 const userInfo = new UserInfo(profileNameSelector, profileProfessionSelector, profileImageSelector);
 api.getUserInfo().then((user) => {
-  console.log(user.avatar);
+  
   userInfo.setUserInfo(user.name, user.about);
   userInfo.setAvatar(user.avatar);
+  userId = user._id;
 });
 
 const editProfileForm = new PopupWithForm("#editProfile-modal", (values) => {
@@ -81,8 +81,7 @@ openAvatarButton.addEventListener("click", () => {
   editAvatarValidator.toggleButtonState();
   const avatarData = userInfo.getAvatar();
   avatarInput.value = avatarData.src;
-  console.log(avatarData);
-  editAvatarForm.openModal();
+    editAvatarForm.openModal();
 });
 
 /* -------------------------------------------------------------------------- */
