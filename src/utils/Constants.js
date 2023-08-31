@@ -55,4 +55,5 @@ export const nameInput = document.querySelector(".modal__input-name");
 export const avatarInput = document.querySelector(".modal__input-imageUrl");
 export const destinations = ".destinations";
 export const openAddButton = document.querySelector(".profile__button-add");
-export const myId = "a525747a-1396-48dd-bc2a-662500b37c81"
+export const myId = "a525747a-1396-48dd-bc2a-662500b37c81";
+export const deleteButtonSelector ="#deleteCard-button";

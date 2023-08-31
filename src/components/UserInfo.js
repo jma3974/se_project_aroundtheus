@@ -11,9 +11,11 @@ export default class UserInfo {
       profession: this._profession.textContent,
     };
   }
-  setUserInfo(name, profession) {
+
+  setUserInfo(name, profession, userID) {
     this._name.textContent = name;
     this._profession.textContent = profession;
+    this._userID = userID
   }
 
 getAvatar() {

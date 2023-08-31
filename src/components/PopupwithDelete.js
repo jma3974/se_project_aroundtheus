@@ -1,10 +1,11 @@
 import Popup from "./Popup.js";
 
 export default class PopupWithDelete extends Popup {
-  constructor(modalSelector, handleFormSubmit) {
+  constructor(modalSelector, deleteButtonSelector, handleFormSubmit) {
     super(modalSelector);
     this._popupForm = this._modalElement.querySelector(".modal__form");
     this._modalInputs = this._popupForm.querySelectorAll(".modal__input");
+    this._deleteButtonSelector = deleteButtonSelector;
     this._handleFormSubmit = handleFormSubmit;
   }
 
