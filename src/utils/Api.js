@@ -20,38 +20,25 @@ export default class Api {
     );
   }
 
-  initializePage(){
-return Promise.all([this.getUserInfo(), this.getInitialCards])
-.then(([userInfo, initialCards]) => {
-  return {userInfo, initialCards};
-}
-);
-  }
 
   updateUserInfo() {
     fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
-      headers: {
-        authorization: "c56e30dc-2883-4270-a59e-b2f7bae969c6",
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
       body: JSON.stringify({
-        name: "Marie Skłodowska Curie",
-        about: "Physicist and Chemist",
+        name: info.name,
+        about: info.about,
       }),
-    });
+    }).then(this._checkResponse);
   }
 
   updateUserAvatar()
   {
-    fetch(`${this._baseUrl}/users/me`, {
+    fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
-      headers: {
-        authorization: "c56e30dc-2883-4270-a59e-b2f7bae969c6",
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
       body: JSON.stringify({
-        avatar: "Marie Skłodowska Curie",
+        avatar: info.avatar,
         
       }),
     });
@@ -61,29 +48,38 @@ return Promise.all([this.getUserInfo(), this.getInitialCards])
 
            fetch(`${this._baseUrl}/cards`, {
           method: "POST",
-          headers: {
-            authorization: "c56e30dc-2883-4270-a59e-b2f7bae969c6",
-            "Content-Type": "application/json",
-          },
+          headers: this._headers,
           body: JSON.stringify({
-            avatar: "Marie Skłodowska Curie",
-            
+            name: cards.name,
+            link: cards.link,
           }),
-        });
-
-
-
-
+        }).then(this._checkResponse);
 
 
       }
 
     
-  delDestinationCard(){
-
+  delDestinationCard(card){
+    fetch(`${this._baseUrl}/cards/${card}`, {
+      method: "DELETE",
+      headers: this._headers,
+    }).then(this._checkResponse);
   }
-  // use DLETE method
 
-  // add remove likes
-  // use PUT and DLETE methods
+  removeCardLikes(card) {
+    return fetch(`${this._baseUrl}/cards/${card}/likes`, {
+      method: "DELETE",
+      headers: this._headers,
+    }).then(this._checkResponse);
+  }
+
+  addCardLikes(card) {
+    return fetch(`${this._baseUrl}/cards/${card}/likes`, {
+      method: "PUT",
+      headers: this._headers,
+    }).then(this._checkResponse);
+  }
+  
+  
+ 
 }

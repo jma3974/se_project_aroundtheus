@@ -49,17 +49,24 @@ const formValidationConfig = {
 
 // Creates and instance of UserInfo and pulls the respective user data
 const userInfo = new UserInfo(profileNameSelector, profileProfessionSelector, profileImageSelector);
+
 api.getUserInfo().then((user) => {
   
   userInfo.setUserInfo(user.name, user.about);
   userInfo.setAvatar(user.avatar);
-  userId = user._id;
+  //userId = user._id;
 });
 
 // Creates and instance of popupform to access methods for forms
 const editProfileForm = new PopupWithForm("#editProfile-modal", (values) => {
   userInfo.setUserInfo(values.name, values.profession);
 });
+
+const avatarEditForm = new PopupWithForm("editAvatar-modal", (values) => {
+  userInfo.setAvatar(values.avatar);
+}
+
+)
 
 // Opens the form for name and profession
 openEditButton.addEventListener("click", () => {
@@ -90,7 +97,6 @@ openAvatarButton.addEventListener("click", () => {
 
 // Pulls and populates the list of cards currently in the database
 api.getInitialCards().then((cards) => {
-  console.log(cards);
   const defaultDestinationSection = new Section(
     {
       items: cards,
@@ -103,12 +109,13 @@ api.getInitialCards().then((cards) => {
 
 // Meant to fulfill Promise for pulling user info and cards
     // Is this the correct approach?
-api.initializePage();
+// api.initializePage();
 
 
 // Creates an instance to create an indivudal card
 const renderCard = (item) => {
-  const card = new Card({ item }, "#card-template", (title, link) => {
+  const card = new Card(
+    { item }, "#card-template", (title, link) => {
     cardImageModal.openModal(title, link);
   });
   const cardElement = card.getCardElement();

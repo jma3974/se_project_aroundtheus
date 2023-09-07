@@ -1,11 +1,13 @@
 class Card {
-  constructor({ item }, cardSelector, handleImageClick) {
+  constructor({ item }, cardSelector, handleImageClick, handleDeleteCard) {
     this._title = item.name;
     this._link = item.link;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
     this._likes = item.likes;
     this._ownerId = item.owner._id;
+    this._handleDeleteCard = handleDeleteCard;
+
   }
 
   // compare personal ID to ID on card for delete
