@@ -26,7 +26,6 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import "../pages/index.css";
 import PopupWithAvatar from "../components/PopupwithAvatar.js";
-import PopupWithConfirm from "../components/PopupwithConfirm.js";
 import PopupWithConfirm from "../components/PopupWithConfirm.js";
 
 // Creates and instance of API to access methods from
@@ -38,37 +37,39 @@ const api = new Api({
   },
 });
 
+// Creates an instance to create an indivudal card
+const renderCard = (item) => {
+  const card = new Card(
+    { item },
+    "#card-template",
+    (title, link) => {
+      cardImageModal.openModal(title, link);
+    },
+    (card, cardId) => {
+      deleteCardConfirm.openModal(card, cardId);
+    }
+  );
+  const cardElement = card.getCardElement();
+
+  return cardElement;
+};
+
 // API promise to load cards and profile information
 Promise.all([api.getUserInfo(), api.getInitialCards()])
-.then (([userData, cards]) => {
-
-
-
-
-
-})
-
-api.getUserInfo().then((user) => {
-  
-  userInfo.setUserInfo(user.name, user.about);
-  userInfo.setAvatar(user.avatar);
-  //userId = user._id;
-});
-
-
-// Pulls and populates the list of cards currently in the database
-api.getInitialCards().then((cards) => {
-  const defaultDestinationSection = new Section(
-    {
-      items: cards,
-      renderer: renderCard,
-    },
-    destinations
-  );
-  defaultDestinationSection.renderItems();
-});
-
-
+  .then(([userData, cards]) => {
+    userInfo.setUserInfo({ userData });
+    userInfo.setAvatar(userData.avatar);
+    // userId = userData._id;
+    const defaultDestinationSection = new Section(
+      {
+        items: cards,
+        renderer: renderCard,
+      },
+      destinations
+    );
+    defaultDestinationSection.renderItems();
+  })
+  .catch(console.error);
 
 // Creates a singular location for the various classes involved in validation
 const formValidationConfig = {
@@ -80,79 +81,68 @@ const formValidationConfig = {
   errorClass: "modal__error_visible",
 };
 
-
 // Creates and instance of UserInfo and pulls the respective user data
-const userInfo = new UserInfo(profileNameSelector, profileProfessionSelector, profileImageSelector);
-
-
+const userInfo = new UserInfo(
+  profileNameSelector,
+  profileProfessionSelector,
+  profileImageSelector
+);
 
 // Creates and instance of popupform to access methods for forms
 const editProfileForm = new PopupWithForm("#editProfile-modal", (values) => {
-  userInfo.setUserInfo(values.name, values.profession);
+  console.log(values);
+  api.updateUserInfo(values).then((res) => {
+    console.log(values);
+    const result = {
+      userData: { name: values.name, about: values.profession },
+    };
+    userInfo.setUserInfo(result);
+  });
 });
 
 // Creates an instance for accessing methods for updating the avatar image
-const editAvatarForm = new PopupWithForm("editAvatar-modal", (values) => {
+const editAvatarForm = new PopupWithForm("#editAvatar-modal", (values) => {
   userInfo.setAvatar(values.avatar);
-}
-
-)
+});
 // Opens the form for Avatar
 openAvatarButton.addEventListener("click", () => {
   editAvatarValidator.toggleButtonState();
   const avatarData = userInfo.getAvatar();
-  editAvatarForm
+  editAvatarForm;
   avatarInput.value = avatarData.avatar;
   console.log(avatarData.avatar);
   editAvatarForm.openModal();
-})
-
+});
 
 // Opens the form for name and profession
 openEditButton.addEventListener("click", () => {
   editFormValidator.toggleButtonState();
   const profileData = userInfo.getUserInfo();
-  editProfileForm
   professionInput.value = profileData.profession;
   console.log(professionInput.value);
-  console.log(nameInput)
+  console.log(nameInput);
   editProfileForm.openModal();
 });
-
-
-
-
 
 // Opens the form fo updating the avatar image
 openAvatarButton.addEventListener("click", () => {
   editAvatarValidator.toggleButtonState();
   const avatarData = userInfo.getAvatar();
   avatarInput.value = avatarData.src;
-    editAvatarForm.openModal();
+  editAvatarForm.openModal();
 });
-
-
-
-
-
-
-// Creates an instance to create an indivudal card
-const renderCard = (item) => {
-  const card = new Card(
-    { item }, "#card-template", (title, link) => {
-    cardImageModal.openModal(title, link);
-  });
-  const cardElement = card.getCardElement();
-
-  return cardElement;
-};
 
 // For gaining access to methods within popup form
 const newDestinationCardForm = new PopupWithForm(
   "#newCard-modal",
   (newCardInputs) => {
-    const card = renderCard(newCardInputs);
+    console.log(newCardInputs)
+    api.addDestinationCard(newCardInputs).then((res) => {
+      console.log(res);
+      const card = renderCard(res);
     defaultDestinationSection.addItem(card);
+    });
+    
   }
 );
 
@@ -162,11 +152,15 @@ openAddButton.addEventListener("click", () => {
   newDestinationCardForm.openModal();
 });
 
-
 // Creates an instance of a delete confirmation
 const deleteCardConfirm = new PopupWithConfirm(
-  deleteButtonSelector
-)
+  "#deleteCard-modal",
+  (card, cardId) => {
+    return api.delDestinationCard(cardId).then(() => {
+      card.handleRemoveCard();
+    });
+  }
+);
 
 const cardImageModal = new PopupWithImage("#viewImage-modal");
 
@@ -177,4 +171,3 @@ const editAvatarValidator = new FormValidator(formValidationConfig, avatarForm);
 addFormValidator.enableValidation();
 editFormValidator.enableValidation();
 editAvatarValidator.enableValidation();
-

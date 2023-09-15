@@ -20,47 +20,40 @@ export default class Api {
     );
   }
 
-
-  updateUserInfo() {
-    fetch(`${this._baseUrl}/users/me`, {
+  updateUserInfo(info) {
+    return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
         name: info.name,
-        about: info.about,
+        about: info.profession,
       }),
     }).then(this._checkResponse);
   }
 
-  updateUserAvatar()
-  {
+  updateUserAvatar() {
     fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
       body: JSON.stringify({
         avatar: info.avatar,
-        
       }),
     });
   }
 
-  addDestinationCard() {
+  addDestinationCard(cards) {
+    return fetch(`${this._baseUrl}/cards`, {
+      method: "POST",
+      headers: this._headers,
+      body: JSON.stringify({
+        name: cards.title,
+        link: cards.link,
+      }),
+    }).then(this._checkResponse);
+  }
 
-           fetch(`${this._baseUrl}/cards`, {
-          method: "POST",
-          headers: this._headers,
-          body: JSON.stringify({
-            name: cards.name,
-            link: cards.link,
-          }),
-        }).then(this._checkResponse);
-
-
-      }
-
-    
-  delDestinationCard(card){
-    fetch(`${this._baseUrl}/cards/${card}`, {
+  delDestinationCard(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}`, {
       method: "DELETE",
       headers: this._headers,
     }).then(this._checkResponse);
@@ -79,7 +72,4 @@ export default class Api {
       headers: this._headers,
     }).then(this._checkResponse);
   }
-  
-  
- 
 }
