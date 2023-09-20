@@ -2,12 +2,13 @@ class Card {
   constructor({ item }, cardSelector, handleImageClick, handleDeleteClick) {
     this._title = item.name;
     this._link = item.link;
+    this.id = item._id;
     this._cardSelector = cardSelector;
-    this._handleImageClick = handleImageClick;
     this._likes = item.likes;
     this._ownerId = item.owner._id;
+    this._handleImageClick = handleImageClick;
     this._handleDeleteClick = handleDeleteClick;
-    this.id = item._id;
+    
 
   }
 
@@ -69,7 +70,7 @@ class Card {
   _getLikes() {
    
     return this._likes.length;
-  }
+      }
 
 _getUserID() {
   return this._ownerId._id;

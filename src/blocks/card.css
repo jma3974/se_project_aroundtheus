@@ -54,7 +54,9 @@ justify-content: center;
   cursor: pointer;
 }
 
-
+.card__buttin-del-inactive {
+  display: none;
+}
 
 .card__image-display {
   border: none;

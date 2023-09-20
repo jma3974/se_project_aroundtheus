@@ -37,7 +37,7 @@ const api = new Api({
   },
 });
 
-// Creates an instance to create an indivudal card
+// Creates an instance to create an individual card
 const renderCard = (item) => {
   const card = new Card(
     { item },
@@ -59,7 +59,8 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([userData, cards]) => {
     userInfo.setUserInfo({ userData });
     userInfo.setAvatar(userData.avatar);
-    // userId = userData._id;
+    console.log(userData.avatar);
+    console.log(cards);
     const defaultDestinationSection = new Section(
       {
         items: cards,
@@ -90,9 +91,7 @@ const userInfo = new UserInfo(
 
 // Creates and instance of popupform to access methods for forms
 const editProfileForm = new PopupWithForm("#editProfile-modal", (values) => {
-  console.log(values);
   api.updateUserInfo(values).then((res) => {
-    console.log(values);
     const result = {
       userData: { name: values.name, about: values.profession },
     };
@@ -102,15 +101,22 @@ const editProfileForm = new PopupWithForm("#editProfile-modal", (values) => {
 
 // Creates an instance for accessing methods for updating the avatar image
 const editAvatarForm = new PopupWithForm("#editAvatar-modal", (values) => {
-  userInfo.setAvatar(values.avatar);
+  api.updateUserAvatar(values.avatar).then((res) =>{
+    const result = {
+      avatar: values.avatar
+      // userData: {avatar: values.avatar}
+    };
+    console.log(result);
+    userInfo.setAvatar(values.avatar);
+  } )
+  
 });
 // Opens the form for Avatar
 openAvatarButton.addEventListener("click", () => {
   editAvatarValidator.toggleButtonState();
   const avatarData = userInfo.getAvatar();
-  editAvatarForm;
-  avatarInput.value = avatarData.avatar;
-  console.log(avatarData.avatar);
+  avatarInput.value = avatarData.src;
+  console.log(avatarData);
   editAvatarForm.openModal();
 });
 
@@ -118,31 +124,24 @@ openAvatarButton.addEventListener("click", () => {
 openEditButton.addEventListener("click", () => {
   editFormValidator.toggleButtonState();
   const profileData = userInfo.getUserInfo();
+  nameInput.value = profileData.name;
   professionInput.value = profileData.profession;
-  console.log(professionInput.value);
-  console.log(nameInput);
+  console.log(nameInput.value);
   editProfileForm.openModal();
+  console.log("edit modal open")
 });
 
-// Opens the form fo updating the avatar image
-openAvatarButton.addEventListener("click", () => {
-  editAvatarValidator.toggleButtonState();
-  const avatarData = userInfo.getAvatar();
-  avatarInput.value = avatarData.src;
-  editAvatarForm.openModal();
-});
 
 // For gaining access to methods within popup form
 const newDestinationCardForm = new PopupWithForm(
   "#newCard-modal",
   (newCardInputs) => {
-    console.log(newCardInputs)
+    console.log(newCardInputs);
     api.addDestinationCard(newCardInputs).then((res) => {
-      console.log(res);
+      console.log(newCardInputs);
       const card = renderCard(res);
-    defaultDestinationSection.addItem(card);
+      defaultDestinationSection.addItem(card);
     });
-    
   }
 );
 

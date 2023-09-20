@@ -13,6 +13,7 @@ export default class UserInfo {
 
   setUserInfo({ userData }) {
     console.log(userData)
+    console.log(userData.avatar)
 ;    this._name.textContent = userData.name;
     this._profession.textContent = userData.about;
     this._userID = userData._id;
@@ -25,6 +26,7 @@ export default class UserInfo {
   }
 
   setAvatar(avatar) {
+    console.log(avatar.avatar);
     this._avatarEl.src = avatar;
   }
 }
