@@ -31,13 +31,11 @@ export default class Api {
     }).then(this._checkResponse);
   }
 
-  updateUserAvatar() {
+  updateUserAvatar(info) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
-      body: JSON.stringify({
-        avatar: info.avatar,
-      }),
+      body: JSON.stringify(info),
     }).then(this._checkResponse);
   }
 
@@ -59,16 +57,18 @@ export default class Api {
     }).then(this._checkResponse);
   }
 
-  removeCardLikes(card) {
-    return fetch(`${this._baseUrl}/cards/${card}/likes`, {
-      method: "DELETE",
-      headers: this._headers,
-    }).then(this._checkResponse);
-  }
+  // removeCardLikes(card) {
+  //   return fetch(`${this._baseUrl}/cards/${card}/likes`, {
+  //     method: "DELETE",
+  //     headers: this._headers,
+  //   }).then(this._checkResponse);
+  // }
 
-  addCardLikes(card) {
-    return fetch(`${this._baseUrl}/cards/${card}/likes`, {
-      method: "PUT",
+// https://around.nomoreparties.co/v1/groupId/cards/likes/cardId
+
+  updateCardLikes(cardId, liked) {
+    return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+      method: liked ? "DELETE" : "PUT",
       headers: this._headers,
     }).then(this._checkResponse);
   }

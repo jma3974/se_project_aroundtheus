@@ -25,7 +25,7 @@ import UserInfo from "../components/UserInfo.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import "../pages/index.css";
-import PopupWithAvatar from "../components/PopupwithAvatar.js";
+// import PopupWithAvatar from "../components/PopupwithAvatar.js";
 import PopupWithConfirm from "../components/PopupWithConfirm.js";
 
 // Creates and instance of API to access methods from
@@ -40,17 +40,25 @@ const api = new Api({
 // Creates an instance to create an individual card
 const renderCard = (item) => {
   const card = new Card(
-    { item },
-    "#card-template",
-    (title, link) => {
+    { item }, //card details
+    myId, // my owner id
+    "#card-template", // card selector
+    (title, link) => { //handle click on image
       cardImageModal.openModal(title, link);
     },
-    (card, cardId) => {
+    (card, cardId) => { // handle click on trash bin
       deleteCardConfirm.openModal(card, cardId);
+    },
+    (_id, isLiked) => { // handle clicking like/unlike
+      api.updateCardLikes(item._id, isLiked)
     }
   );
   const cardElement = card.getCardElement();
-
+  console.log(item._id);
+  console.log(item.name);
+  console.log(item.likes);
+  
+  
   return cardElement;
 };
 
@@ -60,7 +68,7 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
     userInfo.setUserInfo({ userData });
     userInfo.setAvatar(userData.avatar);
     console.log(userData.avatar);
-    console.log(cards);
+    
     const defaultDestinationSection = new Section(
       {
         items: cards,
@@ -101,7 +109,7 @@ const editProfileForm = new PopupWithForm("#editProfile-modal", (values) => {
 
 // Creates an instance for accessing methods for updating the avatar image
 const editAvatarForm = new PopupWithForm("#editAvatar-modal", (values) => {
-  api.updateUserAvatar(values.avatar).then((res) =>{
+  api.updateUserAvatar(values).then((res) =>{
     const result = {
       avatar: values.avatar
       // userData: {avatar: values.avatar}

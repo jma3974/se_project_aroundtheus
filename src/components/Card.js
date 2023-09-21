@@ -1,19 +1,28 @@
 class Card {
-  constructor({ item }, cardSelector, handleImageClick, handleDeleteClick) {
+  constructor(
+    { item },
+    ownerId,
+    cardSelector,
+    handleImageClick,
+    handleDeleteClick,
+    handleLike
+   // handleUnlike
+  ) {
     this._title = item.name;
     this._link = item.link;
-    this.id = item._id;
+    this._cardOwnerId = item.owner._id;
+    this._id = item._id;
     this._cardSelector = cardSelector;
     this._likes = item.likes;
-    this._ownerId = item.owner._id;
+    this._ownerId = ownerId;
     this._handleImageClick = handleImageClick;
     this._handleDeleteClick = handleDeleteClick;
+    this._handleLike = handleLike;
     
-
   }
 
   // compare personal ID to ID on card for delete
-// if this._ownerId =
+  // if this._ownerId =
 
   getCardElement() {
     this._cardElement = document
@@ -29,12 +38,17 @@ class Card {
     this._cardImageEl.alt = this._title;
     this._cardLikesEl = this._cardElement.querySelector(".card__button-count");
     this._cardLikesEl.textContent = this._getLikes();
-   
-
+    this._trashEl = this._cardElement.querySelector(".card__button-del");
+    if (this._cardOwnerId !== this._ownerId) {
+      this._trashEl.classList.add('card__button-del-inactive');
+    }
     this._setEventListeners();
 
     return this._cardElement;
   }
+
+  // add method for checking to see if the owner has liked the card based on the data from the api
+  // 
 
   _setEventListeners() {
     this._cardElement
@@ -60,6 +74,13 @@ class Card {
     this._cardElement
       .querySelector(".card__button-like")
       .classList.toggle("card__button-like_active");
+
+    if (this._cardElement.querySelector('.card__button-like_active')) {
+      this._handleLike(this._id);
+    }  
+    //else {
+    //  this._handleUnlike(this._id);
+    // }
   }
 
   handleRemoveCard() {
@@ -68,14 +89,12 @@ class Card {
   }
 
   _getLikes() {
-   
     return this._likes.length;
-      }
+  }
 
-_getUserID() {
-  return this._ownerId._id;
-}
-
+  _getUserID() {
+    return this._ownerId._id;
+  }
 }
 
 export default Card;
