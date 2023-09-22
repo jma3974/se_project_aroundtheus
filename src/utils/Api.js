@@ -67,7 +67,7 @@ export default class Api {
 
 // https://around.nomoreparties.co/v1/groupId/cards/likes/cardId
 
-  updateCardLikes(cardId, liked) {
+  updateCardLikes(cardId) {
     return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
       method: liked ? "DELETE" : "PUT",
       headers: this._headers,

@@ -49,18 +49,23 @@ const renderCard = (cardDetails) => {
     (card, cardId) => { // handle click on trash bin
       deleteCardConfirm.openModal(card, cardId);
     },
-    (_id, isLiked) => { // handle clicking like/unlike
-      api.updateCardLikes(cardDetails._id, isLiked)
+    (_id) => { // handle clicking like/unlike
+      api.updateCardLikes(cardDetails._id)
     }
   );
   const cardElement = card.getCardElement();
+const testId = "0f8bf2291851e91afb2470fd";
+  const isLiked = cardDetails.likes.some((res) => res === testId);
+  console.log(isLiked);
   console.log(cardDetails);
   console.log(cardDetails.name);
   console.log("cardDetails._id");
-  console.log(cardDetails._id);
-  console.log(`${cardDetails.likes.length} likes`);
-  console.log(cardDetails.isLiked)
-  console.log(cardDetails.likes);
+  console.log(cardDetails.owner._id);
+  console.log(testId);
+  
+  // console.log(`${cardDetails.likes.length} likes`);
+  // console.log(cardDetails.isLiked)
+  console.log(cardDetails.likes._id);
 
   
   
