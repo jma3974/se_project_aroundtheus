@@ -4,6 +4,7 @@ import Card from "../components/Card.js";
 import Api from "../utils/Api.js";
 import {
   myId,
+  _myId,
   addCardForm,
   editCardForm,
   profileNameSelector,
@@ -16,9 +17,8 @@ import {
   openAddButton,
   avatarForm,
   openAvatarButton,
-  profileImage,
-  profileImageSelector,
-  deleteButtonSelector,
+   profileImageSelector,
+  //deleteButtonSelector,
 } from "../utils/Constants.js";
 import FormValidator from "../components/FormValidator.js";
 import UserInfo from "../components/UserInfo.js";
@@ -38,10 +38,10 @@ const api = new Api({
 });
 
 // Creates an instance to create an individual card
-const renderCard = (item) => {
+const renderCard = (cardDetails) => {
   const card = new Card(
-    { item }, //card details
-    myId, // my owner id
+    { cardDetails }, //card details
+    _myId, // my owner id
     "#card-template", // card selector
     (title, link) => { //handle click on image
       cardImageModal.openModal(title, link);
@@ -50,13 +50,18 @@ const renderCard = (item) => {
       deleteCardConfirm.openModal(card, cardId);
     },
     (_id, isLiked) => { // handle clicking like/unlike
-      api.updateCardLikes(item._id, isLiked)
+      api.updateCardLikes(cardDetails._id, isLiked)
     }
   );
   const cardElement = card.getCardElement();
-  console.log(item._id);
-  console.log(item.name);
-  console.log(item.likes);
+  console.log(cardDetails);
+  console.log(cardDetails.name);
+  console.log("cardDetails._id");
+  console.log(cardDetails._id);
+  console.log(`${cardDetails.likes.length} likes`);
+  console.log(cardDetails.isLiked)
+  console.log(cardDetails.likes);
+
   
   
   return cardElement;
@@ -163,7 +168,8 @@ openAddButton.addEventListener("click", () => {
 const deleteCardConfirm = new PopupWithConfirm(
   "#deleteCard-modal",
   (card, cardId) => {
-    return api.delDestinationCard(cardId).then(() => {
+    return api.delDestinationCard(cardId)
+    .then(() => {
       card.handleRemoveCard();
     });
   }

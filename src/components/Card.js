@@ -1,20 +1,20 @@
 class Card {
   constructor(
-    { item },
-    ownerId,
+    { cardDetails },
+    myId,
     cardSelector,
     handleImageClick,
     handleDeleteClick,
     handleLike
    // handleUnlike
   ) {
-    this._title = item.name;
-    this._link = item.link;
-    this._cardOwnerId = item.owner._id;
-    this._id = item._id;
+    this._title = cardDetails.name;
+    this._link = cardDetails.link;
+    this._cardOwnerId = cardDetails.owner._id;
+    this._id = cardDetails._id;
     this._cardSelector = cardSelector;
-    this._likes = item.likes;
-    this._ownerId = ownerId;
+    this._likes = cardDetails.likes;
+    this._myId = myId;
     this._handleImageClick = handleImageClick;
     this._handleDeleteClick = handleDeleteClick;
     this._handleLike = handleLike;
@@ -22,7 +22,7 @@ class Card {
   }
 
   // compare personal ID to ID on card for delete
-  // if this._ownerId =
+  // if this._myId =
 
   getCardElement() {
     this._cardElement = document
@@ -39,7 +39,8 @@ class Card {
     this._cardLikesEl = this._cardElement.querySelector(".card__button-count");
     this._cardLikesEl.textContent = this._getLikes();
     this._trashEl = this._cardElement.querySelector(".card__button-del");
-    if (this._cardOwnerId !== this._ownerId) {
+    if (this._cardOwnerId !== this._myId) {
+  
       this._trashEl.classList.add('card__button-del-inactive');
     }
     this._setEventListeners();
@@ -54,7 +55,7 @@ class Card {
     this._cardElement
       .querySelector(".card__button-like")
       .addEventListener("click", () => {
-        this._handleLikeIcon();
+        this._handleLike();
       });
 
     this._cardElement
@@ -70,7 +71,7 @@ class Card {
       );
   }
 
-  _handleLikeIcon() {
+  _handleLike() {
     this._cardElement
       .querySelector(".card__button-like")
       .classList.toggle("card__button-like_active");
@@ -78,9 +79,7 @@ class Card {
     if (this._cardElement.querySelector('.card__button-like_active')) {
       this._handleLike(this._id);
     }  
-    //else {
-    //  this._handleUnlike(this._id);
-    // }
+    
   }
 
   handleRemoveCard() {
