@@ -17,7 +17,7 @@ import {
   openAddButton,
   avatarForm,
   openAvatarButton,
-   profileImageSelector,
+  profileImageSelector,
   //deleteButtonSelector,
 } from "../utils/Constants.js";
 import FormValidator from "../components/FormValidator.js";
@@ -40,45 +40,39 @@ const api = new Api({
 // Creates an instance to create an individual card
 const renderCard = (cardDetails) => {
   const card = new Card(
-    { cardDetails }, //card details
-    _myId, // my owner id
-    "#card-template", // card selector
-    (title, link) => { //handle click on image
-      cardImageModal.openModal(title, link);
-    },
-    (card, cardId) => { // handle click on trash bin
-      deleteCardConfirm.openModal(card, cardId);
-    },
-    (_id) => { // handle clicking like/unlike
-      api.updateCardLikes(cardDetails._id)
-    }
-  );
+    { cardDetails }, // { cardDetails }
+    _myId, // myId
+    "#card-template", // cardSelector
+    handleImageClick,
+    handleDeleteClick,
+    handleLikeClick,
+    );
   const cardElement = card.getCardElement();
-const testId = "0f8bf2291851e91afb2470fd";
-  const isLiked = cardDetails.likes.some((res) => res === testId);
-  console.log(isLiked);
-  console.log(cardDetails);
   console.log(cardDetails.name);
-  console.log("cardDetails._id");
-  console.log(cardDetails.owner._id);
-  console.log(testId);
-  
-  // console.log(`${cardDetails.likes.length} likes`);
-  // console.log(cardDetails.isLiked)
-  console.log(cardDetails.likes._id);
-
-  
-  
+  console.log(cardDetails._id);
   return cardElement;
 };
+
+const handleImageClick = (title, link) => {
+  cardImageModal.openModal(title, link);
+};
+
+const handleDeleteClick = (card, cardId) => {
+deleteCardConfirm.openModal(card, cardId);}
+
+const handleLikeClick =   (cardId, isLiked) => {
+      return api.updateCardLikes(cardId, isLiked).catch((err) => {
+        console.error(err);
+      });
+    }
+
 
 // API promise to load cards and profile information
 Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then(([userData, cards]) => {
     userInfo.setUserInfo({ userData });
     userInfo.setAvatar(userData.avatar);
-    console.log(userData.avatar);
-    
+
     const defaultDestinationSection = new Section(
       {
         items: cards,
@@ -119,15 +113,14 @@ const editProfileForm = new PopupWithForm("#editProfile-modal", (values) => {
 
 // Creates an instance for accessing methods for updating the avatar image
 const editAvatarForm = new PopupWithForm("#editAvatar-modal", (values) => {
-  api.updateUserAvatar(values).then((res) =>{
+  api.updateUserAvatar(values).then((res) => {
     const result = {
-      avatar: values.avatar
+      avatar: values.avatar,
       // userData: {avatar: values.avatar}
     };
     console.log(result);
     userInfo.setAvatar(values.avatar);
-  } )
-  
+  });
 });
 // Opens the form for Avatar
 openAvatarButton.addEventListener("click", () => {
@@ -146,9 +139,8 @@ openEditButton.addEventListener("click", () => {
   professionInput.value = profileData.profession;
   console.log(nameInput.value);
   editProfileForm.openModal();
-  console.log("edit modal open")
+  console.log("edit modal open");
 });
-
 
 // For gaining access to methods within popup form
 const newDestinationCardForm = new PopupWithForm(
@@ -173,8 +165,7 @@ openAddButton.addEventListener("click", () => {
 const deleteCardConfirm = new PopupWithConfirm(
   "#deleteCard-modal",
   (card, cardId) => {
-    return api.delDestinationCard(cardId)
-    .then(() => {
+    return api.delDestinationCard(cardId).then(() => {
       card.handleRemoveCard();
     });
   }

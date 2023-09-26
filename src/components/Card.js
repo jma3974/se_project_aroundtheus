@@ -5,8 +5,8 @@ class Card {
     cardSelector,
     handleImageClick,
     handleDeleteClick,
-    handleLike
-   // handleUnlike
+    handleLikeClick
+    
   ) {
     this._title = cardDetails.name;
     this._link = cardDetails.link;
@@ -14,15 +14,12 @@ class Card {
     this._id = cardDetails._id;
     this._cardSelector = cardSelector;
     this._likes = cardDetails.likes;
+    this._likesCount = this._likes.length;
     this._myId = myId;
     this._handleImageClick = handleImageClick;
     this._handleDeleteClick = handleDeleteClick;
-    this._handleLike = handleLike;
-    
+    this._handleApiLike = handleLikeClick;
   }
-
-  // compare personal ID to ID on card for delete
-  // if this._myId =
 
   getCardElement() {
     this._cardElement = document
@@ -40,31 +37,34 @@ class Card {
     this._cardLikesEl.textContent = this._getLikes();
     this._trashEl = this._cardElement.querySelector(".card__button-del");
     if (this._cardOwnerId !== this._myId) {
-  
-      this._trashEl.classList.add('card__button-del-inactive');
+      this._trashEl.classList.add("card__button-del-inactive");
     }
+
+    if (this.isLiked()) {
+      this._cardElement
+        .querySelector(".card__button-like")
+        .classList.add("card__button-like_active");
+    }
+
     this._setEventListeners();
 
     return this._cardElement;
   }
 
-  // add method for checking to see if the owner has liked the card based on the data from the api
-  // 
-
   _setEventListeners() {
-    this._cardElement
+    this._cardElement // handle a click on the like button
       .querySelector(".card__button-like")
       .addEventListener("click", () => {
-        this._handleLike();
+        this._handleLike(); // Line 76
       });
 
-    this._cardElement
+    this._cardElement // handle a click on the trashcan
       .querySelector(".card__button-del")
       .addEventListener("click", () => {
         this._handleDeleteClick(this, this.id);
       });
 
-    this._cardElement
+    this._cardElement // handle clicking for a large image
       .querySelector(".card__image-display")
       .addEventListener("click", () =>
         this._handleImageClick(this._title, this._link)
@@ -76,10 +76,42 @@ class Card {
       .querySelector(".card__button-like")
       .classList.toggle("card__button-like_active");
 
-    if (this._cardElement.querySelector('.card__button-like_active')) {
-      this._handleLike(this._id);
-    }  
-    
+    // if like button has active class, then send like to api (calling like method on api.js)
+    // api.updateCardLikes(this._cardId, true);
+    // else delete like from api
+    // api.updateCardLikes(this._cardId, false);
+
+
+      if (this._cardElement.querySelector(".card__button-like_active")) {
+       this._handleApiLike(this._id, true).then(() => {
+          this.updateLikeCount(true);
+        })
+
+      } else {
+       this._handleApiLike(this._id, false).then(() => {
+          this.updateLikeCount(false);
+        })
+      }
+  }
+
+  _getLikes() {
+    return this._likes.length;
+
+  }
+
+  updateLikeCount(add) {
+    if (add) {
+      this._likesCount++;
+      this._cardLikesEl.textContent = this._likesCount;
+    } else {
+      this._likesCount--;
+      this._cardLikesEl.textContent = this._likesCount;
+    }
+  }
+
+
+  isLiked() {
+    return this._likes.some((like) => like._id === this._myId);
   }
 
   handleRemoveCard() {
@@ -87,11 +119,7 @@ class Card {
     this._cardElement = null;
   }
 
-  _getLikes() {
-    return this._likes.length;
-  }
-
-  _getUserID() {
+  getUserID() {
     return this._ownerId._id;
   }
 }

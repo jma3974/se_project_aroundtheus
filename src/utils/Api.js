@@ -5,8 +5,7 @@ export default class Api {
   }
 
   _checkResponse(res) {
-    return res.ok ? res.json() 
-    : Promise.reject(`Error: ${res.status}`);
+    return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
   }
 
   getInitialCards() {
@@ -65,12 +64,19 @@ export default class Api {
   //   }).then(this._checkResponse);
   // }
 
-// https://around.nomoreparties.co/v1/groupId/cards/likes/cardId
+  // https://around.nomoreparties.co/v1/groupId/cards/likes/cardId
 
-  updateCardLikes(cardId) {
+  updateCardLikes(cardId, isLiked) {
     return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
-      method: liked ? "DELETE" : "PUT",
+      method: isLiked ? "PUT" : "DELETE",
       headers: this._headers,
     }).then(this._checkResponse);
   }
+
+  // updateCardLikes(cardId) {
+  // return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+  // method: "PUT",
+  //headers: this._headers,
+  //  }).then(this._checkResponse);
+  //}
 }
