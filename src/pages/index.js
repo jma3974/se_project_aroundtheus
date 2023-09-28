@@ -40,16 +40,22 @@ const api = new Api({
 // Creates an instance to create an individual card
 const renderCard = (cardDetails) => {
   const card = new Card(
-    { cardDetails }, // { cardDetails }
-    _myId, // myId
-    "#card-template", // cardSelector
+    // { cardDetails }
+    { cardDetails },
+    // myId
+    _myId,
+    // cardSelector
+    "#card-template",
+    // handle functions
     handleImageClick,
     handleDeleteClick,
-    handleLikeClick,
-    );
-  const cardElement = card.getCardElement();
+    handleLikeClick
+  );
+ // const cardElement = card.getCardElement();
+ const cardElement = card.getCardElement();
   console.log(cardDetails.name);
   console.log(cardDetails._id);
+  //defaultDestinationSection.addItem(card.getCardElement());
   return cardElement;
 };
 
@@ -58,14 +64,22 @@ const handleImageClick = (title, link) => {
 };
 
 const handleDeleteClick = (card, cardId) => {
-deleteCardConfirm.openModal(card, cardId);}
+  console.log(card, cardId);
+  deleteCardConfirm.openModal(card, cardId);
+};
 
-const handleLikeClick =   (cardId, isLiked) => {
-      return api.updateCardLikes(cardId, isLiked).catch((err) => {
-        console.error(err);
-      });
-    }
+const handleLikeClick = (cardId, isLiked) => {
+  return api.updateCardLikes(cardId, isLiked).catch((err) => {
+    console.error(err);
+  });
+};
 
+const defaultDestinationSection = new Section(
+  {
+    renderer: renderCard,
+  },
+  destinations
+);
 
 // API promise to load cards and profile information
 Promise.all([api.getUserInfo(), api.getInitialCards()])
@@ -73,14 +87,8 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
     userInfo.setUserInfo({ userData });
     userInfo.setAvatar(userData.avatar);
 
-    const defaultDestinationSection = new Section(
-      {
-        items: cards,
-        renderer: renderCard,
-      },
-      destinations
-    );
-    defaultDestinationSection.renderItems();
+    
+    defaultDestinationSection.renderItems(cards);
   })
   .catch(console.error);
 
@@ -103,7 +111,7 @@ const userInfo = new UserInfo(
 
 // Creates and instance of popupform to access methods for forms
 const editProfileForm = new PopupWithForm("#editProfile-modal", (values) => {
-  api.updateUserInfo(values).then((res) => {
+  return api.updateUserInfo(values).then((res) => {
     const result = {
       userData: { name: values.name, about: values.profession },
     };
@@ -147,10 +155,10 @@ const newDestinationCardForm = new PopupWithForm(
   "#newCard-modal",
   (newCardInputs) => {
     console.log(newCardInputs);
-    api.addDestinationCard(newCardInputs).then((res) => {
+    return api.addDestinationCard(newCardInputs).then((res) => {
       console.log(newCardInputs);
-      const card = renderCard(res);
-      defaultDestinationSection.addItem(card);
+      renderCard(res);
+      
     });
   }
 );
@@ -163,13 +171,28 @@ openAddButton.addEventListener("click", () => {
 
 // Creates an instance of a delete confirmation
 const deleteCardConfirm = new PopupWithConfirm(
+  //modalSelector
   "#deleteCard-modal",
+  // handleConfirmSubmit
+
+  // deleteCard()  
   (card, cardId) => {
     return api.delDestinationCard(cardId).then(() => {
       card.handleRemoveCard();
     });
   }
 );
+
+function deleteCard() {
+api.delDestinationCard()
+
+// remove the card from the DOM
+// close confirmation window
+
+
+
+
+}
 
 const cardImageModal = new PopupWithImage("#viewImage-modal");
 

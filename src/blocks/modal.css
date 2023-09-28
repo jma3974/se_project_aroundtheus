@@ -184,6 +184,7 @@
   }
 
   .modal__container-confirm {
+    margin-bottom: 25px;
     height: 181px;
   }
 
@@ -191,6 +192,11 @@
     font-size: 18px;
     font-weight: 900;
     margin: 0 22px 75px 22px;
+  }
+
+  .modal__header-confirm {
+   
+    margin-bottom: 30px;
   }
 
   .modal__input {
@@ -210,9 +216,6 @@
     margin: 15px 22px 0 22px;
   }
 
-  .modal__button-confirm {
-      margin: 0 22px 25px 22px;
-  }
 
   .modal__close {
     position: relative;

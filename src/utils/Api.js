@@ -57,14 +57,7 @@ export default class Api {
     }).then(this._checkResponse);
   }
 
-  // removeCardLikes(card) {
-  //   return fetch(`${this._baseUrl}/cards/${card}/likes`, {
-  //     method: "DELETE",
-  //     headers: this._headers,
-  //   }).then(this._checkResponse);
-  // }
 
-  // https://around.nomoreparties.co/v1/groupId/cards/likes/cardId
 
   updateCardLikes(cardId, isLiked) {
     return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
@@ -73,10 +66,5 @@ export default class Api {
     }).then(this._checkResponse);
   }
 
-  // updateCardLikes(cardId) {
-  // return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
-  // method: "PUT",
-  //headers: this._headers,
-  //  }).then(this._checkResponse);
-  //}
+
 }

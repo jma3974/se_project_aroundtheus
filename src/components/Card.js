@@ -61,7 +61,7 @@ class Card {
     this._cardElement // handle a click on the trashcan
       .querySelector(".card__button-del")
       .addEventListener("click", () => {
-        this._handleDeleteClick(this, this.id);
+        this._handleDeleteClick(this, this._id);
       });
 
     this._cardElement // handle clicking for a large image
@@ -75,11 +75,6 @@ class Card {
     this._cardElement
       .querySelector(".card__button-like")
       .classList.toggle("card__button-like_active");
-
-    // if like button has active class, then send like to api (calling like method on api.js)
-    // api.updateCardLikes(this._cardId, true);
-    // else delete like from api
-    // api.updateCardLikes(this._cardId, false);
 
 
       if (this._cardElement.querySelector(".card__button-like_active")) {
