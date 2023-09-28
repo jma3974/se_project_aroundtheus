@@ -14,6 +14,7 @@ import {
   nameInput,
   avatarInput,
   destinations,
+  destinationContainer,
   openAddButton,
   avatarForm,
   openAvatarButton,
@@ -51,11 +52,8 @@ const renderCard = (cardDetails) => {
     handleDeleteClick,
     handleLikeClick
   );
-  // const cardElement = card.getCardElement();
   const cardElement = card.getCardElement();
-  console.log(cardDetails.name);
-  console.log(cardDetails._id);
-  //defaultDestinationSection.addItem(card.getCardElement());
+
   return cardElement;
 };
 
@@ -153,7 +151,12 @@ const newDestinationCardForm = new PopupWithForm(
   (newCardInputs) => {
     console.log(newCardInputs);
     return api.addDestinationCard(newCardInputs).then((res) => {
-      renderCard(res);
+      // renderCard(res);
+      const card = renderCard(res);
+      destinationContainer.append(card);
+      console.log(card);
+      console.log(destinationContainer);
+      
     });
   }
 );
@@ -177,13 +180,6 @@ const deleteCardConfirm = new PopupWithConfirm(
     });
   }
 );
-
-// function deleteCard() {
-//   api.delDestinationCard();
-
-//   // remove the card from the DOM
-//   // close confirmation window
-}
 
 const cardImageModal = new PopupWithImage("#viewImage-modal");
 
