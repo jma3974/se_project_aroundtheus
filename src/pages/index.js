@@ -14,19 +14,17 @@ import {
   nameInput,
   avatarInput,
   destinations,
-  destinationContainer,
   openAddButton,
   avatarForm,
   openAvatarButton,
   profileImageSelector,
-  //deleteButtonSelector,
+  
 } from "../utils/Constants.js";
 import FormValidator from "../components/FormValidator.js";
 import UserInfo from "../components/UserInfo.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import "../pages/index.css";
-// import PopupWithAvatar from "../components/PopupwithAvatar.js";
 import PopupWithConfirm from "../components/PopupWithConfirm.js";
 
 // Creates and instance of API to access methods from
@@ -120,8 +118,7 @@ const editAvatarForm = new PopupWithForm("#editAvatar-modal", (values) => {
   api.updateUserAvatar(values).then((res) => {
     const result = {
       avatar: values.avatar,
-      // userData: {avatar: values.avatar}
-    };
+          };
 
     userInfo.setAvatar(values.avatar);
   });
@@ -149,13 +146,11 @@ openEditButton.addEventListener("click", () => {
 const newDestinationCardForm = new PopupWithForm(
   "#newCard-modal",
   (newCardInputs) => {
-    console.log(newCardInputs);
+    
     return api.addDestinationCard(newCardInputs).then((res) => {
-      // renderCard(res);
-      const card = renderCard(res);
-      destinationContainer.append(card);
-      console.log(card);
-      console.log(destinationContainer);
+     const card = renderCard(res);
+      defaultDestinationSection.addItem(card);
+      
       
     });
   }
