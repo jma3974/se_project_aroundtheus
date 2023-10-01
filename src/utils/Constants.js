@@ -1,42 +1,42 @@
-export const initialCards = [
-  {
-    title: "Yosemite Valley",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-    //altText: "A view up a river through a forest to mountain cliffsides.",
-  },
-  {
-    title: "Lake Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
-    //altText:
-    //"A view across an aqua colored lake to a pass between two jagged mountains.",
-  },
+// export const initialCards = [
+//   {
+//     title: "Yosemite Valley",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
+//     //altText: "A view up a river through a forest to mountain cliffsides.",
+//   },
+//   {
+//     title: "Lake Louise",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
+//     //altText:
+//     //"A view across an aqua colored lake to a pass between two jagged mountains.",
+//   },
 
-  {
-    title: "Bald Mountains",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
-    //altText: "A view over a low mountain range facing the setting sun.",
-  },
+//   {
+//     title: "Bald Mountains",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
+//     //altText: "A view over a low mountain range facing the setting sun.",
+//   },
 
-  {
-    title: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
-    //altText: "A starry night view of three stone mountain peaks.",
-  },
+//   {
+//     title: "Latemar",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
+//     //altText: "A starry night view of three stone mountain peaks.",
+//   },
 
-  {
-    title: "Vanoise National Park",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
-    //altText:
-    // "A view of a rock beach near a calm lake, reflecting the stony mountains in the distance.",
-  },
+//   {
+//     title: "Vanoise National Park",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
+//     //altText:
+//     // "A view of a rock beach near a calm lake, reflecting the stony mountains in the distance.",
+//   },
 
-  {
-    title: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
-    //altText:
-    // "A view of a series of row boats tied to a wharf on a lake surrounded by mountains.",
-  },
-];
+//   {
+//     title: "Lago di Braies",
+//     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
+//     //altText:
+//     // "A view of a series of row boats tied to a wharf on a lake surrounded by mountains.",
+//   },
+// ];
 
 export const cardTemplate = document.querySelector("#card-template");
 export const addCardForm = document.querySelector("#profile-add-form");
