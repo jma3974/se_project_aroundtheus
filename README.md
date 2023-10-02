@@ -2,13 +2,13 @@
 
 ### Description
 
-First stage of a website to create a gallery of images of locations a user has visited, within the US. Each will have a "like" button.
+Finalt stage of a website to create a gallery of images of locations a user has visited, within the US.
 
 The user will be able to update the profile name, profession, and image. Additionally they will be able to add X number of images/locations
 
 **Technologies used**
 
-This is primarily an exercise in responsive design, using media queries. Introducing Javascrip arrays and objects. Design is provided via Figma (see below)
+This is primarily an exercise in responsive design, using media queries. Introducing Javascrip arrays and objects, OOP, and API. Design is provided via Figma (see below)
 
 **Figma**
 
