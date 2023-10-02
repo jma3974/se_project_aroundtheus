@@ -36,3 +36,5 @@ export default class PopupWithConfirm extends Popup {
     super.closeModal();
   };
 }
+
+//

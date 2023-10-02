@@ -185,3 +185,6 @@ const editAvatarValidator = new FormValidator(formValidationConfig, avatarForm);
 addFormValidator.enableValidation();
 editFormValidator.enableValidation();
 editAvatarValidator.enableValidation();
+
+
+//
