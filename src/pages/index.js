@@ -115,7 +115,7 @@ const editProfileForm = new PopupWithForm("#editProfile-modal", (values) => {
 
 // Creates an instance for accessing methods for updating the avatar image
 const editAvatarForm = new PopupWithForm("#editAvatar-modal", (values) => {
-  api.updateUserAvatar(values).then((res) => {
+  return api.updateUserAvatar(values).then((res) => {
     const result = {
       avatar: values.avatar,
           };
