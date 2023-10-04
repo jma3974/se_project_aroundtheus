@@ -6,19 +6,21 @@ export default class PopupWithForm extends Popup {
     this._popupForm = this._modalElement.querySelector(".modal__form");
     this._modalInputs = this._popupForm.querySelectorAll(".modal__input");
     this._handleFormSubmit = handleFormSubmit;
-    this.subButton = this._popupForm.querySelector('.modal__button');
+    this.subButton = this._popupForm.querySelector(".modal__button");
     this.subButtonText = this.subButton.textContent;
-    
   }
 
-  _handleSubmit = () => {
-        this._handleFormSubmit(this._getInputValues())
-    .then(() => {
-      this.closeModal();
-    })
-    .finally(() => {
-      this.renderLoading(false);
-    });
+  _handleSubmit = (evt) => {
+    evt.preventDefault();
+    this.renderLoading(true);
+
+    this._handleFormSubmit(this._getInputValues())
+      .then(() => {
+        this.closeModal();
+      })
+      .finally(() => {
+        this.renderLoading(false);
+      });
   };
 
   _getInputValues() {
@@ -30,16 +32,22 @@ export default class PopupWithForm extends Popup {
     return inputValues;
   }
 
+  // _setEventListeners() {
+  //   super._setEventListeners();
+
+  //   this._popupForm.addEventListener("submit", (evt) => {
+  //     evt.preventDefault();
+  //     this.renderLoading(true);
+  //     this._handleSubmit()
+
+  //   });
+
+  // }
+
   _setEventListeners() {
     super._setEventListeners();
-    
-    this._popupForm.addEventListener("submit", (evt) => {
-      evt.preventDefault();
-      this.renderLoading(true);
-      this._handleSubmit()
-     
-    });
-  
+
+    this._popupForm.addEventListener("submit", this._handleSubmit);
   }
 
   _removeEventListeners() {
