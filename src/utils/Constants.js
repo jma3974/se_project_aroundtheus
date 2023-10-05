@@ -58,4 +58,13 @@ export const openAddButton = document.querySelector(".profile__button-add");
 export const myId = "a525747a-1396-48dd-bc2a-662500b37c81";
 export const _myId = "85118cfaa5deb2aa40b27e18";
 
+export const formValidationConfig = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input-name_error",
+  errorClass: "modal__error_visible",
+}
+
 //

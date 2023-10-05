@@ -31,10 +31,6 @@ export default class PopupWithConfirm extends Popup {
     this._popupForm.removeEventListener("submit", this._handleSubmit);
   }
 
-  closeModal = () => {
-    this._popupForm.reset();
-    super.closeModal();
-  };
 }
 
 //

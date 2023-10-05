@@ -18,6 +18,8 @@ export default class PopupWithForm extends Popup {
       .then(() => {
         this.closeModal();
       })
+      .catch((err) => {
+        console.error(err);})
       .finally(() => {
         this.renderLoading(false);
       });
@@ -32,17 +34,6 @@ export default class PopupWithForm extends Popup {
     return inputValues;
   }
 
-  // _setEventListeners() {
-  //   super._setEventListeners();
-
-  //   this._popupForm.addEventListener("submit", (evt) => {
-  //     evt.preventDefault();
-  //     this.renderLoading(true);
-  //     this._handleSubmit()
-
-  //   });
-
-  // }
 
   _setEventListeners() {
     super._setEventListeners();

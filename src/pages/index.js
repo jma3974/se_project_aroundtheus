@@ -18,7 +18,7 @@ import {
   avatarForm,
   openAvatarButton,
   profileImageSelector,
-  
+  formValidationConfig,
 } from "../utils/Constants.js";
 import FormValidator from "../components/FormValidator.js";
 import UserInfo from "../components/UserInfo.js";
@@ -86,16 +86,6 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
   })
   .catch(console.error);
 
-// Creates a singular location for the various classes involved in validation
-const formValidationConfig = {
-  formSelector: ".modal__form",
-  inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__button",
-  inactiveButtonClass: "modal__button_disabled",
-  inputErrorClass: "modal__input-name_error",
-  errorClass: "modal__error_visible",
-};
-
 // Creates and instance of UserInfo and pulls the respective user data
 const userInfo = new UserInfo(
   profileNameSelector,
@@ -118,7 +108,7 @@ const editAvatarForm = new PopupWithForm("#editAvatar-modal", (values) => {
   return api.updateUserAvatar(values).then((res) => {
     const result = {
       avatar: values.avatar,
-          };
+    };
 
     userInfo.setAvatar(values.avatar);
   });
@@ -146,12 +136,9 @@ openEditButton.addEventListener("click", () => {
 const newDestinationCardForm = new PopupWithForm(
   "#newCard-modal",
   (newCardInputs) => {
-    
     return api.addDestinationCard(newCardInputs).then((res) => {
-     const card = renderCard(res);
+      const card = renderCard(res);
       defaultDestinationSection.addItem(card);
-      
-      
     });
   }
 );
@@ -185,6 +172,5 @@ const editAvatarValidator = new FormValidator(formValidationConfig, avatarForm);
 addFormValidator.enableValidation();
 editFormValidator.enableValidation();
 editAvatarValidator.enableValidation();
-
 
 //

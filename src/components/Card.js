@@ -81,12 +81,17 @@ class Card {
        this._handleApiLike(this._id, true).then(() => {
           this.updateLikeCount(true);
         })
+        .catch((err) => {
+          console.error(err);})
 
       } else {
        this._handleApiLike(this._id, false).then(() => {
           this.updateLikeCount(false);
         })
+        .catch((err) => {
+          console.error(err);})
       }
+      
   }
 
   _getLikes() {
