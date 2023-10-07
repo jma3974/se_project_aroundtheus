@@ -154,8 +154,6 @@ const deleteCardConfirm = new PopupWithConfirm(
   //modalSelector
   "#deleteCard-modal",
   // handleConfirmSubmit
-
-  // deleteCard()
   (card, cardId) => {
     return api.delDestinationCard(cardId).then(() => {
       card.handleRemoveCard();

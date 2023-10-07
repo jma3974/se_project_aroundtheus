@@ -39,9 +39,7 @@ class Card {
       this._trashEl.classList.add("card__button-del-inactive");
     }
 
-    if (this.isLiked()) {
-      this._cardLike.classList.add("card__button-like_active");
-    }
+    this.renderLikes();
 
     this._setEventListeners();
 
@@ -69,41 +67,41 @@ class Card {
   }
 
   _handleLike() {
-    this._cardElement
-      .querySelector(".card__button-like")
-      .classList.toggle("card__button-like_active");
-
-    if (this._cardElement.querySelector(".card__button-like_active")) {
-      this._handleApiLike(this._id, true)
-        .then(() => {
-          this.updateLikeCount(true);
+    if (this.isLiked()) {
+      this._handleApiLike(this._id, false)
+        .then((card) => {
+          this.updateLikes(card.likes);
         })
         .catch((err) => {
           console.error(err);
         });
     } else {
-      this._handleApiLike(this._id, false)
-        .then(() => {
-          this.updateLikeCount(false);
+      this._handleApiLike(this._id, true)
+        .then((card) => {
+          this.updateLikes(card.likes);
         })
         .catch((err) => {
           console.error(err);
         });
     }
+  }
+
+  updateLikes(likes) {
+    this._likes = likes;
+    this.renderLikes();
   }
 
   _getLikes() {
     return this._likes.length;
   }
 
-  updateLikeCount(add) {
-    if (add) {
-      this._likesCount++;
-      this._cardLikesEl.textContent = this._likesCount;
+  renderLikes() {
+    if (this.isLiked()) {
+      this._cardLike.classList.add("card__button-like_active");
     } else {
-      this._likesCount--;
-      this._cardLikesEl.textContent = this._likesCount;
+      this._cardLike.classList.remove("card__button-like_active");
     }
+    this._cardLikesEl.textContent = this._likes.length;
   }
 
   isLiked() {
