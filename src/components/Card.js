@@ -31,7 +31,6 @@ class Card {
     this._cardLikesEl = this._cardElement.querySelector(".card__button-count");
     this._cardLikesEl.textContent = this._getLikes();
     this._trashEl = this._cardElement.querySelector(".card__button-del");
-    this._cardLike = this._cardElement.querySelector(".card__button-like");
   }
 
   getCardElement() {
@@ -47,17 +46,15 @@ class Card {
   }
 
   _setEventListeners() {
-    this._cardElement // handle a click on the like button
-      .querySelector(".card__button-like")
-      .addEventListener("click", () => {
-        this._handleLike(); // Line 76
-      });
+    this._cardElement; // handle a click on the like button
+    this._cardLike.addEventListener("click", () => {
+      this._handleLike(); // Line 76
+    });
 
-    this._cardElement // handle a click on the trashcan
-      .querySelector(".card__button-del")
-      .addEventListener("click", () => {
-        this._handleDeleteClick(this, this._id);
-      });
+    this._cardElement; // handle a click on the trashcan
+    this._trashEl.addEventListener("click", () => {
+      this._handleDeleteClick(this, this._id);
+    });
 
     this._cardElement // handle clicking for a large image
       .querySelector(".card__image-display")

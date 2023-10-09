@@ -17,7 +17,12 @@ export default class PopupWithConfirm extends Popup {
   _handleSubmit = (evt) => {
     evt.preventDefault();
     this._handleConfirmSubmit(this._card, this._cardId)
-    .then(() => {this.closeModal();});
+      .then(() => {
+        this.closeModal();
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
 
   _setEventListeners() {
@@ -30,7 +35,6 @@ export default class PopupWithConfirm extends Popup {
     super._removeEventListeners();
     this._popupForm.removeEventListener("submit", this._handleSubmit);
   }
-
 }
 
 //
