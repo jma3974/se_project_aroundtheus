@@ -1,168 +1,174 @@
 // IMPORT CLASS/MODULE
 import Section from "../components/Section.js";
 import Card from "../components/Card.js";
-
+import Api from "../utils/Api.js";
+import {
+  myId,
+  _myId,
+  addCardForm,
+  editCardForm,
+  profileNameSelector,
+  profileProfessionSelector,
+  openEditButton,
+  professionInput,
+  nameInput,
+  avatarInput,
+  destinations,
+  openAddButton,
+  avatarForm,
+  openAvatarButton,
+  profileImageSelector,
+  formValidationConfig,
+} from "../utils/Constants.js";
 import FormValidator from "../components/FormValidator.js";
 import UserInfo from "../components/UserInfo.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import "../pages/index.css";
+import PopupWithConfirm from "../components/PopupWithConfirm.js";
 
-/* -------------------------------------------------------------------------- */
-/*                                  CONSTANTS                                 */
-/* -------------------------------------------------------------------------- */
-
-// initial destination cards
-const initialCards = [
-  {
-    title: "Yosemite Valley",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-    //altText: "A view up a river through a forest to mountain cliffsides.",
+// Creates and instance of API to access methods from
+const api = new Api({
+  baseUrl: "https://around.nomoreparties.co/v1/cohort-3-en",
+  headers: {
+    authorization: myId,
+    "Content-Type": "application/json",
   },
-  {
-    title: "Lake Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
-    //altText:
-    //"A view across an aqua colored lake to a pass between two jagged mountains.",
-  },
-
-  {
-    title: "Bald Mountains",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
-    //altText: "A view over a low mountain range facing the setting sun.",
-  },
-
-  {
-    title: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
-    //altText: "A starry night view of three stone mountain peaks.",
-  },
-
-  {
-    title: "Vanoise National Park",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
-    //altText:
-    // "A view of a rock beach near a calm lake, reflecting the stony mountains in the distance.",
-  },
-
-  {
-    title: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
-    //altText:
-    // "A view of a series of row boats tied to a wharf on a lake surrounded by mountains.",
-  },
-];
-
-// const modalImage = document.querySelector("#modal-image");
-const cardTemplate = document.querySelector("#card-template");
-// const cardListEl = document.querySelector(".destinations");
-
-const addCardForm = document.querySelector("#profile-add-form");
-const editCardForm = document.querySelector("#profile-edit-form");
-
-const profileElement = document.querySelector(".profile");
-
-//const profileName = profileElement.querySelector(".profile__name");
-const profileNameSelector = ".profile__name";
-//const profileProfession = profileElement.querySelector(".profile__profession");
-const profileProfessionSelector = ".profile__profession";
-
-const openEditButton = document.querySelector(".profile__button-edit");
-const professionInput = document.querySelector(".modal__input-profession");
-const nameInput = document.querySelector(".modal__input-name");
-//const titleInput = document.querySelector(".modal__input-title");
-//const imageInput = document.querySelector(".modal__input-image");
-//const cardListEl = document.querySelector(".destinations");
-const destinations = ".destinations";
-
-//const viewImageModal = document.querySelector("#viewImage-modal");
-
-const openAddButton = document.querySelector(".profile__button-add");
-
-const formValidationConfig = {
-  formSelector: ".modal__form",
-  inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__button",
-  inactiveButtonClass: "modal__button_disabled",
-  inputErrorClass: "modal__input-name_error",
-  errorClass: "modal__error_visible",
-};
-
-/* -------------------------------------------------------------------------- */
-/*                                   PROFILE                                  */
-/* -------------------------------------------------------------------------- */
-
-const userInfo = new UserInfo(profileNameSelector, profileProfessionSelector);
-
-const editProfileForm = new PopupWithForm("#editProfile-modal", (values) => {
-  userInfo.setUserInfo(values.name, values.profession);
-  
 });
 
-openEditButton.addEventListener("click", () => {
-  editFormValidator.toggleButtonState();
-  const profileData = userInfo.getUserInfo();
-
-  nameInput.value = profileData.name;
-  professionInput.value = profileData.profession;
-  editProfileForm.openModal();
-});
-
-/* -------------------------------------------------------------------------- */
-/*                                  NEW CARD                                  */
-/* -------------------------------------------------------------------------- */
-
-const renderCard = (item) => {
-  const card = new Card({ item }, "#card-template", (title, link) => {
-    cardImageModal.openModal(title, link);
-  });
+// Creates an instance to create an individual card
+const renderCard = (cardDetails) => {
+  const card = new Card(
+    // { cardDetails }
+    { cardDetails },
+    // myId
+    _myId,
+    // cardSelector
+    "#card-template",
+    // handle functions
+    handleImageClick,
+    handleDeleteClick,
+    handleLikeClick
+  );
   const cardElement = card.getCardElement();
 
   return cardElement;
 };
 
-const newDestinationCardForm = new PopupWithForm(
-  "#newCard-modal",
-  (newCardInputs) => {
-    const card = renderCard(newCardInputs);
-    defaultDestinationSection.addItem(card);
+const handleImageClick = (title, link) => {
+  cardImageModal.openModal(title, link);
+};
 
-    //renderCard(newCardInputs);
-    //const title = titleInput.value;
-    //const link = imageInput.value;
-    // const card = new Card({ title, link }, "#card-template");
-    // const cardElement = card.getCardElement();
-    // cardListEl.prepend(cardElement);
-  }
-);
+const handleDeleteClick = (card, cardId) => {
+  deleteCardConfirm.openModal(card, cardId);
+};
 
-openAddButton.addEventListener("click", () => {
-  addFormValidator.toggleButtonState();
-  newDestinationCardForm.openModal();
-});
-
-/* -------------------------------------------------------------------------- */
-/*                              CARD IMAGE POP UP                             */
-/* -------------------------------------------------------------------------- */
-
-const cardImageModal = new PopupWithImage("#viewImage-modal");
-
-const addFormValidator = new FormValidator(formValidationConfig, addCardForm);
-const editFormValidator = new FormValidator(formValidationConfig, editCardForm);
-
-addFormValidator.enableValidation();
-editFormValidator.enableValidation();
-
-/* -------------------------------------------------------------------------- */
-/*                              INITIALIZE CARDS                              */
-/* -------------------------------------------------------------------------- */
+const handleLikeClick = (cardId, isLiked) => {
+  return api.updateCardLikes(cardId, isLiked).catch((err) => {
+    console.error(err);
+  });
+};
 
 const defaultDestinationSection = new Section(
   {
-    items: initialCards,
     renderer: renderCard,
   },
   destinations
 );
 
-defaultDestinationSection.renderItems();
+// API promise to load cards and profile information
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+  .then(([userData, cards]) => {
+    userInfo.setUserInfo({ userData });
+    userInfo.setAvatar(userData.avatar);
+
+    defaultDestinationSection.renderItems(cards);
+  })
+  .catch(console.error);
+
+// Creates and instance of UserInfo and pulls the respective user data
+const userInfo = new UserInfo(
+  profileNameSelector,
+  profileProfessionSelector,
+  profileImageSelector
+);
+
+// Creates and instance of popupform to access methods for forms
+const editProfileForm = new PopupWithForm("#editProfile-modal", (values) => {
+  return api.updateUserInfo(values).then((res) => {
+    const result = {
+      userData: { name: values.name, about: values.profession },
+    };
+    userInfo.setUserInfo(result);
+  });
+});
+
+// Creates an instance for accessing methods for updating the avatar image
+const editAvatarForm = new PopupWithForm("#editAvatar-modal", (values) => {
+  return api.updateUserAvatar(values).then((res) => {
+    const result = {
+      avatar: values.avatar,
+    };
+
+    userInfo.setAvatar(values.avatar);
+  });
+});
+// Opens the form for Avatar
+openAvatarButton.addEventListener("click", () => {
+  editAvatarValidator.toggleButtonState();
+  const avatarData = userInfo.getAvatar();
+  avatarInput.value = avatarData.src;
+
+  editAvatarForm.openModal();
+});
+
+// Opens the form for name and profession
+openEditButton.addEventListener("click", () => {
+  editFormValidator.toggleButtonState();
+  const profileData = userInfo.getUserInfo();
+  nameInput.value = profileData.name;
+  professionInput.value = profileData.profession;
+
+  editProfileForm.openModal();
+});
+
+// For gaining access to methods within popup form
+const newDestinationCardForm = new PopupWithForm(
+  "#newCard-modal",
+  (newCardInputs) => {
+    return api.addDestinationCard(newCardInputs).then((res) => {
+      const card = renderCard(res);
+      defaultDestinationSection.addItem(card);
+    });
+  }
+);
+
+// Opens the modal that adds destination cards
+openAddButton.addEventListener("click", () => {
+  addFormValidator.toggleButtonState();
+  newDestinationCardForm.openModal();
+});
+
+// Creates an instance of a delete confirmation
+const deleteCardConfirm = new PopupWithConfirm(
+  //modalSelector
+  "#deleteCard-modal",
+  // handleConfirmSubmit
+  (card, cardId) => {
+    return api.delDestinationCard(cardId).then(() => {
+      card.handleRemoveCard();
+    });
+  }
+);
+
+const cardImageModal = new PopupWithImage("#viewImage-modal");
+
+const addFormValidator = new FormValidator(formValidationConfig, addCardForm);
+const editFormValidator = new FormValidator(formValidationConfig, editCardForm);
+const editAvatarValidator = new FormValidator(formValidationConfig, avatarForm);
+
+addFormValidator.enableValidation();
+editFormValidator.enableValidation();
+editAvatarValidator.enableValidation();
+
+//

@@ -6,12 +6,23 @@ export default class PopupWithForm extends Popup {
     this._popupForm = this._modalElement.querySelector(".modal__form");
     this._modalInputs = this._popupForm.querySelectorAll(".modal__input");
     this._handleFormSubmit = handleFormSubmit;
+    this.subButton = this._popupForm.querySelector(".modal__button");
+    this.subButtonText = this.subButton.textContent;
   }
 
   _handleSubmit = (evt) => {
     evt.preventDefault();
-    this._handleFormSubmit(this._getInputValues());
-    this.closeModal();
+    this.renderLoading(true);
+
+    this._handleFormSubmit(this._getInputValues())
+      .then(() => {
+        this.closeModal();
+      })
+      .catch((err) => {
+        console.error(err);})
+      .finally(() => {
+        this.renderLoading(false);
+      });
   };
 
   _getInputValues() {
@@ -23,15 +34,11 @@ export default class PopupWithForm extends Popup {
     return inputValues;
   }
 
+
   _setEventListeners() {
     super._setEventListeners();
-    // set submit events
+
     this._popupForm.addEventListener("submit", this._handleSubmit);
-    // this._popupForm.addEventListener("submit", (evt) => {
-    //   evt.preventDefault();
-    //   this._handleFormSubmit(this._getInputValues());
-    //   this.closeModal();
-    // });
   }
 
   _removeEventListeners() {
@@ -43,4 +50,14 @@ export default class PopupWithForm extends Popup {
     this._popupForm.reset();
     super.closeModal();
   };
+
+  renderLoading(isLoading, saveButtonText = "Saving...") {
+    if (isLoading) {
+      this.subButton.textContent = saveButtonText;
+    } else {
+      this.subButton.textContent = this.subButtonText;
+    }
+  }
 }
+
+//

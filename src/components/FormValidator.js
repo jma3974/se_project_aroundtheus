@@ -75,11 +75,7 @@ class FormValidator {
   }
 }
 
-// REQUIREMENTS
-// Its constructor has two parameters. The first parameter is a settings object that stores selectors and form classes, and the second one takes a form element to be validated.
-// It has private methods for processing the form, which include: checking the field's validity, changing the state of the Submit button, and adding all the needed handlers.
-// It has a public method enableValidation(), which enables form validation.
-// It has a public method to either disable the state of the button or reset form validation (including the state of the submit button).
-// Create an instance of the FormValidator class for each form that should be validated.
 
 export default FormValidator;
+
+//
