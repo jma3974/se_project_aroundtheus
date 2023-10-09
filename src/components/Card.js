@@ -46,12 +46,12 @@ class Card {
   }
 
   _setEventListeners() {
-    this._cardElement; // handle a click on the like button
+    // handle a click on the like button
     this._cardLike.addEventListener("click", () => {
       this._handleLike(); // Line 76
     });
 
-    this._cardElement; // handle a click on the trashcan
+    // handle a click on the trashcan
     this._trashEl.addEventListener("click", () => {
       this._handleDeleteClick(this, this._id);
     });
